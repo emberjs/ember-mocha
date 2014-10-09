@@ -1,4 +1,7 @@
-ember-mocha
+# ember-mocha
+
+## Copyright and License
+
 Copyright 2014 Switchfly
 
 This product includes software developed at

@@ -1,0 +1,27 @@
+{
+  "name": "ember-mocha",
+  "version": "0.0.1",
+  "authors": [
+    "Dan Gebhardt"
+  ],
+  "license": "Apache Version 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ],
+  "dependencies": {
+    "ember": "^1.7.0",
+    "ember-test-helpers": "switchfly/ember-test-helpers#v0.0.3"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.0",
+    "chai": "~1.9.1",
+    "ember-mocha-adapter": "0.2.1",
+    "loader": "stefanpenner/loader.js#1.0.1",
+    "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.3",
+    "jquery": "~2.1.1",
+    "ember-data": "~1.0.0-beta.10"
+  }
+}
