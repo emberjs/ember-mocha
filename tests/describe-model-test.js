@@ -4,40 +4,35 @@ import { setResolverRegistry } from 'tests/test-support/resolver';
 
 window.expect = chai.expect;
 
-var Post = DS.Model.extend({
-  title: DS.attr(),
-  user: DS.attr(),
-  comments: DS.hasMany('comment')
-});
-var Comment = DS.Model.extend({
-  post: DS.belongsTo('post')
-});
-
 var Whazzit = DS.Model.extend({ gear: DS.attr('string') });
-var whazzitCreateRecordCalled = false;
+var whazzitAdapterFindAllCalled = false;
 var WhazzitAdapter = DS.FixtureAdapter.extend({
-  createRecord: function(){
-    whazzitCreateRecordCalled = true;
+  findAll: function(store, type) {
+    whazzitAdapterFindAllCalled = true;
     return this._super.apply(this, arguments);
   }
 });
 
 var ApplicationAdapter = DS.FixtureAdapter.extend();
 
-var registry = {
-  'model:post': Post,
-  'model:comment': Comment,
-  'model:whazzit': Whazzit,
-  'adapter:whazzit': WhazzitAdapter,
-  'adapter:application': ApplicationAdapter,
-};
+function setupRegistry() {
+  setResolverRegistry({
+    'model:whazzit': Whazzit,
+    'adapter:whazzit': WhazzitAdapter,
+    'adapter:application': ApplicationAdapter
+  });
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 
 describeModel('whazzit', 'model:whazzit without adapter', {
 
   preSetup: function() {
-    setResolverRegistry(registry);
+    setupRegistry();
+  },
+
+  setup: function() {
+    Whazzit.FIXTURES = [];
   }
 
 }, function() {
@@ -70,54 +65,39 @@ describeModel('whazzit', 'model:whazzit with custom adapter', {
   needs: ['adapter:whazzit'],
 
   preSetup: function() {
-    setResolverRegistry(registry);
+    setupRegistry();
   },
 
-  teardown: function(){
-    whazzitCreateRecordCalled = false;
+  setup: function() {
+    Whazzit.FIXTURES = [];
+    whazzitAdapterFindAllCalled = false;
   }
 
 }, function() {
 
-  it('model is using the WhazzitAdapter', function() {
+  it('uses the WhazzitAdapter', function() {
     var model = this.subject(),
-      store = this.store();
+        store = this.store();
 
     expect(store.adapterFor(model.constructor)).to.be.an.instanceof(WhazzitAdapter);
   });
 
-//TODO - model.save() promise is never fulfilled
-//       (broken on this branch as well as on master)
-//
-// if (DS._setupContainer) {
-//   test('creates the custom adapter', function() {
-//     expect(2);
-//     ok(!whazzitCreateRecordCalled, 'precond - custom adapter is not yet instantiated');
-//
-//     var model = this.subject();
-//
-//     return Ember.run(function(){
-//       model.set('gear', '42');
-//       return model.save().then(function(){
-//         ok(whazzitCreateRecordCalled, 'uses the custom adapter');
-//       });
-//     });
-//   });
-// } else {
-//   test('without DS._setupContainer fails to create the custom adapter', function() {
-//     var thrown = false;
-//     try {
-//       var model = this.subject();
-//       Ember.run(function(){
-//         model.set('gear', '42');
-//         return model.save();
-//       });
-//     } catch(e) {
-//       thrown = true;
-//     }
-//     ok(thrown, 'error is thrown without DS._setupContainer');
-//   });
-// }
+  it('uses the WhazzitAdapter for a `find` request', function(done) {
+    var model = this.subject(),
+        store = this.store();
+
+    expect(whazzitAdapterFindAllCalled).to.be.false;
+
+    var store = this.store();
+
+    return Ember.run(function() {
+      return store.find('whazzit').then(function() {
+        expect(whazzitAdapterFindAllCalled).to.be.true;
+        done();
+      });
+    });
+  });
+
 });
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -127,12 +107,16 @@ describeModel('whazzit', 'model:whazzit with application adapter', {
   needs: ['adapter:application'],
 
   preSetup: function() {
-    setResolverRegistry(registry);
+    setupRegistry();
+  },
+
+  setup: function() {
+    Whazzit.FIXTURES = [];
   }
 
 }, function() {
 
-  it('model is using the ApplicationAdapter', function() {
+  it('uses the ApplicationAdapter', function() {
     var model = this.subject(),
       store = this.store();
 
