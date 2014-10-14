@@ -47,20 +47,37 @@ main = compileES6(main, {
 // --- Select and concat vendor / support files ---
 
 var vendor = concat('bower_components', {
-  inputFiles: ['jquery/dist/jquery.js',
+  inputFiles: [
+    'jquery/dist/jquery.js',
     'handlebars/handlebars.js',
     'ember/ember.js',
-    'ember-data/ember-data.js',
-    'mocha/mocha.js',
-    'chai/chai.js',
-    'ember-mocha-adapter/adapter.js'],
+    'ember-data/ember-data.js'],
   outputFile: '/assets/vendor.js'
 });
 
-var vendorCSS = pickFiles('bower_components', {
+var mocha = pickFiles('bower_components', {
   srcDir: '/mocha',
-  files: ['mocha.css'],
+  files: ['mocha.js', 'mocha.css'],
   destDir: '/assets'
+});
+
+var chai = pickFiles('bower_components', {
+  srcDir: '/chai',
+  files: ['chai.js'],
+  destDir: '/assets'
+});
+
+var adapter = pickFiles('bower_components', {
+  srcDir: '/ember-mocha-adapter',
+  files: ['adapter.js'],
+  destDir: '/assets'
+});
+
+var testSupport = concat('bower_components', {
+  inputFiles: [
+    'ember-cli-shims/app-shims.js',
+    '../tests/test-support/test-loader.js'],
+  outputFile: '/assets/test-support.js'
 });
 
 var testIndex = pickFiles('tests', {
@@ -69,17 +86,5 @@ var testIndex = pickFiles('tests', {
   destDir: '/tests'
 });
 
-var testHelper = pickFiles('tests', {
-  srcDir: '/test-support',
-  files: ['test-helper.js'],
-  destDir: '/assets'
-});
-
-var testSupport = concat('bower_components', {
-  inputFiles: ['ember-cli-shims/app-shims.js',
-               '../tests/test-support/test-loader.js'],
-  outputFile: '/assets/test-support.js'
-});
-
-module.exports = mergeTrees([main, vendor, vendorCSS, testIndex, testHelper, testSupport]);
+module.exports = mergeTrees([main, vendor, mocha, chai, adapter, testSupport, testIndex]);
 
