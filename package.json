@@ -4,7 +4,7 @@
   "description": "Mocha helpers for testing Ember.js applications",
   "main": "lib/ember-mocha.js",
   "scripts": {
-    "test": "bower install && rm -rf build && BROCCOLI_ENV=test broccoli build build && testem ci"
+    "test": "rm -rf build && BROCCOLI_ENV=test broccoli build build && testem ci"
   },
   "authors": [
     "Dan Gebhardt"
