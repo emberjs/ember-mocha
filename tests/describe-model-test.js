@@ -27,7 +27,7 @@ function setupRegistry() {
 
 describeModel('whazzit', 'model:whazzit without adapter', {
 
-  preSetup: function() {
+  beforeSetup: function() {
     setupRegistry();
   },
 
@@ -64,7 +64,7 @@ describeModel('whazzit', 'model:whazzit with custom adapter', {
 
   needs: ['adapter:whazzit'],
 
-  preSetup: function() {
+  beforeSetup: function() {
     setupRegistry();
   },
 
@@ -106,7 +106,7 @@ describeModel('whazzit', 'model:whazzit with application adapter', {
 
   needs: ['adapter:application'],
 
-  preSetup: function() {
+  beforeSetup: function() {
     setupRegistry();
   },
 

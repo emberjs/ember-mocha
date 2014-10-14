@@ -12,18 +12,20 @@ var PrettyColor = Ember.Component.extend({
   }.property('name')
 });
 
-var registry = {
-  'component:x-foo': Ember.Component.extend(),
-  'component:pretty-color': PrettyColor,
-  'template:components/pretty-color': Ember.Handlebars.compile('Pretty Color: <span class="color-name">{{name}}</span>')
-};
+function setupRegistry() {
+  setResolverRegistry({
+    'component:x-foo': Ember.Component.extend(),
+    'component:pretty-color': PrettyColor,
+    'template:components/pretty-color': Ember.Handlebars.compile('Pretty Color: <span class="color-name">{{name}}</span>')
+  });
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 
 describeComponent('x-foo', {
 
-  preSetup: function() {
-    setResolverRegistry(registry);
+  beforeSetup: function() {
+    setupRegistry();
   }
 
 }, function() {
@@ -69,35 +71,35 @@ describeComponent('x-foo', {
 });
 
 ///////////////////////////////////////////////////////////////////////////////
-// TODO
-//describeComponent('pretty-color', {
-//
-//  preSetup: function() {
-//    setResolverRegistry(registry);
-//  }
-//
-//}, function() {
-//
-//  it("className", function() {
-//    // first call to this.$() renders the component.
-//    expect(this.$().is('.pretty-color')).to.be.true;
-//  });
-//
-//  it("template", function() {
-//    var component = this.subject();
-//
-//    expect($.trim(this.$().text())).to.equal('Pretty Color:');
-//
-//    Ember.run(function() {
-//      component.set('name', 'green');
-//    });
-//
-//    expect($.trim(this.$().text())).to.equal('Pretty Color: green');
-//  });
-//
-//  it("$", function() {
-//    var component = this.subject({name: 'green'});
-//    expect($.trim(this.$('.color-name').text())).to.equal('green');
-//    expect($.trim(this.$().text())).to.equal('Pretty Color: green');
-//  });
-//});
+
+describeComponent('pretty-color', {
+
+  beforeSetup: function() {
+    setupRegistry();
+  }
+
+}, function() {
+
+  it("has the correct className", function() {
+    // first call to this.$() renders the component.
+    expect(this.$().is('.pretty-color')).to.be.true;
+  });
+
+  it("uses the correct custom template", function() {
+    var component = this.subject();
+
+    expect($.trim(this.$().text())).to.equal('Pretty Color:');
+
+    Ember.run(function() {
+      component.set('name', 'green');
+    });
+
+    expect($.trim(this.$().text())).to.equal('Pretty Color: green');
+  });
+
+  it("$", function() {
+    var component = this.subject({name: 'green'});
+    expect($.trim(this.$('.color-name').text())).to.equal('green');
+    expect($.trim(this.$().text())).to.equal('Pretty Color: green');
+  });
+});

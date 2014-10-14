@@ -3,20 +3,22 @@ import { setResolverRegistry } from 'tests/test-support/resolver';
 
 window.expect = chai.expect;
 
-var registry = {
-  'component:x-foo': Ember.Component.extend()
-};
+function setupRegistry() {
+  setResolverRegistry({
+    'component:x-foo': Ember.Component.extend()
+  });
+}
 
 var a = 0;
 var b = 0;
-var preSetupOk = false;
-var preTeardownOk = false;
+var beforeSetupOk = false;
+var beforeTeardownOk = false;
 
 describeModule('component:x-foo', 'TestModule callbacks', {
-  preSetup: function() {
-    setResolverRegistry(registry);
+  beforeSetup: function() {
+    setupRegistry();
 
-    preSetupOk = (a === 0);
+    beforeSetupOk = (a === 0);
     b += 1;
   },
 
@@ -24,8 +26,8 @@ describeModule('component:x-foo', 'TestModule callbacks', {
     a += 1;
   },
 
-  preTeardown: function() {
-    preTeardownOk = (a === 1);
+  beforeTeardown: function() {
+    beforeTeardownOk = (a === 1);
     b -= 1;
   },
 
@@ -34,8 +36,8 @@ describeModule('component:x-foo', 'TestModule callbacks', {
   }
 
 }, function() {
-  it("preSetup callback is called prior to any test setup", function() {
-    expect(preSetupOk).to.be.truthy;
+  it("beforeSetup callback is called prior to any test setup", function() {
+    expect(beforeSetupOk).to.be.truthy;
     expect(b).to.equal(1);
   });
 
@@ -47,8 +49,8 @@ describeModule('component:x-foo', 'TestModule callbacks', {
     expect(a).to.equal(1);
   });
 
-  it("preTeardown callback is called prior to any test teardown", function() {
-    expect(preTeardownOk).to.be.truthy;
+  it("beforeTeardown callback is called prior to any test teardown", function() {
+    expect(beforeTeardownOk).to.be.truthy;
     expect(b).to.equal(1);
   });
 
