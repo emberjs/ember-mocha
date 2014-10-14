@@ -1,4 +1,4 @@
-# ember-mocha
+# ember-mocha  [![Build Status](https://secure.travis-ci.org/switchfly/ember-mocha.png?branch=master)](http://travis-ci.org/switchfly/ember-mocha)
 
 ## Copyright and License
 
