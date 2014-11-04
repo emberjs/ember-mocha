@@ -88,7 +88,7 @@ describeModel('whazzit', 'model:whazzit with custom adapter', {
 
     expect(whazzitAdapterFindAllCalled).to.be.false;
 
-    var store = this.store();
+    store = this.store();
 
     return Ember.run(function() {
       return store.find('whazzit').then(function() {
