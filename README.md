@@ -1,4 +1,31 @@
-# ember-mocha  [![Build Status](https://secure.travis-ci.org/switchfly/ember-mocha.png?branch=master)](http://travis-ci.org/switchfly/ember-mocha)
+# Ember Mocha [![Build Status](https://secure.travis-ci.org/switchfly/ember-mocha.png?branch=master)](http://travis-ci.org/switchfly/ember-mocha)
+
+## Contributing
+
+Contributions are welcome. Please follow the instructions below to install and
+test this library.
+
+### Installation
+
+```sh
+$ npm install
+```
+
+### Testing
+
+In order to test in the browser:
+
+```sh
+$ npm start
+```
+
+... and then visit [http://localhost:4200/tests](http://localhost:4200/tests).
+
+In order to perform a CI test:
+
+```sh
+$ npm test
+```
 
 ## Copyright and License
 
