@@ -8,7 +8,7 @@ var compileES6 = require('broccoli-es6-concatenator');
 var loader = pickFiles('bower_components', {
   srcDir: 'loader',
   files: ['loader.js'],
-  destDir: '/'
+  destDir: '/assets/'
 });
 
 // TODO - this manual dependency management has got to go!
@@ -36,9 +36,16 @@ var tests = pickFiles('tests', {
   destDir: '/tests'
 });
 
-var main = mergeTrees([loader, deps, lib, tests]);
+var main = mergeTrees([deps, lib]);
 main = compileES6(main, {
-  loaderFile: '/loader.js',
+  inputFiles: ['**/*.js'],
+  ignoredModules: ['ember'],
+  outputFile: '/ember-mocha.amd.js',
+  wrapInEval: false
+});
+
+var mainWithTests = mergeTrees([deps, lib, tests]);
+mainWithTests = compileES6(mainWithTests, {
   inputFiles: ['**/*.js'],
   ignoredModules: ['ember'],
   outputFile: '/assets/ember-mocha-tests.amd.js'
@@ -86,5 +93,5 @@ var testIndex = pickFiles('tests', {
   destDir: '/tests'
 });
 
-module.exports = mergeTrees([main, vendor, mocha, chai, adapter, testSupport, testIndex]);
+module.exports = mergeTrees([loader, main, mainWithTests, vendor, mocha, chai, adapter, testSupport, testIndex]);
 

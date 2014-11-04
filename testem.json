@@ -2,6 +2,7 @@
   "framework": "mocha",
   "cwd": "build/",
   "serve_files": [
+    "assets/loader.js",
     "assets/vendor.js",
     "assets/chai.js",
     "assets/adapter.js",
