@@ -45,6 +45,17 @@ main = compileES6(main, {
   wrapInEval: false
 });
 
+var globalizedBuildSupport = pickFiles('build-support', {
+  srcDir: '/',
+  files: ['iife-start.js', 'globalize.js', 'iife-stop.js'],
+  destDir: '/'
+});
+
+var globalizedMain = concat(mergeTrees([loader, main, globalizedBuildSupport]), {
+  inputFiles: ['iife-start.js', 'assets/loader.js', 'ember-mocha.amd.js', 'globalize.js', 'iife-stop.js'],
+  outputFile: '/ember-mocha.js'
+});
+
 var jshintLib = jshintTree(lib);
 var jshintTest = jshintTree(tests);
 
@@ -97,4 +108,4 @@ var testIndex = pickFiles('tests', {
   destDir: '/tests'
 });
 
-module.exports = mergeTrees([loader, main, mainWithTests, vendor, mocha, chai, adapter, testSupport, testIndex]);
+module.exports = mergeTrees([loader, main, mainWithTests, globalizedMain, vendor, mocha, chai, adapter, testSupport, testIndex]);
