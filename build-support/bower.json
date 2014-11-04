@@ -1,0 +1,12 @@
+{
+  "name": "ember-mocha",
+  "version": "0.1.0+pre.VERSION_PLACEHOLDER",
+  "authors": [
+    "Dan Gebhardt",
+    "Robert Jackson"
+  ],
+  "license": "MIT",
+  "ignore": [ ],
+  "dependencies": { },
+  "devDependencies": { }
+}
