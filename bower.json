@@ -13,7 +13,7 @@
   ],
   "dependencies": {
     "ember": "^1.7.0",
-    "ember-test-helpers": "switchfly/ember-test-helpers#v0.0.5"
+    "ember-test-helpers": "^0.0.6"
   },
   "devDependencies": {
     "mocha": "~1.17.0",
