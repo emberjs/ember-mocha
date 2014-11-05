@@ -1,5 +1,5 @@
 var concat     = require('broccoli-concat');
-var pickFiles  = require('broccoli-static-compiler');
+var Funnel     = require('broccoli-funnel');
 var mergeTrees = require('broccoli-merge-trees');
 var compileES6 = require('broccoli-es6-concatenator');
 var jshintTree = require('broccoli-jshint');
@@ -8,34 +8,34 @@ var gitInfo    = require('git-repo-info');
 
 // --- Compile ES6 modules ---
 
-var loader = pickFiles('bower_components', {
+var loader = new Funnel('bower_components', {
   srcDir: 'loader',
   files: ['loader.js'],
   destDir: '/assets/'
 });
 
 // TODO - this manual dependency management has got to go!
-var klassy = pickFiles('bower_components', {
+var klassy = new Funnel('bower_components', {
   srcDir: '/klassy/lib',
   files: ['klassy.js'],
   destDir: '/'
 });
-var emberTestHelpers = pickFiles('bower_components', {
+var emberTestHelpers = new Funnel('bower_components', {
   srcDir: '/ember-test-helpers/lib',
-  files: ['**/*.js'],
+  include: [/.js$/],
   destDir: '/'
 });
 var deps = mergeTrees([klassy, emberTestHelpers]);
 
-var lib = pickFiles('lib', {
+var lib = new Funnel('lib', {
   srcDir: '/',
-  files: ['**/*.js'],
+  include: [/.js$/],
   destDir: '/'
 });
 
-var tests = pickFiles('tests', {
+var tests = new Funnel('tests', {
   srcDir: '/',
-  files: ['test-support/resolver.js', '*-test.js'],
+  include: [/test-support\/resolver.js$/, /.js$/],
   destDir: '/tests'
 });
 
@@ -47,7 +47,7 @@ main = compileES6(main, {
   wrapInEval: false
 });
 
-var generatedBowerConfig = pickFiles('build-support', {
+var generatedBowerConfig = new Funnel('build-support', {
   srcDir: '/',
   destDir: '/',
   files: ['bower.json']
@@ -62,7 +62,7 @@ generatedBowerConfig = replace(generatedBowerConfig, {
   }
 });
 
-var globalizedBuildSupport = pickFiles('build-support', {
+var globalizedBuildSupport = new Funnel('build-support', {
   srcDir: '/',
   files: ['iife-start.js', 'globalize.js', 'iife-stop.js'],
   destDir: '/'
@@ -94,19 +94,19 @@ var vendor = concat('bower_components', {
   outputFile: '/assets/vendor.js'
 });
 
-var mocha = pickFiles('bower_components', {
+var mocha = new Funnel('bower_components', {
   srcDir: '/mocha',
   files: ['mocha.js', 'mocha.css'],
   destDir: '/assets'
 });
 
-var chai = pickFiles('bower_components', {
+var chai = new Funnel('bower_components', {
   srcDir: '/chai',
   files: ['chai.js'],
   destDir: '/assets'
 });
 
-var adapter = pickFiles('bower_components', {
+var adapter = new Funnel('bower_components', {
   srcDir: '/ember-mocha-adapter',
   files: ['adapter.js'],
   destDir: '/assets'
@@ -119,7 +119,7 @@ var testSupport = concat('bower_components', {
   outputFile: '/assets/test-support.js'
 });
 
-var testIndex = pickFiles('tests', {
+var testIndex = new Funnel('tests', {
   srcDir: '/',
   files: ['index.html'],
   destDir: '/tests'
