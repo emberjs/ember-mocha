@@ -1,3 +1,5 @@
+/* globals requirejs, require */
+
 var TestLoader = function() {
 };
 
