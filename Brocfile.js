@@ -62,6 +62,12 @@ generatedBowerConfig = replace(generatedBowerConfig, {
   }
 });
 
+var buildExtras = new Funnel('build-support', {
+  srcDir: '/',
+  destDir: '/',
+  files: ['README.md', 'LICENSE']
+});
+
 var globalizedBuildSupport = new Funnel('build-support', {
   srcDir: '/',
   files: ['iife-start.js', 'globalize.js', 'iife-stop.js'],
@@ -125,4 +131,4 @@ var testIndex = new Funnel('tests', {
   destDir: '/tests'
 });
 
-module.exports = mergeTrees([loader, main, mainWithTests, globalizedMain, vendor, mocha, chai, adapter, testSupport, testIndex, generatedBowerConfig]);
+module.exports = mergeTrees([loader, main, mainWithTests, globalizedMain, vendor, mocha, chai, adapter, testSupport, testIndex, generatedBowerConfig, buildExtras]);
