@@ -2,7 +2,8 @@
   "name": "ember-mocha",
   "private": true,
   "authors": [
-    "Dan Gebhardt"
+    "Dan Gebhardt",
+    "Robert Jackson"
   ],
   "license": "Apache Version 2.0",
   "ignore": [
