@@ -1,6 +1,6 @@
 {
   "name": "ember-mocha",
-  "version": "0.0.1",
+  "private": true,
   "authors": [
     "Dan Gebhardt"
   ],
