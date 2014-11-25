@@ -10,7 +10,9 @@ function tryMochaSpecifier(fn) {
   } catch (e) {
     return e;
   }
-};
+}
+
+var Mocha = window.mocha;
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -56,8 +58,8 @@ describe('it', function() {
   var originalMochaGrep;
   var mochaGrep;
   it.only('runs this test', function() {});
-  mochaGrep = mocha.options.grep;
-  mocha.options.grep = originalMochaGrep;
+  mochaGrep = Mocha.options.grep;
+  Mocha.options.grep = originalMochaGrep;
 
 
   var skippedError = tryMochaSpecifier(function() {
@@ -66,7 +68,7 @@ describe('it', function() {
 
   it('skips tests with the .skip modifier', function() {
     expect(skippedError).to.be.null;
-    var pendingSpec = window.mocha.suite.suites.find(function(suite) {
+    var pendingSpec = Mocha.suite.suites.find(function(suite) {
       return suite.tests.find(function(test) {
         return test.title === 'a skipped spec';
       });
