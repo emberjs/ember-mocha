@@ -25,4 +25,19 @@ describe('it', function() {
       }, 10);
     });
   });
+  var pendingError;
+  try {
+    it('can have a pending spec');
+  } catch (e) {
+    pendingError = e;
+  }
+  it('does not throw errors when you mark a pending spec', function() {
+    expect(pendingError).to.be.undefined;
+    var pendingSpec = mocha.suite.suites.find(function(suite) {
+      return suite.tests.find(function(test) {
+        return test.title  == 'can have a pending spec';
+      });
+    });
+    expect(pendingSpec).to.be.ok;
+  });
 });
