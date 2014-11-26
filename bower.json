@@ -17,8 +17,8 @@
     "ember-test-helpers": "^0.0.6"
   },
   "devDependencies": {
-    "mocha": "~1.17.0",
-    "chai": "~1.9.1",
+    "mocha": "~2.0.1",
+    "chai": "~1.10.0",
     "ember-mocha-adapter": "0.2.1",
     "loader": "stefanpenner/loader.js#1.0.1",
     "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.3",
