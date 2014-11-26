@@ -7,6 +7,8 @@
   ],
   "license": "Apache Version 2.0",
   "ignore": [ ],
-  "dependencies": { },
+  "dependencies": {
+    "mocha": "~2.0.1"
+  },
   "devDependencies": { }
 }
