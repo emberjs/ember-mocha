@@ -1,3 +1,7 @@
+define("ember", ["exports"], function(__exports__) {
+  __exports__["default"] = window.Ember;
+});
+
 var emberMocha = requireModule("ember-mocha");
 
 window.describeModule = emberMocha.describeModule;
