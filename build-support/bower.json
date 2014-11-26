@@ -9,7 +9,8 @@
   "ignore": [ ],
   "dependencies": {
     "mocha": "~2.0.1",
-    "chai": "~1.10.0"
+    "chai": "~1.10.0",
+    "ember-mocha-adapter": "~0.2.1"
   },
   "devDependencies": { }
 }
