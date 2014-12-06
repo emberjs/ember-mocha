@@ -65,7 +65,7 @@ generatedBowerConfig = replace(generatedBowerConfig, {
 var buildExtras = new Funnel('build-support', {
   srcDir: '/',
   destDir: '/',
-  files: ['README.md', 'LICENSE']
+  files: ['README.md', 'LICENSE', 'mocha-setup.js']
 });
 
 var globalizedBuildSupport = new Funnel('build-support', {
