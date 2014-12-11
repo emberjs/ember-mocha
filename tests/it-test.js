@@ -75,4 +75,11 @@ describe('it', function() {
     });
     expect(pendingSpec).to.be.defined;
   });
+
+  var callback = function() {
+    expect(callback.toString()).to.equal(wrapper.fn.toString());
+  };
+
+  var wrapper = it('testing test report string representation', callback);
+
 });
