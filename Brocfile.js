@@ -1,7 +1,7 @@
-var concat     = require('broccoli-concat');
+var concat     = require('broccoli-sourcemap-concat');
 var Funnel     = require('broccoli-funnel');
 var mergeTrees = require('broccoli-merge-trees');
-var compileES6 = require('broccoli-es6-concatenator');
+var compileES6 = require('broccoli-es6modules');
 var jshintTree = require('broccoli-jshint');
 var replace    = require('broccoli-string-replace');
 var gitInfo    = require('git-repo-info');
@@ -40,11 +40,9 @@ var tests = new Funnel('tests', {
 });
 
 var main = mergeTrees([deps, lib]);
-main = compileES6(main, {
+main = concat(new compileES6(main), {
   inputFiles: ['**/*.js'],
-  ignoredModules: ['ember'],
-  outputFile: '/ember-mocha.amd.js',
-  wrapInEval: false
+  outputFile: '/ember-mocha.amd.js'
 });
 
 var generatedBowerConfig = new Funnel('build-support', {
@@ -83,9 +81,8 @@ var jshintLib = jshintTree(lib);
 var jshintTest = jshintTree(tests);
 
 var mainWithTests = mergeTrees([deps, lib, tests, jshintLib, jshintTest]);
-mainWithTests = compileES6(mainWithTests, {
+mainWithTests = concat(new compileES6(mainWithTests), {
   inputFiles: ['**/*.js'],
-  ignoredModules: ['ember'],
   outputFile: '/assets/ember-mocha-tests.amd.js'
 });
 
