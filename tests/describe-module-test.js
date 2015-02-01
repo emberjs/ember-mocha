@@ -9,51 +9,42 @@ function setupRegistry() {
   });
 }
 
-var a = 0;
-var b = 0;
-var beforeSetupOk = false;
-var beforeTeardownOk = false;
+var callbackOrder, setupContext, teardownContext, beforeSetupContext, afterTeardownContext;
 
 describeModule('component:x-foo', 'TestModule callbacks', {
   beforeSetup: function() {
-    setupRegistry();
+    beforeSetupContext = this;
+    callbackOrder = [ 'beforeSetup' ];
 
-    beforeSetupOk = (a === 0);
-    b += 1;
+    setupRegistry();
   },
 
   setup: function() {
-    a += 1;
-  },
+    setupContext = this;
+    callbackOrder.push('setup');
 
-  beforeTeardown: function() {
-    beforeTeardownOk = (a === 1);
-    b -= 1;
+    expect(setupContext).to.not.equal(beforeSetupContext);
   },
 
   teardown: function() {
-    a -= 1;
+    teardownContext = this;
+    callbackOrder.push('teardown');
+
+    expect(callbackOrder).to.deep.equal([ 'beforeSetup', 'setup', 'teardown']);
+    expect(setupContext).to.equal(teardownContext);
+  },
+
+  afterTeardown: function() {
+    afterTeardownContext = this;
+    callbackOrder.push('afterTeardown');
+
+    expect(callbackOrder).to.deep.equal([ 'beforeSetup', 'setup', 'teardown', 'afterTeardown']);
+    expect(afterTeardownContext).to.equal(beforeSetupContext);
+    expect(afterTeardownContext).to.not.equal(teardownContext);
   }
 
 }, function() {
-  it("beforeSetup callback is called prior to any test setup", function() {
-    expect(beforeSetupOk).to.be.truthy;
-    expect(b).to.equal(1);
+  it("should call setup callbacks in the correct order", function() {
+    expect(callbackOrder).to.deep.equal([ 'beforeSetup', 'setup' ]);
   });
-
-  it("setup callback is called prior to test", function() {
-    expect(a).to.equal(1);
-  });
-
-  it("teardown callback is called after test", function() {
-    expect(a).to.equal(1);
-  });
-
-  it("beforeTeardown callback is called prior to any test teardown", function() {
-    expect(beforeTeardownOk).to.be.truthy;
-    expect(b).to.equal(1);
-  });
-
 });
-
-
