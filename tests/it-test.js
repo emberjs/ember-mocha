@@ -42,13 +42,13 @@ describe('it', function() {
   });
 
   it('does not throw errors when you mark a pending spec', function() {
-    expect(pendingError).to.be.null;
+    expect(pendingError).to.be.null();
     var pendingSpec = window.mocha.suite.suites.find(function(suite) {
       return suite.tests.find(function(test) {
         return test.title === 'is a pending spec';
       });
     });
-    expect(pendingSpec).to.be.ok;
+    expect(pendingSpec).to.be.ok();
   });
 
 
@@ -67,13 +67,13 @@ describe('it', function() {
   });
 
   it('skips tests with the .skip modifier', function() {
-    expect(skippedError).to.be.null;
+    expect(skippedError).to.be.null();
     var pendingSpec = Mocha.suite.suites.find(function(suite) {
       return suite.tests.find(function(test) {
-        return test.title === 'a skipped spec';
+        return test.title === 'is a skipped spec';
       });
     });
-    expect(pendingSpec).to.be.defined;
+    expect(pendingSpec).to.exist();
   });
 
   var callback = function() {

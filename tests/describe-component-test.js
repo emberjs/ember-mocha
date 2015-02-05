@@ -82,7 +82,7 @@ describeComponent('pretty-color', {
 
   it("has the correct className", function() {
     // first call to this.$() renders the component.
-    expect(this.$().is('.pretty-color')).to.be.true;
+    expect(this.$().is('.pretty-color')).to.be.true();
   });
 
   it("uses the correct custom template", function() {
