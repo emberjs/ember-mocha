@@ -44,7 +44,7 @@ describeModel('whazzit', 'model:whazzit without adapter', {
 
   it('model exists as subject', function() {
     var model = this.subject();
-    expect(model).to.exist;
+    expect(model).to.exist();
     expect(model).to.be.an.instanceof(DS.Model);
     expect(model).to.be.an.instanceof(Whazzit);
   });
@@ -86,13 +86,13 @@ describeModel('whazzit', 'model:whazzit with custom adapter', {
     var model = this.subject(),
         store = this.store();
 
-    expect(whazzitAdapterFindAllCalled).to.be.false;
+    expect(whazzitAdapterFindAllCalled).to.be.false();
 
     store = this.store();
 
     return Ember.run(function() {
       return store.find('whazzit').then(function() {
-        expect(whazzitAdapterFindAllCalled).to.be.true;
+        expect(whazzitAdapterFindAllCalled).to.be.true();
         done();
       });
     });
@@ -125,4 +125,3 @@ describeModel('whazzit', 'model:whazzit with application adapter', {
   });
 
 });
-
