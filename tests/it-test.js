@@ -70,7 +70,7 @@ describe('it', function() {
     expect(skippedError).to.be.null();
     var pendingSpec = Mocha.suite.suites.find(function(suite) {
       return suite.tests.find(function(test) {
-        return test.title === 'a skipped spec';
+        return test.title === 'is a skipped spec';
       });
     });
     expect(pendingSpec).to.exist();
