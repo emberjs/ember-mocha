@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { it } from 'ember-mocha';
+import { grepFor } from './test-support/mocha-support';
 
 window.expect = chai.expect;
 
@@ -55,12 +56,10 @@ describe('it', function() {
   it('correctly sets mocha grep options for runing a single test case with.only', function() {
     expect(mochaGrep).to.match(/it runs this test/);
   });
-  var originalMochaGrep;
-  var mochaGrep;
-  it.only('runs this test', function() {});
-  mochaGrep = Mocha.options.grep;
-  Mocha.options.grep = originalMochaGrep;
 
+  var mochaGrep = grepFor(function() {
+    it.only('runs this test');
+  });
 
   var skippedError = tryMochaSpecifier(function() {
     it.skip('is a skipped spec');
