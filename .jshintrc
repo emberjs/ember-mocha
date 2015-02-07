@@ -10,6 +10,8 @@
     "$",
     "chai",
     "describe",
+    "before",
+    "after",
     "beforeEach",
     "afterEach",
     "describeModule",
