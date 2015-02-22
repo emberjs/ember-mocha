@@ -1,6 +1,6 @@
 import { createModule } from 'ember-mocha/mocha-module';
 import { TestModule } from 'ember-test-helpers';
-import { describe } from 'mocha';
+import { describe, it, before, after, beforeEach, afterEach } from 'mocha';
 import { expect } from 'chai';
 
 describe('MochaModule', function() {
