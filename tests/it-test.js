@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import { it } from 'ember-mocha';
 import { grepFor } from './test-support/mocha-support';
-
-window.expect = chai.expect;
+import { describe } from 'mocha';
+import { expect } from 'chai';
 
 function tryMochaSpecifier(fn) {
   try {

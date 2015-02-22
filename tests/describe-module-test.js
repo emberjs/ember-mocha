@@ -1,8 +1,8 @@
 import { describeModule, it } from 'ember-mocha';
 import { setResolverRegistry } from 'tests/test-support/resolver';
 import { grepFor } from './test-support/mocha-support';
-
-window.expect = chai.expect;
+import { describe } from 'mocha';
+import { expect } from 'chai';
 
 function setupRegistry() {
   setResolverRegistry({

@@ -2,8 +2,8 @@ import Ember from 'ember';
 import { describeModel, it } from 'ember-mocha';
 import { setResolverRegistry } from 'tests/test-support/resolver';
 import { grepFor } from './test-support/mocha-support';
-
-window.expect = chai.expect;
+import { describe } from 'mocha';
+import { expect } from 'chai';
 
 var Whazzit = DS.Model.extend({ gear: DS.attr('string') });
 var whazzitAdapterFindAllCalled = false;
