@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "ember": "^1.10.0",
-    "ember-test-helpers": "ef4/ember-test-helpers#async-module-hooks"
+    "ember-test-helpers": "^0.4.2"
   },
   "devDependencies": {
     "mocha": "~2.1.0",
