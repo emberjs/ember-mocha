@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "ember": "^1.10.0",
-    "ember-test-helpers": "^0.4.3"
+    "ember-test-helpers": "^0.4.4"
   },
   "devDependencies": {
     "mocha": "~2.1.0",
