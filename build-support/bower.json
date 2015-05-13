@@ -8,8 +8,8 @@
   "license": "Apache Version 2.0",
   "ignore": [ ],
   "dependencies": {
-    "mocha": "~2.1.0",
-    "chai": "~1.10.0",
+    "mocha": "~2.2.4",
+    "chai": "~2.3.0",
     "ember-mocha-adapter": "~0.3.1"
   },
   "devDependencies": { }
