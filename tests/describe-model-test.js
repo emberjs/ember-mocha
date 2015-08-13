@@ -14,7 +14,7 @@ var WhazzitAdapter = DS.FixtureAdapter.extend({
   }
 });
 
-var ApplicationAdapter = DS.FixtureAdapter.extend();
+var ApplicationAdapter = DS.JSONAPIAdapter || DS.FixtureAdapter;
 
 function setupRegistry() {
   setResolverRegistry({
@@ -54,9 +54,10 @@ describe('describeModel', function() {
 
     it('model is using the FixtureAdapter', function() {
       var model = this.subject(),
-          store = this.store();
+          store = this.store(),
+          adapter = DS.JSONAPIAdapter || DS.FixtureAdapter;
 
-      expect(store.adapterFor(model.constructor)).to.be.an.instanceof(DS.FixtureAdapter);
+      expect(store.adapterFor(model.constructor)).to.be.an.instanceof(adapter);
       expect(store.adapterFor(model.constructor)).to.not.be.an.instanceof(WhazzitAdapter);
     });
   });
@@ -73,6 +74,13 @@ describe('describeModel', function() {
 
     setup: function() {
       Whazzit.FIXTURES = [];
+      if (DS.JSONAPIAdapter && ApplicationAdapter === DS.JSONAPIAdapter) {
+        var server = new Pretender(function() {
+          this.get('/whazzits', function(request) {
+            return [200, {"Content-Type": "application/json"}, JSON.stringify({ data: Whazzit.FIXTURES })];
+          });
+        });
+      }
       whazzitAdapterFindAllCalled = false;
     }
 
@@ -85,7 +93,7 @@ describe('describeModel', function() {
       expect(store.adapterFor(model.constructor)).to.be.an.instanceof(WhazzitAdapter);
     });
 
-    it('uses the WhazzitAdapter for a `find` request', function(done) {
+    it('uses the WhazzitAdapter for a `findAll` request', function(done) {
       var model = this.subject(),
           store = this.store();
 
@@ -94,7 +102,7 @@ describe('describeModel', function() {
       store = this.store();
 
       return Ember.run(function() {
-        return store.find('whazzit').then(function() {
+        return store.findAll('whazzit', { reload: true }).then(function() {
           expect(whazzitAdapterFindAllCalled).to.be.true;
           done();
         });

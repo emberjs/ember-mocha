@@ -94,6 +94,7 @@ var vendor = concat('bower_components', {
     'jquery/dist/jquery.js',
     'ember/ember-template-compiler.js',
     'ember/ember.js',
+    'pretender/pretender.js',
     'ember-data/ember-data.js'],
   outputFile: '/assets/vendor.js'
 });
@@ -114,6 +115,10 @@ var adapter = new Funnel('bower_components', {
   srcDir: '/ember-mocha-adapter',
   files: ['adapter.js'],
   destDir: '/assets'
+});
+
+var pretender = new Funnel('bower_components', {
+
 });
 
 var testSupport = concat('bower_components', {
