@@ -117,10 +117,6 @@ var adapter = new Funnel('bower_components', {
   destDir: '/assets'
 });
 
-var pretender = new Funnel('bower_components', {
-
-});
-
 var testSupport = concat('bower_components', {
   inputFiles: [
     'ember-cli-shims/app-shims.js',
