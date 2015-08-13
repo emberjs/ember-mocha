@@ -94,6 +94,7 @@ var vendor = concat('bower_components', {
     'jquery/dist/jquery.js',
     'ember/ember-template-compiler.js',
     'ember/ember.js',
+    'pretender/pretender.js',
     'ember-data/ember-data.js'],
   outputFile: '/assets/vendor.js'
 });
