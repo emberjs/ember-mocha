@@ -8,8 +8,8 @@ describe('mocha-shim', function() {
     window.chai.expect(it).to.equal(window.it);
     window.chai.expect(before).to.equal(window.before);
     window.chai.expect(after).to.equal(window.after);
-    window.chai.expect(beforeEach).to.equal(window.beforeEach);
-    window.chai.expect(afterEach).to.equal(window.afterEach);
+    window.chai.expect(beforeEach.withoutEmberRun).to.equal(window.beforeEach);
+    window.chai.expect(afterEach.withoutEmberRun).to.equal(window.afterEach);
   });
 });
 
