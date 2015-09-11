@@ -2,6 +2,17 @@ import { mocha, describe, it, before, after, beforeEach, afterEach } from 'mocha
 import { expect, assert } from 'chai';
 
 describe('mocha-shim', function() {
+  beforeEach(function() {
+    this.beforeEachRunInEmberRunLoop = Ember.run.currentRunLoop;
+  });
+  afterEach(function() {
+    expect(Ember.run.currentRunLoop).to.be.ok;
+  });
+
+  it('runs the beforeEach hook inside the run loop', function() {
+    expect(this.beforeEachRunInEmberRunLoop).to.be.ok;
+  });
+
   it('should work', function() {
     window.chai.expect(mocha).to.equal(window.mocha);
     window.chai.expect(describe).to.equal(window.describe);
