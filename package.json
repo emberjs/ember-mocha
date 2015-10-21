@@ -1,7 +1,7 @@
 {
   "name": "ember-mocha",
   "private": true,
-  "version": "0.8.4",
+  "version": "0.8.5",
   "description": "Mocha helpers for testing Ember.js applications",
   "main": "lib/ember-mocha.js",
   "scripts": {
