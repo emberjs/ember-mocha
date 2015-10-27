@@ -1,5 +1,5 @@
 import { mocha, describe, context, it, before, after, beforeEach, afterEach } from 'mocha';
-import { expect, assert } from 'chai';
+import { expect, assert, config, use, Assertion } from 'chai';
 
 describe('mocha-shim', function() {
   beforeEach(function() {
@@ -29,5 +29,8 @@ describe('chai-shim', function() {
   it('should work', function() {
     window.chai.expect(expect).to.equal(window.chai.expect);
     window.chai.expect(assert).to.equal(window.chai.assert);
+    window.chai.expect(config).to.equal(window.chai.config);
+    window.chai.expect(use).to.equal(window.chai.use);
+    window.chai.expect(Assertion).to.equal(window.chai.Assertion);
   });
 });
