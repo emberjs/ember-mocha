@@ -1,7 +1,7 @@
 {
   "name": "ember-mocha",
   "private": true,
-  "version": "0.8.6",
+  "version": "0.8.7",
   "authors": [
     "Dan Gebhardt",
     "Robert Jackson"
