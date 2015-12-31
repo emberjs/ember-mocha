@@ -1,5 +1,7 @@
-node_modules
-bower_components
-tmp
-dist
-build
+/.node-version
+/bower_components
+/build
+/dist
+/node_modules
+/npm-debug.log
+/tmp

@@ -9,22 +9,25 @@ var gitVersion = require('git-repo-version');
 // --- Compile ES6 modules ---
 
 var loader = new Funnel('bower_components', {
-  srcDir: 'loader',
+  srcDir: 'loader.js',
   files: ['loader.js'],
   destDir: '/assets/'
 });
 
 // TODO - this manual dependency management has got to go!
-var klassy = new Funnel('bower_components', {
+
+var klassy = new Funnel('node_modules', {
   srcDir: '/klassy/lib',
   files: ['klassy.js'],
   destDir: '/'
 });
+
 var emberTestHelpers = new Funnel('bower_components', {
   srcDir: '/ember-test-helpers/lib',
   include: [/.js$/],
   destDir: '/'
 });
+
 var deps = mergeTrees([klassy, emberTestHelpers]);
 
 var lib = new Funnel('lib', {
@@ -40,6 +43,7 @@ var tests = new Funnel('tests', {
 });
 
 var main = mergeTrees([deps, lib]);
+
 main = concat(new compileES6(main), {
   inputFiles: ['**/*.js'],
   outputFile: '/ember-mocha.amd.js'
@@ -50,6 +54,7 @@ var generatedBowerConfig = new Funnel('build-support', {
   destDir: '/',
   files: ['bower.json']
 });
+
 generatedBowerConfig = replace(generatedBowerConfig, {
   files: ['bower.json'],
   pattern: {
@@ -120,7 +125,8 @@ var adapter = new Funnel('bower_components', {
 var testSupport = concat('bower_components', {
   inputFiles: [
     'ember-cli-shims/app-shims.js',
-    '../tests/test-support/test-loader.js'],
+    '../tests/test-support/test-loader.js'
+  ],
   outputFile: '/assets/test-support.js'
 });
 

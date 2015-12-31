@@ -27,9 +27,7 @@ function setupRegistry() {
 ///////////////////////////////////////////////////////////////////////////////
 
 describe('describeModel', function() {
-
   describeModel('whazzit', 'model:whazzit without adapter', {
-
     beforeSetup: function() {
       setupRegistry();
     },
@@ -37,9 +35,7 @@ describe('describeModel', function() {
     setup: function() {
       Whazzit.FIXTURES = [];
     }
-
   }, function() {
-
     it('store exists', function() {
       var store = this.store();
       expect(store).to.be.an.instanceof(DS.Store);
@@ -65,7 +61,6 @@ describe('describeModel', function() {
   ///////////////////////////////////////////////////////////////////////////////
 
   describeModel('whazzit', 'model:whazzit with custom adapter', {
-
     needs: ['adapter:whazzit'],
 
     beforeSetup: function() {
@@ -83,9 +78,7 @@ describe('describeModel', function() {
       }
       whazzitAdapterFindAllCalled = false;
     }
-
   }, function() {
-
     it('uses the WhazzitAdapter', function() {
       var model = this.subject(),
           store = this.store();
@@ -108,13 +101,11 @@ describe('describeModel', function() {
         });
       });
     });
-
   });
 
   ///////////////////////////////////////////////////////////////////////////////
 
   describeModel('whazzit', 'model:whazzit with application adapter', {
-
     needs: ['adapter:application'],
 
     beforeSetup: function() {
@@ -124,9 +115,7 @@ describe('describeModel', function() {
     setup: function() {
       Whazzit.FIXTURES = [];
     }
-
   }, function() {
-
     it('uses the ApplicationAdapter', function() {
       var model = this.subject(),
           store = this.store();
@@ -134,27 +123,26 @@ describe('describeModel', function() {
       expect(store.adapterFor(model.constructor)).to.be.an.instanceof(ApplicationAdapter);
       expect(store.adapterFor(model.constructor)).to.not.be.an.instanceof(WhazzitAdapter);
     });
-
   });
 
-
-  describeModel.skip("skipped model", function() {
-    it("is skipped", function() {});
+  describeModel.skip('skipped model', function() {
+    it('is skipped', function() {});
   });
 
   var grep = grepFor(function() {
-    describeModel.only("whazzit", "only model", function() {
-      it("is the only model", function() {});
+    describeModel.only('whazzit', 'only model', function() {
+      it('is the only model', function() {});
     });
   });
 
-  describe("skipping and grepping", function() {
-    it("skips the skipped context", function() {
+  describe('skipping and grepping', function() {
+    it('skips the skipped context', function() {
       var skipped = window.mocha.suite.suites.find(function(suite) {
-        return suite.title === "skipped model" && suite.pending;
+        return suite.title === 'skipped model' && suite.pending;
       });
     });
-    it("greps for describeModel.only", function() {
+
+    it('greps for describeModel.only', function() {
       expect('describeModel only model').to.match(grep);
     });
   });

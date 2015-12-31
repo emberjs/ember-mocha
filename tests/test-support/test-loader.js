@@ -1,4 +1,4 @@
-/* globals requirejs, require */
+/*globals requirejs, require */
 
 var TestLoader = function() {
 };
@@ -23,5 +23,4 @@ TestLoader.load = function() {
   new TestLoader().loadModules();
 };
 
-//export default TestLoader;
 TestLoader.load();
