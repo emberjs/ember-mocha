@@ -10,17 +10,21 @@ describe('MochaModule', function() {
     before(function() {
       thisInBefore = this;
     });
+
     beforeEach(function() {
       thisInBeforeEach = this;
     });
-    it("is preserved inside all assertions and hooks", function() {
+
+    it('is preserved inside all assertions and hooks', function() {
       expect(this).to.be.defined;
       expect(this).to.equal(thisInBefore);
       expect(this).to.equal(thisInBeforeEach);
     });
+
     afterEach(function() {
       expect(this).to.equal(thisInBeforeEach);
     });
+
     after(function() {
       expect(this).to.equal(thisInBefore);
       expect(this).to.equal(thisInBeforeEach);

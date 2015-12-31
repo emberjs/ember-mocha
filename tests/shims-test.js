@@ -5,6 +5,7 @@ describe('mocha-shim', function() {
   beforeEach(function() {
     this.beforeEachRunInEmberRunLoop = Ember.run.currentRunLoop;
   });
+
   afterEach(function() {
     expect(Ember.run.currentRunLoop).to.be.ok;
   });

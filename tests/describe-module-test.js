@@ -12,13 +12,11 @@ function setupRegistry() {
 
 var callbackOrder, setupContext, teardownContext, beforeSetupContext, afterTeardownContext;
 
-describe("describeModule", function() {
-
+describe('describeModule', function() {
   describeModule('component:x-foo', 'TestModule callbacks', {
     beforeSetup: function() {
       beforeSetupContext = this;
       callbackOrder = [ 'beforeSetup' ];
-
       setupRegistry();
     },
 
@@ -45,30 +43,30 @@ describe("describeModule", function() {
       expect(afterTeardownContext).to.equal(beforeSetupContext);
       expect(afterTeardownContext).to.not.equal(teardownContext);
     }
-
   }, function() {
-    it("should call setup callbacks in the correct order", function() {
+    it('should call setup callbacks in the correct order', function() {
       expect(callbackOrder).to.deep.equal([ 'beforeSetup', 'setup' ]);
     });
   });
 
-  describeModule.skip("skipped module", function() {
-    it("is skipped", function() {});
+  describeModule.skip('skipped module', function() {
+    it('is skipped', function() {});
   });
 
   var grep = grepFor(function() {
-    describeModule.only("component:x-foo", "only module", function() {
-      it("is the only module", function() {});
+    describeModule.only('component:x-foo', 'only module', function() {
+      it('is the only module', function() {});
     });
   });
 
-  describe("skipping and grepping", function() {
-    it("skips the skipped context", function() {
+  describe('skipping and grepping', function() {
+    it('skips the skipped context', function() {
       var skipped = window.mocha.suite.suites.find(function(suite) {
-        return suite.title === "skipped module" && suite.pending;
+        return suite.title === 'skipped module' && suite.pending;
       });
     });
-    it("greps for describeModule.only", function() {
+
+    it('greps for describeModule.only', function() {
       expect('describeModule only module').to.match(grep);
     });
   });

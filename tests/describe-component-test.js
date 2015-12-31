@@ -8,7 +8,7 @@ import { expect } from 'chai';
 var PrettyColor = Ember.Component.extend({
   classNames: ['pretty-color'],
   attributeBindings: ['style'],
-  style: function(){
+  style: function() {
     return 'color: ' + this.get('name') + ';';
   }.property('name')
 });
@@ -24,19 +24,18 @@ function setupRegistry() {
 ///////////////////////////////////////////////////////////////////////////////
 
 describe('describeComponent', function() {
-
   describeComponent('x-foo', {
-
     beforeSetup: function() {
       setupRegistry();
     }
-
   }, function() {
-
     it('renders', function() {
       var component = this.subject();
+
       expect(component._state).to.equal('preRender');
+
       this.render();
+
       expect(component._state).to.equal('inDOM');
     });
 
@@ -49,7 +48,7 @@ describe('describeComponent', function() {
 
     it('yields', function() {
       var component = this.subject({
-        layout: Ember.Handlebars.compile("yield me")
+        layout: Ember.Handlebars.compile('yield me')
       });
       expect(component._state).to.equal('preRender');
       this.render();
@@ -73,23 +72,19 @@ describe('describeComponent', function() {
     });
   });
 
-
   ///////////////////////////////////////////////////////////////////////////////
 
   describeComponent('pretty-color', {
-
     beforeSetup: function() {
       setupRegistry();
     }
-
   }, function() {
-
-    it("has the correct className", function() {
-      // first call to this.$() renders the component.
+    it('has the correct className', function() {
+      // First call to `this.$()` renders the component.
       expect(this.$().is('.pretty-color')).to.be.true;
     });
 
-    it("uses the correct custom template", function() {
+    it('uses the correct custom template', function() {
       var component = this.subject();
 
       expect($.trim(this.$().text())).to.equal('Pretty Color:');
@@ -101,7 +96,7 @@ describe('describeComponent', function() {
       expect($.trim(this.$().text())).to.equal('Pretty Color: green');
     });
 
-    it("$", function() {
+    it('$', function() {
       var component = this.subject({name: 'green'});
       expect($.trim(this.$('.color-name').text())).to.equal('green');
       expect($.trim(this.$().text())).to.equal('Pretty Color: green');
@@ -109,21 +104,23 @@ describe('describeComponent', function() {
   });
 
   describeComponent.skip('skipped component', function() {
-    it("is skipped", function() {});
+    it('is skipped', function() {});
   });
+
   var grep = grepFor(function() {
     describeComponent.only('only component', function() {
-      it("is the only spec");
+      it('is the only spec');
     });
   });
 
-  describe("skipping and grepping", function() {
-    it("skips the skipped context", function() {
+  describe('skipping and grepping', function() {
+    it('skips the skipped context', function() {
       var skipped = window.mocha.suite.suites.find(function(suite) {
-        return suite.title === "skipped component" && suite.pending;
+        return suite.title === 'skipped component' && suite.pending;
       });
     });
-    it("greps for describeComponent.only", function() {
+
+    it('greps for describeComponent.only', function() {
       expect('describeComponent component:only component').to.match(grep);
     });
   });
