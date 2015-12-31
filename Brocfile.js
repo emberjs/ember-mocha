@@ -9,12 +9,13 @@ var gitVersion = require('git-repo-version');
 // --- Compile ES6 modules ---
 
 var loader = new Funnel('bower_components', {
-  srcDir: 'loader',
+  srcDir: 'loader.js',
   files: ['loader.js'],
   destDir: '/assets/'
 });
 
 // TODO - this manual dependency management has got to go!
+
 var klassy = new Funnel('node_modules', {
   srcDir: '/klassy/lib',
   files: ['klassy.js'],
