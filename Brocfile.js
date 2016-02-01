@@ -1,10 +1,20 @@
+var path = require('path');
+var resolve = require('resolve');
 var concat     = require('broccoli-sourcemap-concat');
 var Funnel     = require('broccoli-funnel');
 var mergeTrees = require('broccoli-merge-trees');
-var compileES6 = require('broccoli-es6modules');
 var jshintTree = require('broccoli-jshint');
 var replace    = require('broccoli-string-replace');
 var gitVersion = require('git-repo-version');
+var BabelTranspiler = require('broccoli-babel-transpiler');
+
+function compileES6(tree) {
+  return new BabelTranspiler(tree, {
+    loose: true,
+    moduleIds: true,
+    modules: 'amdStrict'
+  });
+}
 
 // --- Compile ES6 modules ---
 
@@ -14,15 +24,19 @@ var loader = new Funnel('bower_components', {
   destDir: '/assets/'
 });
 
-// TODO - this manual dependency management has got to go!
-var klassy = new Funnel('bower_components', {
-  srcDir: '/klassy/lib',
-  files: ['klassy.js'],
+var emberTestHelpersPath = path.dirname(resolve.sync('ember-test-helpers'));
+var klassyPath = path.dirname(resolve.sync('klassy', { basedir: emberTestHelpersPath }));
+
+var emberTestHelpers = new Funnel(emberTestHelpersPath, {
+  srcDir: '/',
+  include: [/\.js$/],
   destDir: '/'
 });
-var emberTestHelpers = new Funnel('bower_components', {
-  srcDir: '/ember-test-helpers/lib',
-  include: [/.js$/],
+
+// TODO - this manual dependency management has got to go!
+var klassy = new Funnel(klassyPath, {
+  srcDir: '/',
+  files: ['klassy.js'],
   destDir: '/'
 });
 var deps = mergeTrees([klassy, emberTestHelpers]);
@@ -40,7 +54,7 @@ var tests = new Funnel('tests', {
 });
 
 var main = mergeTrees([deps, lib]);
-main = concat(new compileES6(main), {
+main = concat(compileES6(main), {
   inputFiles: ['**/*.js'],
   outputFile: '/ember-mocha.amd.js'
 });
@@ -82,7 +96,7 @@ var jshintLib = jshintTree(lib);
 var jshintTest = jshintTree(tests);
 
 var mainWithTests = mergeTrees([deps, lib, tests, jshintLib, jshintTest]);
-mainWithTests = concat(new compileES6(mainWithTests), {
+mainWithTests = concat(compileES6(mainWithTests), {
   inputFiles: ['**/*.js'],
   outputFile: '/assets/ember-mocha-tests.amd.js'
 });
