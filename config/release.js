@@ -23,5 +23,7 @@ module.exports = {
     run('cd ../ember-mocha-builds && git commit --message="Release ' + versions.next + '"');
     run('cd ../ember-mocha-builds && git tag ' + versions.next);
     run('cd ../ember-mocha-builds && git push origin master --tags');
+
+    run('npm publish');
   }
 };
