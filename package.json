@@ -21,7 +21,7 @@
     "broccoli-jshint": "^2.1.0",
     "broccoli-merge-trees": "^1.1.4",
     "broccoli-string-replace": "^0.1.1",
-    "ember-cli": "^0.1.12",
+    "ember-cli": "^2.7.0",
     "ember-cli-release": "^0.2.7",
     "exists-sync": "0.0.3",
     "git-repo-version": "^0.4.0",
