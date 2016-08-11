@@ -24,7 +24,7 @@
     "ember-cli": "^0.1.12",
     "ember-cli-release": "^0.2.7",
     "exists-sync": "0.0.3",
-    "git-repo-version": "^0.1.1",
+    "git-repo-version": "^0.4.0",
     "resolve": "^1.1.7"
   },
   "dependencies": {
