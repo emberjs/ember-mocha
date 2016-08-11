@@ -1,6 +1,6 @@
 var path = require('path');
 var resolve = require('resolve');
-var concat     = require('broccoli-sourcemap-concat');
+var concat     = require('broccoli-concat');
 var Funnel     = require('broccoli-funnel');
 var mergeTrees = require('broccoli-merge-trees');
 var jshintTree = require('broccoli-jshint');
@@ -131,10 +131,19 @@ var adapter = new Funnel('bower_components', {
   destDir: '/assets'
 });
 
-var testSupport = concat('bower_components', {
+var appShims = new Funnel('bower_components', {
+  files: ['ember-cli-shims/app-shims.js'],
+});
+
+var testLoader = new Funnel('tests', {
+  files: ['test-support/test-loader.js'],
+});
+
+var testSupport = concat(mergeTrees([appShims, testLoader]), {
   inputFiles: [
     'ember-cli-shims/app-shims.js',
-    '../tests/test-support/test-loader.js'],
+    'test-support/test-loader.js',
+  ],
   outputFile: '/assets/test-support.js'
 });
 
