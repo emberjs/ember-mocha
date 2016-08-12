@@ -5,7 +5,6 @@
   "main": "lib/ember-mocha.js",
   "scripts": {
     "build": "ember build",
-    "pretest": "ember build",
     "test": "ember test",
     "start": "ember serve"
   },
@@ -15,18 +14,16 @@
   ],
   "license": "Apache Version 2.0",
   "devDependencies": {
-    "bower": "^1.3.12",
-    "broccoli": "^0.13.0",
     "broccoli-babel-transpiler": "^5.5.0",
-    "broccoli-funnel": "^0.1.6",
-    "broccoli-jshint": "^0.5.3",
-    "broccoli-merge-trees": "^0.1.4",
-    "broccoli-sourcemap-concat": "^0.4.3",
-    "broccoli-string-replace": "0.0.2",
-    "ember-cli": "^0.1.12",
+    "broccoli-concat": "^2.3.4",
+    "broccoli-funnel": "^1.0.6",
+    "broccoli-jshint": "^2.1.0",
+    "broccoli-merge-trees": "^1.1.4",
+    "broccoli-string-replace": "^0.1.1",
+    "ember-cli": "^2.7.0",
     "ember-cli-release": "^0.2.7",
     "exists-sync": "0.0.3",
-    "git-repo-version": "^0.1.1",
+    "git-repo-version": "^0.4.0",
     "resolve": "^1.1.7"
   },
   "dependencies": {
