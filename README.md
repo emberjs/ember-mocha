@@ -42,17 +42,17 @@ call `setResolver` in the `beforeSetup` callback of your test modules.
 
 ### Test Modules
 
-The `setupModuleTest` function can be used to setup a unit test for any kind
+The `setupTest` function can be used to setup a unit test for any kind
 of "module/unit" of your application that can be looked up in a container.
 
 For example, the following is a unit test for the `SidebarController`:
 
 ```javascript
 import { describe, it } from 'mocha';
-import { setupModuleTest } from 'ember-mocha';
+import { setupTest } from 'ember-mocha';
 
 describe('SidebarController', function() {
-  setupModuleTest('controller:sidebar', {
+  setupTest('controller:sidebar', {
     // Specify the other units that are required for this test.
     // needs: ['controller:foo']
   });
