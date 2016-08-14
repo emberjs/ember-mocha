@@ -92,19 +92,19 @@ describe('describeComponent', function() {
     it("uses the correct custom template", function() {
       var component = this.subject();
 
-      expect($.trim(this.$().text())).to.equal('Pretty Color:');
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color:');
 
       Ember.run(function() {
         component.set('name', 'green');
       });
 
-      expect($.trim(this.$().text())).to.equal('Pretty Color: green');
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: green');
     });
 
     it("$", function() {
       var component = this.subject({name: 'green'});
-      expect($.trim(this.$('.color-name').text())).to.equal('green');
-      expect($.trim(this.$().text())).to.equal('Pretty Color: green');
+      expect(Ember.$.trim(this.$('.color-name').text())).to.equal('green');
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: green');
     });
   });
 
