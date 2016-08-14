@@ -65,7 +65,7 @@ describe("describeModule", function() {
 
   describe("skipping and grepping", function() {
     it("skips the skipped context", function() {
-      var skipped = window.mocha.suite.suites.find(function(suite) {
+      window.mocha.suite.suites.find(function(suite) {
         return suite.title === "skipped module" && suite.pending;
       });
     });

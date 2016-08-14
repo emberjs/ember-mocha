@@ -102,7 +102,7 @@ describe('describeComponent', function() {
     });
 
     it("$", function() {
-      var component = this.subject({name: 'green'});
+      this.subject({name: 'green'});
       expect(Ember.$.trim(this.$('.color-name').text())).to.equal('green');
       expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: green');
     });
@@ -119,7 +119,7 @@ describe('describeComponent', function() {
 
   describe("skipping and grepping", function() {
     it("skips the skipped context", function() {
-      var skipped = window.mocha.suite.suites.find(function(suite) {
+      window.mocha.suite.suites.find(function(suite) {
         return suite.title === "skipped component" && suite.pending;
       });
     });
