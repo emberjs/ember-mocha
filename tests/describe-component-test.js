@@ -92,19 +92,19 @@ describe('describeComponent', function() {
     it("uses the correct custom template", function() {
       var component = this.subject();
 
-      expect($.trim(this.$().text())).to.equal('Pretty Color:');
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color:');
 
       Ember.run(function() {
         component.set('name', 'green');
       });
 
-      expect($.trim(this.$().text())).to.equal('Pretty Color: green');
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: green');
     });
 
     it("$", function() {
-      var component = this.subject({name: 'green'});
-      expect($.trim(this.$('.color-name').text())).to.equal('green');
-      expect($.trim(this.$().text())).to.equal('Pretty Color: green');
+      this.subject({name: 'green'});
+      expect(Ember.$.trim(this.$('.color-name').text())).to.equal('green');
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: green');
     });
   });
 
@@ -119,7 +119,7 @@ describe('describeComponent', function() {
 
   describe("skipping and grepping", function() {
     it("skips the skipped context", function() {
-      var skipped = window.mocha.suite.suites.find(function(suite) {
+      window.mocha.suite.suites.find(function(suite) {
         return suite.title === "skipped component" && suite.pending;
       });
     });

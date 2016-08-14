@@ -1,14 +1,17 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 import { describeModel, it } from 'ember-mocha';
 import { setResolverRegistry } from 'tests/test-support/resolver';
 import { grepFor } from './test-support/mocha-support';
 import { describe } from 'mocha';
 import { expect } from 'chai';
 
+/* globals Pretender */
+
 var Whazzit = DS.Model.extend({ gear: DS.attr('string') });
 var whazzitAdapterFindAllCalled = false;
 var WhazzitAdapter = DS.FixtureAdapter.extend({
-  findAll: function(store, type) {
+  findAll: function(/*store, type*/) {
     whazzitAdapterFindAllCalled = true;
     return this._super.apply(this, arguments);
   }
@@ -75,8 +78,8 @@ describe('describeModel', function() {
     setup: function() {
       Whazzit.FIXTURES = [];
       if (DS.JSONAPIAdapter && ApplicationAdapter === DS.JSONAPIAdapter) {
-        var server = new Pretender(function() {
-          this.get('/whazzits', function(request) {
+        new Pretender(function() {
+          this.get('/whazzits', function(/* request */) {
             return [200, {"Content-Type": "application/json"}, JSON.stringify({ data: Whazzit.FIXTURES })];
           });
         });
@@ -94,8 +97,7 @@ describe('describeModel', function() {
     });
 
     it('uses the WhazzitAdapter for a `findAll` request', function(done) {
-      var model = this.subject(),
-          store = this.store();
+      var store = this.store();
 
       expect(whazzitAdapterFindAllCalled).to.be.false;
 
@@ -150,7 +152,7 @@ describe('describeModel', function() {
 
   describe("skipping and grepping", function() {
     it("skips the skipped context", function() {
-      var skipped = window.mocha.suite.suites.find(function(suite) {
+      window.mocha.suite.suites.find(function(suite) {
         return suite.title === "skipped model" && suite.pending;
       });
     });

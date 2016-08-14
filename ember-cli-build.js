@@ -3,10 +3,11 @@ var resolve = require('resolve');
 var concat     = require('broccoli-concat');
 var Funnel     = require('broccoli-funnel');
 var mergeTrees = require('broccoli-merge-trees');
-var jshintTree = require('broccoli-jshint');
+var eslint = require('broccoli-lint-eslint');
 var replace    = require('broccoli-string-replace');
 var gitVersion = require('git-repo-version');
 var BabelTranspiler = require('broccoli-babel-transpiler');
+var escape = require('js-string-escape');
 
 function compileES6(tree) {
   return new BabelTranspiler(tree, {
@@ -93,10 +94,10 @@ module.exports = function(defaults) {
     outputFile: '/ember-mocha.js'
   });
 
-  var jshintLib = jshintTree(lib);
-  var jshintTest = jshintTree(tests);
+  lib = eslint(lib, { testGenerator: generateESLintTest });
+  tests = eslint(tests, { testGenerator: generateESLintTest });
 
-  var mainWithTests = mergeTrees([deps, lib, tests, jshintLib, jshintTest]);
+  var mainWithTests = mergeTrees([deps, lib, tests]);
   mainWithTests = concat(compileES6(mainWithTests), {
     inputFiles: ['**/*.js'],
     outputFile: '/assets/ember-mocha-tests.amd.js'
@@ -156,3 +157,24 @@ module.exports = function(defaults) {
 
   return mergeTrees([loader, main, mainWithTests, globalizedMain, vendor, mocha, chai, adapter, testSupport, testIndex, generatedBowerConfig, buildExtras]);
 };
+
+function generateESLintTest(relativePath, errors, results) {
+  var passed = !results.errorCount || results.errorCount.length === 0;
+
+  var messages = '';
+  if (results.messages) {
+    messages = escape('\n\n' + renderESLintErrors(results.messages));
+  }
+
+  return "describe('ESLint | " + relativePath + "', function() {\n" +
+    "  it('should pass ESLint', function() { " +
+    "    if (!" + passed + ") throw new Error('ESLint failed" + messages + "');" +
+    "  });" +
+    "});";
+}
+
+function renderESLintErrors(errors) {
+  return errors.map(function(error) {
+    return error.line + ':' + error.column + ' - ' + error.message + ' (' + error.ruleId +')';
+  }).join('\n');
+}
