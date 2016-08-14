@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { mocha, describe, context, it, before, after, beforeEach, afterEach } from 'mocha';
 import { expect, assert, config, use, Assertion } from 'chai';
 

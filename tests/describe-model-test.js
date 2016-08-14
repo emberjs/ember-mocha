@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 import { describeModel, it } from 'ember-mocha';
 import { setResolverRegistry } from 'tests/test-support/resolver';
 import { grepFor } from './test-support/mocha-support';

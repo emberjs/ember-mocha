@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { describeModule, it } from 'ember-mocha';
 import { setResolverRegistry } from 'tests/test-support/resolver';
 import { grepFor } from './test-support/mocha-support';
