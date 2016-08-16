@@ -28,6 +28,6 @@
     "resolve": "^1.1.7"
   },
   "dependencies": {
-    "ember-test-helpers": "^0.5.22"
+    "ember-test-helpers": "^0.5.32"
   }
 }
