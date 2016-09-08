@@ -42,32 +42,27 @@ call `setResolver` in the `beforeSetup` callback of your test modules.
 
 ### Test Modules
 
-The `describeModule` helper can be used to declare a module that can be used
-to test any "unit" of your application that can be looked up in a container.
+The `setupTest` function can be used to setup a unit test for any kind
+of "module/unit" of your application that can be looked up in a container.
 
 For example, the following is a unit test for the `SidebarController`:
 
 ```javascript
-import {
-  describeModule,
-  it
-} from 'ember-mocha';
+import { describe, it } from 'mocha';
+import { setupTest } from 'ember-mocha';
 
-describeModule(
-  'controller:sidebar',
-  'SidebarController',
-  {
+describe('SidebarController', function() {
+  setupTest('controller:sidebar', {
     // Specify the other units that are required for this test.
     // needs: ['controller:foo']
-  },
-  function() {
-    // Replace this with your real tests.
-    it('exists', function() {
-      var controller = this.subject();
-      expect(controller).to.be.ok;
-    });
-  }
-);
+  });
+  
+  // Replace this with your real tests.
+  it('exists', function() {
+    var controller = this.subject();
+    expect(controller).to.be.ok;
+  });
+});
 
 ```
 
@@ -75,68 +70,55 @@ The subject is specified as `controller:sidebar`, which is the key that will
 be used to look up this controller in the isolated container that will be
 created for this test.
 
-The title, `'SidebarController'`, will appear in the test runner and is not
-strictly necessary. It defaults to the subject if omitted.
-
 #### Component Test Modules
 
-The `describeComponent` helper extends `describeModule` and provides
-additional `render` and `$` helpers within a test's context.
+The `setupComponentTest` function is specifically designed to test components
+and provides additional `render` and `$` helpers within a test's context.
 
 ```javascript
-import {
-  describeComponent,
-  it
-} from 'ember-mocha';
+import { describe, it } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 
-describeComponent(
-  'gravatar-image',
-  'GravatarImageComponent',
-  {
+describe('GravatarImageComponent', function() {
+  setupComponentTest('gravatar-image', {
     // specify the other units that are required for this test
     // needs: ['component:foo', 'helper:bar']
-  },
-  function() {
-    it('renders', function() {
-      // creates the component instance
-      var component = this.subject();
-      expect(component._state).to.equal('preRender');
+  });
 
-      // renders the component on the page
-      this.render();
-      expect(component._state).to.equal('inDOM');
-    });
-  }
-);
+  it('renders', function() {
+    // creates the component instance
+    var component = this.subject();
+    expect(component._state).to.equal('preRender');
+
+    // renders the component on the page
+    this.render();
+    expect(component._state).to.equal('inDOM');
+  });
+});
 ```
 
 #### Model Test Modules
 
-The `describeModel` helper also extends `describeModule` and provides an
-additional `store` helper within a test's context.
+The `setupModelTest` function can be used to test Ember Data models and
+provides an additional `store` helper within a test's context.
 
 ```javascript
-import {
-  describeModel,
-  it
-} from 'ember-mocha';
+import { describe, it } from 'mocha';
+import { setupModelTest } from 'ember-mocha';
 
-describeModel(
-  'contact',
-  'Contact',
-  {
+describe('Contact', function() {
+  setupModelTest('contact', {
     // Specify the other units that are required for this test.
-      needs: []
-  },
-  function() {
-    // Replace this with your real tests.
-    it('exists', function() {
-      var model = this.subject();
-      // var store = this.store();
-      expect(model).to.be.ok;
-    });
-  }
-);
+    needs: []
+  });
+  
+  // Replace this with your real tests.
+  it('exists', function() {
+    var model = this.subject();
+    // var store = this.store();
+    expect(model).to.be.ok;
+  });
+});
 ```
 
 ### Asynchronous Testing
