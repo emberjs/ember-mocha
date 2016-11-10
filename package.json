@@ -3,6 +3,10 @@
   "version": "0.9.1",
   "description": "Mocha helpers for testing Ember.js applications",
   "license": "Apache-2.0",
+  "contributors": [
+    "Dan Gebhardt",
+    "Robert Jackson"
+  ],
   "main": "lib/ember-mocha.js",
   "scripts": {
     "build": "ember build",
@@ -24,9 +28,5 @@
     "exists-sync": "0.0.3",
     "git-repo-version": "^0.4.0",
     "resolve": "^1.1.7"
-  },
-  "authors": [
-    "Dan Gebhardt",
-    "Robert Jackson"
-  ]
+  }
 }
