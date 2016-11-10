@@ -2,17 +2,16 @@
   "name": "ember-mocha",
   "version": "0.9.1",
   "description": "Mocha helpers for testing Ember.js applications",
+  "license": "Apache Version 2.0",
   "main": "lib/ember-mocha.js",
   "scripts": {
     "build": "ember build",
-    "test": "ember test",
-    "start": "ember serve"
+    "start": "ember serve",
+    "test": "ember test"
   },
-  "authors": [
-    "Dan Gebhardt",
-    "Robert Jackson"
-  ],
-  "license": "Apache Version 2.0",
+  "dependencies": {
+    "ember-test-helpers": "^0.5.33"
+  },
   "devDependencies": {
     "broccoli-babel-transpiler": "^5.5.0",
     "broccoli-concat": "^2.3.4",
@@ -26,7 +25,8 @@
     "git-repo-version": "^0.4.0",
     "resolve": "^1.1.7"
   },
-  "dependencies": {
-    "ember-test-helpers": "^0.5.33"
-  }
+  "authors": [
+    "Dan Gebhardt",
+    "Robert Jackson"
+  ]
 }
