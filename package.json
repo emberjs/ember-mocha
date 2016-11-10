@@ -2,7 +2,7 @@
   "name": "ember-mocha",
   "version": "0.9.1",
   "description": "Mocha helpers for testing Ember.js applications",
-  "license": "Apache Version 2.0",
+  "license": "Apache-2.0",
   "main": "lib/ember-mocha.js",
   "scripts": {
     "build": "ember build",
