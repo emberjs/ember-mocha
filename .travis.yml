@@ -9,9 +9,6 @@ install:
 script:
   - npm test
 
-after_success:
-  - "./bin/bower_build"
-
 deploy:
   provider: script
   script: .travis/deploy.sh
