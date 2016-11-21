@@ -93,10 +93,10 @@ module.exports = function(defaults) {
     outputFile: '/ember-mocha.js'
   });
 
-  lib = eslint(lib, { testGenerator: 'mocha' });
-  tests = eslint(tests, { testGenerator: 'mocha' });
+  var eslintLib = eslint(lib, { testGenerator: 'mocha' });
+  var eslintTests = eslint(tests, { testGenerator: 'mocha' });
 
-  var mainWithTests = mergeTrees([deps, lib, tests]);
+  var mainWithTests = mergeTrees([deps, lib, tests, eslintLib, eslintTests]);
   mainWithTests = concat(compileES6(mainWithTests), {
     inputFiles: ['**/*.js'],
     outputFile: '/assets/ember-mocha-tests.amd.js'
