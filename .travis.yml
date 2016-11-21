@@ -11,3 +11,10 @@ script:
 
 after_success:
   - "./bin/bower_build"
+
+deploy:
+  provider: script
+  script: .travis/deploy.sh
+  on:
+    tags: true
+    repo: emberjs/ember-mocha
