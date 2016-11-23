@@ -15,6 +15,9 @@ ember-mocha simplifies unit testing of Ember applications with
 helpers contained in
 [ember-test-helpers](https://github.com/switchfly/ember-test-helpers).
 
+*Upgrading from an earlier version? Have a look at our
+[Upgrade Guide](#upgrading) below.*
+
 
 Installation
 ------------------------------------------------------------------------------
@@ -134,6 +137,75 @@ describe('Contact', function() {
     expect(model).to.be.ok;
   });
 });
+```
+
+
+Upgrading
+------------------------------------------------------------------------------
+
+Previous releases promoted the use of `describeModule()`,
+`describeComponent()` and `describeModel()` instead of the `describe()`
+function of Mocha itself. These functions have been deprecated and replaced
+by the `setupTest()` functions mentioned [above](#setup-tests). The following
+example will explain how to update your code.
+
+Before:
+
+```js
+import {expect} from 'chai';
+import {it} from 'mocha';
+import {describeModule} from 'ember-mocha';
+
+describeModule(
+  'route:subscribers',
+  'Unit: Route: subscribers',
+  {
+    needs: ['service:notifications']
+  },
+  function() {
+    it('exists', function() {
+      let route = this.subject();
+      expect(route).to.be.ok;
+    });
+  }
+);
+```
+
+After:
+
+```js
+import {expect} from 'chai';
+import {it, describe} from 'mocha';
+import {setupTest} from 'ember-mocha';
+
+describe('Unit: Route: subscribers', function() {
+  setupTest('route:subscribers', {
+    needs: ['service:notifications']
+  });
+
+  it('exists', function() {
+    let route = this.subject();
+    expect(route).to.be.ok;
+  });
+});
+```
+
+- import `it` from `mocha` instead of `ember-mocha`
+- replace the `describeModule` import with a `setupTest` import
+- add a `setupTest()` call to the test `function` with the second and third
+  argument of the `describeModule()` call (module name and options)
+- replace the `describeModule()` call with a `describe()` call with the first
+  and fourth argument of the `describeModule()` call (description and test
+  function)
+
+Instead of refactoring all your files by hand we recommend to use the
+[ember-mocha-codemods](https://github.com/Turbo87/ember-mocha-codemods)
+to automatically convert your tests:
+
+```
+npm install -g jscodeshift
+jscodeshift -t https://raw.githubusercontent.com/Turbo87/ember-mocha-codemods/master/import-it-from-mocha.js tests
+jscodeshift -t https://raw.githubusercontent.com/Turbo87/ember-mocha-codemods/master/new-testing-api.js tests
 ```
 
 
