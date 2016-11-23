@@ -136,30 +136,6 @@ describe('Contact', function() {
 });
 ```
 
-### Asynchronous Testing
-
-Mocha supports asynchronous testing with both promises and callbacks.
-
-```javascript
-describe('it', function() {
-  it('works with asynchronous tests using callbacks', function(done) {
-    setTimeout(function() {
-      expect(true).to.equal(true);
-      done();
-    }, 10);
-  });
-
-  it('works with asynchronous tests using promises', function() {
-    return new Ember.RSVP.Promise(function(resolve) {
-      setTimeout(function() {
-        expect(true).to.equal(true);
-        resolve();
-      }, 10);
-    });
-  });
-});
-```
-
 
 Contributing
 ------------------------------------------------------------------------------
