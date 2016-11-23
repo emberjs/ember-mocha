@@ -1,12 +1,35 @@
 # Change Log
 
-## [Unreleased](https://github.com/emberjs/ember-mocha/tree/HEAD)
+## [v0.9.2](https://github.com/emberjs/ember-mocha/tree/v0.9.2) (2016-11-23)
+[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.1...v0.9.2)
 
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.1...HEAD)
+**Implemented enhancements:**
+
+- Add "Upgrade Guide" to the README [\#106](https://github.com/emberjs/ember-mocha/pull/106) ([Turbo87](https://github.com/Turbo87))
+- CI: Publish releases to "ember-mocha-builds" repo [\#100](https://github.com/emberjs/ember-mocha/pull/100) ([Turbo87](https://github.com/Turbo87))
+
+**Fixed bugs:**
+
+- Write upgrade guide for old test helpers [\#104](https://github.com/emberjs/ember-mocha/issues/104)
+- Release instructions aka. "ember-mocha-builds" repository needs an update [\#95](https://github.com/emberjs/ember-mocha/issues/95)
+- Trouble with visit + andThen in acceptance [\#77](https://github.com/emberjs/ember-mocha/issues/77)
+- Using ember-mocha without Ember Data [\#49](https://github.com/emberjs/ember-mocha/issues/49)
+- Fix tests by using the ESLint nodes correctly [\#101](https://github.com/emberjs/ember-mocha/pull/101) ([Turbo87](https://github.com/Turbo87))
 
 **Closed issues:**
 
+- Enable TravisCI [\#98](https://github.com/emberjs/ember-mocha/issues/98)
+- Add repository information to package.json [\#93](https://github.com/emberjs/ember-mocha/issues/93)
+- "set" method undefined when using needs [\#61](https://github.com/emberjs/ember-mocha/issues/61)
 - Setting test reporter [\#37](https://github.com/emberjs/ember-mocha/issues/37)
+- Set 'timeout' globally? [\#28](https://github.com/emberjs/ember-mocha/issues/28)
+- consider deprecating callbacks [\#14](https://github.com/emberjs/ember-mocha/issues/14)
+
+**Merged pull requests:**
+
+- Update README [\#97](https://github.com/emberjs/ember-mocha/pull/97) ([Turbo87](https://github.com/Turbo87))
+- Update CHANGELOG [\#96](https://github.com/emberjs/ember-mocha/pull/96) ([Turbo87](https://github.com/Turbo87))
+- Cleanup package.json [\#94](https://github.com/emberjs/ember-mocha/pull/94) ([Turbo87](https://github.com/Turbo87))
 
 ## [v0.9.1](https://github.com/emberjs/ember-mocha/tree/v0.9.1) (2016-09-12)
 [Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.0...v0.9.1)
