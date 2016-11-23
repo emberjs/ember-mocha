@@ -21,6 +21,10 @@
     "start": "ember serve",
     "test": "ember test"
   },
+  "files": [
+    "build-support",
+    "lib"
+  ],
   "dependencies": {
     "ember-test-helpers": "^0.5.33"
   },
