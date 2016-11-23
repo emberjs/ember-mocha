@@ -55,7 +55,7 @@ setResolver(resolver);
 If you want to use multiple resolvers in your test suite, you can also
 call `setResolver` in the `beforeSetup` callback of your test modules.
 
-### Test Modules
+### Setup Tests
 
 The `setupTest` function can be used to setup a unit test for any kind
 of "module/unit" of your application that can be looked up in a container.
@@ -85,7 +85,7 @@ The subject is specified as `controller:sidebar`, which is the key that will
 be used to look up this controller in the isolated container that will be
 created for this test.
 
-#### Component Test Modules
+#### Setup Component Tests
 
 The `setupComponentTest` function is specifically designed to test components
 and provides additional `render` and `$` helpers within a test's context.
@@ -112,7 +112,7 @@ describe('GravatarImageComponent', function() {
 });
 ```
 
-#### Model Test Modules
+#### Setup Model Tests
 
 The `setupModelTest` function can be used to test Ember Data models and
 provides an additional `store` helper within a test's context.
