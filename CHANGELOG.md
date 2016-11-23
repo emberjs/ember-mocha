@@ -1,5 +1,13 @@
 # Change Log
 
+## [v0.9.3](https://github.com/emberjs/ember-mocha/tree/v0.9.3) (2016-11-23)
+[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.2...v0.9.3)
+
+**Implemented enhancements:**
+
+- mocha-module: Add upgrade guide URL to the deprecation message [\#108](https://github.com/emberjs/ember-mocha/pull/108) ([Turbo87](https://github.com/Turbo87))
+- package.json: Add "files" section [\#107](https://github.com/emberjs/ember-mocha/pull/107) ([Turbo87](https://github.com/Turbo87))
+
 ## [v0.9.2](https://github.com/emberjs/ember-mocha/tree/v0.9.2) (2016-11-23)
 [Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.1...v0.9.2)
 
