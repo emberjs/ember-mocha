@@ -15,6 +15,9 @@ ember-mocha simplifies unit testing of Ember applications with
 helpers contained in
 [ember-test-helpers](https://github.com/switchfly/ember-test-helpers).
 
+*Upgrading from an earlier version? Have a look at our
+[Upgrade Guide](#upgrading) below.*
+
 
 Installation
 ------------------------------------------------------------------------------
@@ -55,7 +58,7 @@ setResolver(resolver);
 If you want to use multiple resolvers in your test suite, you can also
 call `setResolver` in the `beforeSetup` callback of your test modules.
 
-### Test Modules
+### Setup Tests
 
 The `setupTest` function can be used to setup a unit test for any kind
 of "module/unit" of your application that can be looked up in a container.
@@ -85,7 +88,7 @@ The subject is specified as `controller:sidebar`, which is the key that will
 be used to look up this controller in the isolated container that will be
 created for this test.
 
-#### Component Test Modules
+#### Setup Component Tests
 
 The `setupComponentTest` function is specifically designed to test components
 and provides additional `render` and `$` helpers within a test's context.
@@ -112,7 +115,7 @@ describe('GravatarImageComponent', function() {
 });
 ```
 
-#### Model Test Modules
+#### Setup Model Tests
 
 The `setupModelTest` function can be used to test Ember Data models and
 provides an additional `store` helper within a test's context.
@@ -136,28 +139,73 @@ describe('Contact', function() {
 });
 ```
 
-### Asynchronous Testing
 
-Mocha supports asynchronous testing with both promises and callbacks.
+Upgrading
+------------------------------------------------------------------------------
 
-```javascript
-describe('it', function() {
-  it('works with asynchronous tests using callbacks', function(done) {
-    setTimeout(function() {
-      expect(true).to.equal(true);
-      done();
-    }, 10);
+Previous releases promoted the use of `describeModule()`,
+`describeComponent()` and `describeModel()` instead of the `describe()`
+function of Mocha itself. These functions have been deprecated and replaced
+by the `setupTest()` functions mentioned [above](#setup-tests). The following
+example will explain how to update your code.
+
+Before:
+
+```js
+import {expect} from 'chai';
+import {it} from 'mocha';
+import {describeModule} from 'ember-mocha';
+
+describeModule(
+  'route:subscribers',
+  'Unit: Route: subscribers',
+  {
+    needs: ['service:notifications']
+  },
+  function() {
+    it('exists', function() {
+      let route = this.subject();
+      expect(route).to.be.ok;
+    });
+  }
+);
+```
+
+After:
+
+```js
+import {expect} from 'chai';
+import {it, describe} from 'mocha';
+import {setupTest} from 'ember-mocha';
+
+describe('Unit: Route: subscribers', function() {
+  setupTest('route:subscribers', {
+    needs: ['service:notifications']
   });
 
-  it('works with asynchronous tests using promises', function() {
-    return new Ember.RSVP.Promise(function(resolve) {
-      setTimeout(function() {
-        expect(true).to.equal(true);
-        resolve();
-      }, 10);
-    });
+  it('exists', function() {
+    let route = this.subject();
+    expect(route).to.be.ok;
   });
 });
+```
+
+- import `it` from `mocha` instead of `ember-mocha`
+- replace the `describeModule` import with a `setupTest` import
+- add a `setupTest()` call to the test `function` with the second and third
+  argument of the `describeModule()` call (module name and options)
+- replace the `describeModule()` call with a `describe()` call with the first
+  and fourth argument of the `describeModule()` call (description and test
+  function)
+
+Instead of refactoring all your files by hand we recommend to use the
+[ember-mocha-codemods](https://github.com/Turbo87/ember-mocha-codemods)
+to automatically convert your tests:
+
+```
+npm install -g jscodeshift
+jscodeshift -t https://raw.githubusercontent.com/Turbo87/ember-mocha-codemods/master/import-it-from-mocha.js tests
+jscodeshift -t https://raw.githubusercontent.com/Turbo87/ember-mocha-codemods/master/new-testing-api.js tests
 ```
 
 
