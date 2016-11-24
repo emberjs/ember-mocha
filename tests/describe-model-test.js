@@ -4,7 +4,8 @@ import { describeModel, it } from 'ember-mocha';
 import { setResolverRegistry } from 'tests/test-support/resolver';
 import { grepFor } from './test-support/mocha-support';
 import { describe } from 'mocha';
-import { expect } from 'chai';
+
+const { expect } = window.chai;
 
 /* globals Pretender */
 

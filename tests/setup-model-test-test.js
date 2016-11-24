@@ -3,7 +3,8 @@ import DS from 'ember-data';
 import { setupModelTest } from 'ember-mocha';
 import { setResolverRegistry } from 'tests/test-support/resolver';
 import { describe, it } from 'mocha';
-import { expect } from 'chai';
+
+const { expect } = window.chai;
 
 /* globals Pretender */
 

@@ -1,7 +1,8 @@
 import { createModule } from 'ember-mocha/mocha-module';
 import { TestModule } from 'ember-test-helpers';
 import { describe, it, before, after, beforeEach, afterEach, mocha } from 'mocha';
-import { expect } from 'chai';
+
+const { expect } = window.chai;
 
 describe('MochaModule', function() {
   createModule(TestModule, 'component:x-foo', 'context', function() {
