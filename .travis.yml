@@ -10,8 +10,16 @@ script:
   - npm test
 
 deploy:
-  provider: script
-  script: .travis/deploy.sh
-  on:
-    tags: true
-    repo: emberjs/ember-mocha
+  - provider: npm
+    email: tobias.bieniek@gmx.de
+    api_key:
+      secure: gBwrB+pS88CLrmwidwapdLmcyqj6cgguica2vGlM88sOllVIu8gfPo3fQ9UB0uCHlrhfx41lq+lMTqeXbYen0U0ltc4YnnTWo92i5myeuAWZRYC+4fi+8afLLugwSd7afbTsrmQyXoZuEggXyjQYEr/xZ0KzdqIeL4YFxp4z6m8=
+    on:
+      tags: true
+      repo: emberjs/ember-mocha
+
+  - provider: script
+    script: .travis/deploy.sh
+    on:
+      tags: true
+      repo: emberjs/ember-mocha
