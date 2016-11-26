@@ -9,3 +9,7 @@ window.describeComponent = emberMocha.describeComponent;
 window.describeModel = emberMocha.describeModel;
 window.it = emberMocha.it;
 window.setResolver = emberMocha.setResolver;
+window.setupTest = emberMocha.setupTest;
+window.setupAcceptanceTest = emberMocha.setupAcceptanceTest;
+window.setupComponentTest = emberMocha.setupComponentTest;
+window.setupModelTest = emberMocha.setupModelTest;
