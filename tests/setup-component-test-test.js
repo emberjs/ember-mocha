@@ -2,7 +2,8 @@ import Ember from 'ember';
 import { setupComponentTest } from 'ember-mocha';
 import { setResolverRegistry } from 'tests/test-support/resolver';
 import { describe, it, beforeEach } from 'mocha';
-import { expect } from 'chai';
+
+const { expect } = window.chai;
 
 var PrettyColor = Ember.Component.extend({
   classNames: ['pretty-color'],
