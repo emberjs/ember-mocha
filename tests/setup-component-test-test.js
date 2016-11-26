@@ -104,4 +104,25 @@ describe('setupComponentTest', function() {
       expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: green');
     });
   });
+
+  describe('pretty-color integration test', function() {
+    setupComponentTest('pretty-color', {
+      integration: true
+    });
+
+    beforeEach(function() {
+      setupRegistry();
+    });
+
+    it('renders with color', function() {
+      this.set('name', 'green');
+      this.render(Ember.Handlebars.compile(`{{pretty-color name=name}}`));
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: green');
+    });
+
+    it('renders a second time without', function() {
+      this.render(Ember.Handlebars.compile(`{{pretty-color name=name}}`));
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color:');
+    });
+  });
 });

@@ -2,7 +2,7 @@ import Ember from 'ember';
 import { describeComponent, it } from 'ember-mocha';
 import { setResolverRegistry } from 'tests/test-support/resolver';
 import { grepFor } from './test-support/mocha-support';
-import { describe } from 'mocha';
+import { describe, beforeEach } from 'mocha';
 import { expect } from 'chai';
 
 var PrettyColor = Ember.Component.extend({
@@ -127,4 +127,23 @@ describe('describeComponent', function() {
       expect('describeComponent component:only component').to.match(grep);
     });
   });
+
+
+  describeComponent('pretty-color', 'pretty-color integration test', { integration: true }, function() {
+    beforeEach(function() {
+      setupRegistry();
+    });
+
+    it('renders with color', function() {
+      this.set('name', 'green');
+      this.render(Ember.Handlebars.compile(`{{pretty-color name=name}}`));
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: green');
+    });
+
+    it('renders a second time without', function() {
+      this.render(Ember.Handlebars.compile(`{{pretty-color name=name}}`));
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color:');
+    });
+  });
+
 });
