@@ -1,5 +1,18 @@
 # Change Log
 
+## [v0.9.4](https://github.com/emberjs/ember-mocha/tree/v0.9.4) (2016-11-27)
+[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.3...v0.9.4)
+
+**Implemented enhancements:**
+
+- CI: Publish tags for NPM and Bower automatically [\#99](https://github.com/emberjs/ember-mocha/issues/99)
+- CI: Publish tags to NPM [\#105](https://github.com/emberjs/ember-mocha/pull/105) ([Turbo87](https://github.com/Turbo87))
+
+**Fixed bugs:**
+
+- Fix broken context cleanup [\#111](https://github.com/emberjs/ember-mocha/pull/111) ([Turbo87](https://github.com/Turbo87))
+- Export new test setup functions as globals [\#102](https://github.com/emberjs/ember-mocha/pull/102) ([Turbo87](https://github.com/Turbo87))
+
 ## [v0.9.3](https://github.com/emberjs/ember-mocha/tree/v0.9.3) (2016-11-23)
 [Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.2...v0.9.3)
 
