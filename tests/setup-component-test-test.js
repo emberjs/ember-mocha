@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { setupComponentTest } from 'ember-mocha';
 import { setResolverRegistry } from 'tests/test-support/resolver';
-import { describe, it, beforeEach } from 'mocha';
+import { describe, it, beforeEach, afterEach } from 'mocha';
 import { expect } from 'chai';
 
 var PrettyColor = Ember.Component.extend({
@@ -102,6 +102,50 @@ describe('setupComponentTest', function() {
       this.subject({name: 'green'});
       expect(Ember.$.trim(this.$('.color-name').text())).to.equal('green');
       expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: green');
+    });
+  });
+
+  describe('pretty-color integration test', function() {
+    setupComponentTest('pretty-color', {
+      integration: true
+    });
+
+    beforeEach(function() {
+      setupRegistry();
+    });
+
+    it('renders with color', function() {
+      this.set('name', 'green');
+      this.render(Ember.Handlebars.compile(`{{pretty-color name=name}}`));
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: green');
+    });
+
+    it('renders a second time without', function() {
+      this.render(Ember.Handlebars.compile(`{{pretty-color name=name}}`));
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color:');
+    });
+  });
+
+  describe('context in beforeEach/afterEach hooks', function() {
+    setupComponentTest('pretty-color', {
+      integration: true
+    });
+
+    beforeEach(function() {
+      setupRegistry();
+    });
+
+    beforeEach(function() {
+      this.set('name', 'red');
+    });
+
+    afterEach(function() {
+      expect(this.get('name')).to.equal('red');
+    });
+
+    it('renders with color', function() {
+      this.render(Ember.Handlebars.compile(`{{pretty-color name=name}}`));
+      expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: red');
     });
   });
 });
