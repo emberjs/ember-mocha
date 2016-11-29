@@ -1,5 +1,13 @@
 # Change Log
 
+## [v0.10.0](https://github.com/emberjs/ember-mocha/tree/v0.10.0) (2016-11-29)
+[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.4...v0.10.0)
+
+**Merged pull requests:**
+
+- Update "ember-test-helpers" to v0.6.0-beta.1 [\#114](https://github.com/emberjs/ember-mocha/pull/114) ([Turbo87](https://github.com/Turbo87))
+- Remove "chai" vendor shim [\#109](https://github.com/emberjs/ember-mocha/pull/109) ([Turbo87](https://github.com/Turbo87))
+
 ## [v0.9.4](https://github.com/emberjs/ember-mocha/tree/v0.9.4) (2016-11-27)
 [Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.3...v0.9.4)
 
@@ -11,6 +19,7 @@
 **Fixed bugs:**
 
 - Fix broken context cleanup [\#111](https://github.com/emberjs/ember-mocha/pull/111) ([Turbo87](https://github.com/Turbo87))
+- Context is not being reset between test runs [\#110](https://github.com/emberjs/ember-mocha/issues/110)
 - Export new test setup functions as globals [\#102](https://github.com/emberjs/ember-mocha/pull/102) ([Turbo87](https://github.com/Turbo87))
 
 ## [v0.9.3](https://github.com/emberjs/ember-mocha/tree/v0.9.3) (2016-11-23)
