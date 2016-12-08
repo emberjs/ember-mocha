@@ -2,6 +2,7 @@
 
 import Ember from 'ember';
 import { describe, it, beforeEach, afterEach } from 'mocha';
+import { usingAsyncHelpers } from 'ember-mocha';
 
 const { expect } = window.chai;
 
@@ -30,7 +31,7 @@ describe('basic acceptance test', function() {
     Ember.run(this.app, 'destroy');
   });
 
-  it('can visit subroutes', function() {
+  it('can visit subroutes', usingAsyncHelpers(function() {
     visit('/');
 
     andThen(function() {
@@ -42,7 +43,7 @@ describe('basic acceptance test', function() {
     andThen(function() {
       expect(find('h2').text()).to.be.equal('this is an acceptance test');
     });
-  });
+  }));
 });
 
 function startApp(App, attrs) {
