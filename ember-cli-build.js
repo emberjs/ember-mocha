@@ -7,6 +7,9 @@ var eslint = require('broccoli-lint-eslint');
 var replace    = require('broccoli-string-replace');
 var gitVersion = require('git-repo-version');
 var BabelTranspiler = require('broccoli-babel-transpiler');
+var Rollup = require('broccoli-rollup');
+var nodeResolve = require('rollup-plugin-node-resolve');
+var alias = require('rollup-plugin-alias');
 
 function compileES6(tree) {
   return new BabelTranspiler(tree, {
@@ -25,16 +28,6 @@ module.exports = function(defaults) {
     destDir: '/assets/'
   });
 
-  var emberTestHelpersPath = path.dirname(resolve.sync('ember-test-helpers'));
-
-  var emberTestHelpers = new Funnel(emberTestHelpersPath, {
-    srcDir: '/',
-    include: [/\.js$/],
-    destDir: '/'
-  });
-
-  var deps = mergeTrees([emberTestHelpers]);
-
   var lib = new Funnel('lib', {
     srcDir: '/',
     include: [/.js$/],
@@ -47,7 +40,47 @@ module.exports = function(defaults) {
     destDir: '/tests'
   });
 
-  var main = mergeTrees([deps, lib]);
+  var emberTestHelpersPath = path.dirname(resolve.sync('ember-test-helpers'));
+
+  var emberTestHelpersRollup = new Rollup(emberTestHelpersPath, {
+    rollup: {
+      entry: 'ember-test-helpers.js',
+      dest: 'ember-test-helpers.js',
+      external: ['ember'],
+      plugins: [
+        alias({
+          'ember-test-helpers/': './ember-test-helpers/',
+        }),
+      ],
+    },
+  });
+
+  var mochaRollup = new Rollup(lib, {
+    rollup: {
+      entry: 'mocha.js',
+      dest: 'mocha.js',
+      external: ['mocha', 'ember'],
+      plugins: [
+        nodeResolve(),
+      ],
+    },
+  });
+
+  var emberMochaRollup = new Rollup(lib, {
+    rollup: {
+      entry: 'ember-mocha.js',
+      dest: 'ember-mocha.js',
+      external: ['mocha', 'ember', 'ember-test-helpers'],
+      plugins: [
+        alias({
+          'ember-mocha/': './ember-mocha/',
+        }),
+        nodeResolve(),
+      ],
+    },
+  });
+
+  var main = mergeTrees([emberTestHelpersRollup, mochaRollup, emberMochaRollup]);
   main = concat(compileES6(main), {
     inputFiles: ['**/*.js'],
     outputFile: '/ember-mocha.amd.js'
