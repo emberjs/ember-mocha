@@ -1,14 +1,11 @@
 {
-  "framework": "mocha",
-  "cwd": "build/",
-  "serve_files": [
-    "assets/loader.js",
-    "assets/vendor.js",
-    "assets/chai.js",
-    "assets/adapter.js",
-    "assets/ember-mocha-tests.amd.js",
-    "assets/test-support.js"
+  "test_page": "tests/index.html",
+  "disable_watching": true,
+  "launch_in_ci": [
+    "PhantomJS"
   ],
-  "launch_in_ci": ["PhantomJS"],
-  "launch_in_dev": ["PhantomJS", "Chrome"]
+  "launch_in_dev": [
+    "PhantomJS",
+    "Chrome"
+  ]
 }
