@@ -8,6 +8,7 @@
 <body>
   <div id="mocha"></div>
   <div id="mocha-fixture"></div>
+  <script src="/testem.js"></script>
   <script src="/assets/vendor.js"></script>
   <script src="/assets/mocha.js"></script>
   <script src="/assets/chai.js"></script>
@@ -17,6 +18,10 @@
   <script src="/assets/test-support.js"></script>
   <script>
     $(document).ready(function(){
+      if (window.Testem) {
+        window.Testem.hookIntoTestFramework();
+      }
+
       mocha.run();
     });
   </script>
