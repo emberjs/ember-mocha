@@ -8,17 +8,34 @@
 <body>
   <div id="mocha"></div>
   <div id="mocha-fixture"></div>
+  <script src="/testem.js"></script>
   <script src="/assets/vendor.js"></script>
   <script src="/assets/mocha.js"></script>
   <script src="/assets/chai.js"></script>
-  <script src="/assets/adapter.js"></script>
+  <!--<script src="/assets/adapter.js"></script>-->
+  <script>
+    mocha.setup('bdd');
+    Ember.Test.adapter = Ember.Test.Adapter.create();
+  </script>
   <script src="/assets/loader.js"></script>
   <script src="/assets/ember-mocha-tests.amd.js"></script>
   <script src="/assets/test-support.js"></script>
   <script>
     $(document).ready(function(){
+      if (window.Testem) {
+        window.Testem.hookIntoTestFramework();
+      }
+
       mocha.run();
     });
+  </script>
+
+  <div id="ember-testing-container">
+    <div id="ember-testing"></div>
+  </div>
+
+  <script type="text/x-handlebars" data-template-name="foo">
+    <h2>this is an acceptance test</h2>
   </script>
 </body>
 </html>
