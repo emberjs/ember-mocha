@@ -89,8 +89,8 @@ module.exports = function(defaults) {
   var eslintLib = eslint(lib, { testGenerator: 'mocha' });
   var eslintTests = eslint(tests, { testGenerator: 'mocha' });
 
-  var mainWithTests = mergeTrees([deps, lib, tests, eslintLib, eslintTests]);
-  mainWithTests = concat(compileES6(mainWithTests), {
+  var testsAndESLint = mergeTrees([tests, eslintLib, eslintTests]);
+  testsAndESLint = concat(compileES6(testsAndESLint), {
     inputFiles: ['**/*.js'],
     outputFile: '/assets/ember-mocha-tests.amd.js'
   });
@@ -147,5 +147,5 @@ module.exports = function(defaults) {
     destDir: '/tests'
   });
 
-  return mergeTrees([loader, main, mainWithTests, globalizedMain, vendor, mocha, chai, adapter, testSupport, testIndex, generatedBowerConfig, buildExtras]);
+  return mergeTrees([loader, main, testsAndESLint, globalizedMain, vendor, mocha, chai, adapter, testSupport, testIndex, generatedBowerConfig, buildExtras]);
 };
