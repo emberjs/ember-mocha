@@ -73,6 +73,14 @@
       isPromise = true;
       result.then(function() { complete(); }, complete);
     } else {
+      Ember.deprecate('Relying on the implicit async behavior of acceptance tests is deprecated. ' +
+        'Please make sure to `return` your last async helper (e.g. `return andThen(...);`) from ' +
+        'the test function or add `return wait();` to the end of your acceptance tests.\n\nThis will ' +
+        'allow you to upgrade to Mocha 3.x soon.\n\n', isAsync === 0, {
+        id: 'ember-mocha.implicit-async',
+        url: 'https://github.com/emberjs/ember-mocha#acceptance-tests'
+      });
+
       if (isAsync === 0) { complete(); }
     }
   }
