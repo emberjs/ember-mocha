@@ -72,7 +72,7 @@ module.exports = function(defaults) {
   var buildExtras = new Funnel('build-support', {
     srcDir: '/',
     destDir: '/',
-    files: ['README.md', 'LICENSE', 'mocha-setup.js']
+    files: ['README.md', 'LICENSE', 'mocha-setup.js', 'ember-mocha-adapter.js']
   });
 
   var globalizedBuildSupport = new Funnel('build-support', {
@@ -119,12 +119,6 @@ module.exports = function(defaults) {
     destDir: '/assets'
   });
 
-  var adapter = new Funnel('bower_components', {
-    srcDir: '/ember-mocha-adapter',
-    files: ['adapter.js'],
-    destDir: '/assets'
-  });
-
   var appShims = new Funnel('bower_components', {
     files: ['ember-cli-shims/app-shims.js'],
   });
@@ -147,5 +141,5 @@ module.exports = function(defaults) {
     destDir: '/tests'
   });
 
-  return mergeTrees([loader, main, testsAndESLint, globalizedMain, vendor, mocha, chai, adapter, testSupport, testIndex, generatedBowerConfig, buildExtras]);
+  return mergeTrees([loader, main, testsAndESLint, globalizedMain, vendor, mocha, chai, testSupport, testIndex, generatedBowerConfig, buildExtras]);
 };
