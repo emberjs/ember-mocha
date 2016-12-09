@@ -17,8 +17,8 @@
     "ember": "^1.10.0"
   },
   "devDependencies": {
-    "mocha": "^2.2.4",
-    "chai": "~2.3.0",
+    "mocha": "^2.5.3",
+    "chai": "^3.5.0",
     "loader": "stefanpenner/loader.js#1.0.1",
     "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.3",
     "pretender": "^0.6.0",
