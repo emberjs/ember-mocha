@@ -1,7 +1,22 @@
 # Change Log
 
+## [v0.11.0](https://github.com/emberjs/ember-mocha/tree/v0.11.0) (2016-12-09)
+[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.10.0...v0.11.0)
+
+**Implemented enhancements:**
+
+- Update "Mocha" for Bower builds [\#78](https://github.com/emberjs/ember-mocha/issues/78)
+- Adjust testem config and add acceptance test [\#119](https://github.com/emberjs/ember-mocha/pull/119) ([Turbo87](https://github.com/Turbo87))
+- TravisCI: Update Node.js to 6.x [\#118](https://github.com/emberjs/ember-mocha/pull/118) ([Turbo87](https://github.com/Turbo87))
+- Update "mocha" and "chai" bower dependencies [\#122](https://github.com/emberjs/ember-mocha/pull/122) ([Turbo87](https://github.com/Turbo87))
+- Import "ember-mocha-adapter" [\#120](https://github.com/emberjs/ember-mocha/pull/120) ([Turbo87](https://github.com/Turbo87))
+
 ## [v0.10.0](https://github.com/emberjs/ember-mocha/tree/v0.10.0) (2016-11-29)
 [Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.4...v0.10.0)
+
+**Closed issues:**
+
+- Release v0.10.0 [\#113](https://github.com/emberjs/ember-mocha/issues/113)
 
 **Merged pull requests:**
 
@@ -18,9 +33,9 @@
 
 **Fixed bugs:**
 
-- Fix broken context cleanup [\#111](https://github.com/emberjs/ember-mocha/pull/111) ([Turbo87](https://github.com/Turbo87))
 - Context is not being reset between test runs [\#110](https://github.com/emberjs/ember-mocha/issues/110)
 - Export new test setup functions as globals [\#102](https://github.com/emberjs/ember-mocha/pull/102) ([Turbo87](https://github.com/Turbo87))
+- Fix broken context cleanup [\#111](https://github.com/emberjs/ember-mocha/pull/111) ([Turbo87](https://github.com/Turbo87))
 
 ## [v0.9.3](https://github.com/emberjs/ember-mocha/tree/v0.9.3) (2016-11-23)
 [Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.2...v0.9.3)
