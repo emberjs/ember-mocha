@@ -140,6 +140,35 @@ describe('Contact', function() {
 ```
 
 
+#### Acceptance Tests
+
+The `setupAcceptanceTest` function can be used to run acceptance
+tests as the name suggests. It will automatically setup an
+application instance for you, which is provided at `this.application`.
+
+```javascript
+import Ember from 'ember';
+import { describe, it } from 'mocha';
+import { setupAcceptanceTest } from 'ember-mocha';
+
+var Application = Ember.Application.extend({
+  rootElement: '#ember-testing',
+});
+
+describe('basic acceptance test', function() {
+  setupAcceptanceTest({ Application });
+
+  it('can visit /', function() {
+    visit('/');
+
+    andThen(() => {
+      expect(currentURL()).to.equal('/');
+    });
+  });
+});
+```
+
+
 Upgrading
 ------------------------------------------------------------------------------
 
