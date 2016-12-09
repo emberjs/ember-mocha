@@ -140,6 +140,43 @@ describe('Contact', function() {
 ```
 
 
+#### Acceptance Tests
+
+The `setupAcceptanceTest` function can be used to run acceptance
+tests as the name suggests. It will automatically setup an
+application instance for you, which is provided at `this.application`.
+
+```javascript
+import Ember from 'ember';
+import { describe, it } from 'mocha';
+import { setupAcceptanceTest } from 'ember-mocha';
+
+var Application = Ember.Application.extend({
+  rootElement: '#ember-testing',
+});
+
+describe('basic acceptance test', function() {
+  setupAcceptanceTest({ Application });
+
+  it('can visit /', function() {
+    visit('/');
+
+    return andThen(() => {
+      expect(currentURL()).to.equal('/');
+    });
+  });
+});
+```
+
+Please make sure to always `return` your last async test helper from
+the test function. This will actually return a `Promise` which is letting
+the Mocha test framework know that this is an async test. Note that you can
+also add `return wait();` to the end of your acceptance tests.
+
+While this currently still works without the `return`, it will fail once
+this library is updated to Mocha 3.x!
+
+
 Upgrading
 ------------------------------------------------------------------------------
 
