@@ -140,7 +140,7 @@ describe('Contact', function() {
 ```
 
 
-#### Acceptance Tests
+### Acceptance Tests
 
 The `setupAcceptanceTest` function can be used to run acceptance
 tests as the name suggests. It will automatically setup an
@@ -175,6 +175,22 @@ also add `return wait();` to the end of your acceptance tests.
 
 While this currently still works without the `return`, it will fail once
 this library is updated to Mocha 3.x!
+
+#### Using `async/await`
+
+In case your project supports the `async/await` feature of ES2016 you can
+simplify the test function to this:
+
+```js
+it('can visit /', async function() {
+  await visit('/');
+  expect(currentURL()).to.equal('/');
+});
+```
+
+- add the `async` keyword in front of the test `function`
+- add `await` in front of all async test helper calls
+- remove the `andThen()` wrappers
 
 
 Upgrading
