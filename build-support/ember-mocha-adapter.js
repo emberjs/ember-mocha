@@ -73,16 +73,35 @@
       isPromise = true;
       result.then(function() { complete(); }, complete);
     } else {
+      var testName = getTestName(context);
+      var messageSuffix = testName ? ('Test: ' + testName + '\n\n') : '';
+
       Ember.deprecate('Relying on the implicit async behavior of acceptance tests is deprecated. ' +
         'Please make sure to `return` your last async helper (e.g. `return andThen(...);`) from ' +
         'the test function or add `return wait();` to the end of your acceptance tests.\n\nThis will ' +
-        'allow you to upgrade to Mocha 3.x soon.\n\n', isAsync === 0, {
+        'allow you to upgrade to Mocha 3.x soon.\n\n'+ messageSuffix, isAsync === 0, {
         id: 'ember-mocha.implicit-async',
+        until: '1.0.0',
         url: 'https://github.com/emberjs/ember-mocha#acceptance-tests'
       });
 
       if (isAsync === 0) { complete(); }
     }
+  }
+
+  function getTestName(context) {
+    var titles = [];
+
+    var node = context.test;
+    while (node) {
+      if (node.title) {
+        titles.push(node.title);
+      }
+
+      node = node.parent;
+    }
+
+    return titles.reverse().join(' ');
   }
 
   // Called whenever an async test passes or fails.
