@@ -14,9 +14,9 @@ script:
 
 deploy:
   - provider: npm
-    email: tobias.bieniek@gmx.de
+    email: stefan.penner+ember-cli@gmail.com
     api_key:
-      secure: gBwrB+pS88CLrmwidwapdLmcyqj6cgguica2vGlM88sOllVIu8gfPo3fQ9UB0uCHlrhfx41lq+lMTqeXbYen0U0ltc4YnnTWo92i5myeuAWZRYC+4fi+8afLLugwSd7afbTsrmQyXoZuEggXyjQYEr/xZ0KzdqIeL4YFxp4z6m8=
+      secure: PQRsq4JcFYPXOqov1jwPw63WnwYYpyKby/2akUjq8PHwwgCDEt34Z8yqQdJogqKmKRjijsiWu+b54fbIpZ6TMvqPL18F8FbCl6e2zoAY55VUmmVkx9wkvuPydTDs2fuPqk6LFvmIMiq+pjEPlSeWg3GpFSkFjfs0WZlO33xMyWw=
     on:
       tags: true
       repo: emberjs/ember-mocha
