@@ -12,6 +12,7 @@
     "Robert Jackson"
   ],
   "main": "lib/ember-mocha.js",
+  "types": "lib/types.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emberjs/ember-mocha.git"
@@ -26,6 +27,7 @@
     "lib"
   ],
   "dependencies": {
+    "@types/mocha": "^2.2.38",
     "ember-test-helpers": "^0.6.0"
   },
   "devDependencies": {
