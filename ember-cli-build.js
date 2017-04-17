@@ -20,7 +20,7 @@ module.exports = function(defaults) {
   // --- Compile ES6 modules ---
 
   var loader = new Funnel('bower_components', {
-    srcDir: 'loader',
+    srcDir: 'loader.js/lib/loader',
     files: ['loader.js'],
     destDir: '/assets/'
   });
