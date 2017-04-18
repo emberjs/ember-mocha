@@ -19,8 +19,8 @@ function compileES6(tree) {
 module.exports = function(defaults) {
   // --- Compile ES6 modules ---
 
-  var loader = new Funnel('bower_components', {
-    srcDir: 'loader.js/lib/loader',
+  var loader = new Funnel('node_modules/loader.js', {
+    srcDir: 'dist/loader',
     files: ['loader.js'],
     destDir: '/assets/'
   });
