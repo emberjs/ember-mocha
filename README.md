@@ -156,7 +156,9 @@ var Application = Ember.Application.extend({
 });
 
 describe('basic acceptance test', function() {
-  setupAcceptanceTest({ Application });
+  setupAcceptanceTest('some-acceptance-test-title', {
+    Application
+  });
 
   it('can visit /', function() {
     visit('/');
