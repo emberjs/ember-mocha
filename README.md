@@ -55,8 +55,8 @@ import { setResolver } from 'ember-mocha';
 setResolver(resolver);
 ```
 
-If you want to use a differnt resolver in a particular test suite, you can also
-call `setResolver` in the `beforeEach` callback of your test modules.
+If you want to use a different resolver in a particular test suite, you can also
+call `setResolver(myResolver)` in the `beforeEach` callback of your test modules.
 
 ### Setup Tests
 
