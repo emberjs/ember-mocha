@@ -1,5 +1,23 @@
 # Change Log
 
+## [v0.12.0](https://github.com/emberjs/ember-mocha/tree/v0.12.0)
+
+[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.11.1...v0.12.0)
+
+**Fixed bugs:**
+
+- Unable to build a fresh checkout of master [\#143](https://github.com/emberjs/ember-mocha/issues/143)
+- Fix "rollup-plugin-alias" options [\#156](https://github.com/emberjs/ember-mocha/pull/156) ([Turbo87](https://github.com/Turbo87))
+
+**Closed issues:**
+
+- Unable to run all tests in a fresh checkout of master [\#148](https://github.com/emberjs/ember-mocha/issues/148)
+- setupAcceptanceTest not invoking destroy-app [\#133](https://github.com/emberjs/ember-mocha/issues/133)
+
+**Merged pull requests:**
+
+- Undeprecate the implicit async behavior of acceptance tests [\#157](https://github.com/emberjs/ember-mocha/pull/157) ([Turbo87](https://github.com/Turbo87))
+
 ## [v0.11.1](https://github.com/emberjs/ember-mocha/tree/v0.11.1) (2017-05-07)
 [Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.11.0...v0.11.1)
 
