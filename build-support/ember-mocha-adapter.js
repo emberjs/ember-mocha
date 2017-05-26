@@ -78,7 +78,6 @@
         'the test function or add `return wait();` to the end of your acceptance tests.\n\nThis will ' +
         'allow you to upgrade to Mocha 3.x soon.\n\n', isAsync === 0, {
         id: 'ember-mocha.implicit-async',
-        until: '1.0.0',
         url: 'https://github.com/emberjs/ember-mocha#acceptance-tests'
       });
 
