@@ -46,10 +46,11 @@ module.exports = function(defaults) {
     rollup: {
       entry: 'ember-test-helpers.js',
       dest: 'ember-test-helpers.js',
-      external: ['ember'],
+      format: 'es',
+      external: ['ember', 'require'],
       plugins: [
         alias({
-          'ember-test-helpers/': './ember-test-helpers/',
+          'ember-test-helpers': './ember-test-helpers/',
         }),
       ],
     },
@@ -59,6 +60,7 @@ module.exports = function(defaults) {
     rollup: {
       entry: 'mocha.js',
       dest: 'mocha.js',
+      format: 'es',
       external: ['mocha', 'ember'],
       plugins: [
         nodeResolve(),
@@ -70,10 +72,11 @@ module.exports = function(defaults) {
     rollup: {
       entry: 'ember-mocha.js',
       dest: 'ember-mocha.js',
+      format: 'es',
       external: ['mocha', 'ember', 'ember-test-helpers'],
       plugins: [
         alias({
-          'ember-mocha/': './ember-mocha/',
+          'ember-mocha': './ember-mocha/',
         }),
         nodeResolve(),
       ],
