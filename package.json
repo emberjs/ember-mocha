@@ -1,6 +1,6 @@
 {
   "name": "ember-mocha",
-  "version": "0.11.1",
+  "version": "0.12.0",
   "description": "Mocha helpers for testing Ember.js applications",
   "homepage": "https://github.com/emberjs/ember-mocha",
   "bugs": {
