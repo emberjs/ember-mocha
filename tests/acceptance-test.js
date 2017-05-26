@@ -39,7 +39,7 @@ describe('basic acceptance test', function() {
 
     visit('/foo');
 
-    return andThen(function() {
+    andThen(function() {
       expect(find('h2').text()).to.be.equal('this is an acceptance test');
     });
   });

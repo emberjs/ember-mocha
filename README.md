@@ -161,20 +161,12 @@ describe('basic acceptance test', function() {
   it('can visit /', function() {
     visit('/');
 
-    return andThen(() => {
+    andThen(() => {
       expect(currentURL()).to.equal('/');
     });
   });
 });
 ```
-
-Please make sure to always `return` your last async test helper from
-the test function. This will actually return a `Promise` which is letting
-the Mocha test framework know that this is an async test. Note that you can
-also add `return wait();` to the end of your acceptance tests.
-
-While this currently still works without the `return`, it will fail once
-this library is updated to Mocha 3.x!
 
 #### Using `async/await`
 

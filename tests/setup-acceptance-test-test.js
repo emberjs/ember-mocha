@@ -34,7 +34,7 @@ describe('setupAcceptanceTest()', function() {
 
     visit('/foo');
 
-    return andThen(() => {
+    andThen(() => {
       expect(find('h2').text()).to.be.equal('this is an acceptance test');
     });
   });
