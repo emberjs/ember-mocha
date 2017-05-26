@@ -1,6 +1,6 @@
 {
   "name": "ember-mocha",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Mocha helpers for testing Ember.js applications",
   "homepage": "https://github.com/emberjs/ember-mocha",
   "bugs": {
@@ -26,7 +26,7 @@
     "lib"
   ],
   "dependencies": {
-    "ember-test-helpers": "^0.6.0"
+    "ember-test-helpers": "^0.6.3"
   },
   "devDependencies": {
     "broccoli-babel-transpiler": "^5.5.0",
@@ -40,6 +40,7 @@
     "ember-cli-release": "^0.2.7",
     "exists-sync": "0.0.3",
     "git-repo-version": "^0.4.0",
+    "loader.js": "^4.2.3",
     "resolve": "^1.1.7",
     "rollup-plugin-alias": "^1.2.0",
     "rollup-plugin-node-resolve": "^2.0.0"

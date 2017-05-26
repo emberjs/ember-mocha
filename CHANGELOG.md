@@ -1,5 +1,37 @@
 # Change Log
 
+## [v0.11.1](https://github.com/emberjs/ember-mocha/tree/v0.11.1) (2017-05-07)
+[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.11.0...v0.11.1)
+
+**Implemented enhancements:**
+
+- README: Add instructions for a world with async/await [\#124](https://github.com/emberjs/ember-mocha/pull/124) ([Turbo87](https://github.com/Turbo87))
+- Improved async behavior deprecation message [\#123](https://github.com/emberjs/ember-mocha/pull/123) ([Turbo87](https://github.com/Turbo87))
+- Fix and promote setupAcceptanceTest\(\) and deprecate implicit async behavior [\#121](https://github.com/emberjs/ember-mocha/pull/121) ([Turbo87](https://github.com/Turbo87))
+
+**Fixed bugs:**
+
+- Update "ember-test-helpers" to v0.6.3 [\#150](https://github.com/emberjs/ember-mocha/pull/150) ([Turbo87](https://github.com/Turbo87))
+- Reset "module" to null to prevent memory leaks [\#144](https://github.com/emberjs/ember-mocha/pull/144) ([Turbo87](https://github.com/Turbo87))
+
+**Closed issues:**
+
+- Is it possible to use this package without bower? [\#142](https://github.com/emberjs/ember-mocha/issues/142)
+- Asserting error thrown no longer works as of 2.11.3 [\#141](https://github.com/emberjs/ember-mocha/issues/141)
+- `TypeError: factory.create is not a function` when trying to create a unit test for a helper [\#140](https://github.com/emberjs/ember-mocha/issues/140)
+- `TypeError: Cannot read property 'create' of undefined` [\#138](https://github.com/emberjs/ember-mocha/issues/138)
+- component unit test with needs: \[\] still throws ember-test-helper deprecation [\#129](https://github.com/emberjs/ember-mocha/issues/129)
+- auto-resolved promises fire after the test ends [\#126](https://github.com/emberjs/ember-mocha/issues/126)
+
+**Merged pull requests:**
+
+- Convert "loader.js" from bower to npm dependency [\#147](https://github.com/emberjs/ember-mocha/pull/147) ([Turbo87](https://github.com/Turbo87))
+- Update and pin "loader.js" to v4.1.0 [\#146](https://github.com/emberjs/ember-mocha/pull/146) ([Turbo87](https://github.com/Turbo87))
+- Add ".editorconfig" file [\#137](https://github.com/emberjs/ember-mocha/pull/137) ([Turbo87](https://github.com/Turbo87))
+- Ensure ember-test-helpers ^0.6.0 [\#128](https://github.com/emberjs/ember-mocha/pull/128) ([blimmer](https://github.com/blimmer))
+- CI: Switch NPM deploy user to "ember-cli" [\#125](https://github.com/emberjs/ember-mocha/pull/125) ([Turbo87](https://github.com/Turbo87))
+- Use Rollup to bundle files [\#117](https://github.com/emberjs/ember-mocha/pull/117) ([Turbo87](https://github.com/Turbo87))
+
 ## [v0.11.0](https://github.com/emberjs/ember-mocha/tree/v0.11.0) (2016-12-09)
 [Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.10.0...v0.11.0)
 
