@@ -3,9 +3,37 @@ import { mocha, describe, context, it, before, after, beforeEach, afterEach } fr
 
 describe('mocha-shim', function() {
 
+  describe('beforeEach and afterEach', function() {
+    beforeEach(function() {
+      this.beforeEachRunLoop = Ember.run.currentRunLoop;
+    });
+
+    afterEach(function() {
+      window.chai.expect(Ember.run.currentRunLoop).to.be.null;
+    });
+
+    it('do not use the runloop', function() {
+      window.chai.expect(this.beforeEachRunLoop).to.be.null;
+    });
+  });
+
+  describe('before and after', function() {
+    before(function() {
+      this.beforeRunLoop = Ember.run.currentRunLoop;
+    });
+
+    after(function() {
+      window.chai.expect(Ember.run.currentRunLoop).to.be.null;
+    });
+
+    it('do not use the runloop', function() {
+      window.chai.expect(this.beforeRunLoop).to.be.null;
+    });
+  });
+
   describe('beforeEach.run and afterEach.run', function() {
     beforeEach.run(function() {
-      this.beforeEachRunInEmberRunLoop = Ember.run.currentRunLoop;
+      this.beforeEachRunLoop = Ember.run.currentRunLoop;
     });
 
     afterEach.run(function() {
@@ -13,13 +41,13 @@ describe('mocha-shim', function() {
     });
 
     it('run inside the run loop', function() {
-      window.chai.expect(this.beforeEachRunInEmberRunLoop).to.be.ok;
+      window.chai.expect(this.beforeEachRunLoop).to.be.ok;
     });
   });
 
   describe('before.run and after.run', function() {
     before.run(function() {
-      this.beforeEachRunInEmberRunLoop = Ember.run.currentRunLoop;
+      this.beforeRunLoop = Ember.run.currentRunLoop;
     });
 
     after.run(function() {
@@ -27,7 +55,7 @@ describe('mocha-shim', function() {
     });
 
     it('run inside the run loop', function() {
-      window.chai.expect(this.beforeEachRunInEmberRunLoop).to.be.ok;
+      window.chai.expect(this.beforeRunLoop).to.be.ok;
     });
   });
 
