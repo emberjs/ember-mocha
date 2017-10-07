@@ -12,7 +12,7 @@ describe('mocha-shim', function() {
       window.chai.expect(Ember.run.currentRunLoop).to.be.ok;
     });
 
-    it('runs the beforeEach.run hook inside the run loop', function() {
+    it('run inside the run loop', function() {
       window.chai.expect(this.beforeEachRunInEmberRunLoop).to.be.ok;
     });
   });
@@ -26,7 +26,7 @@ describe('mocha-shim', function() {
       window.chai.expect(Ember.run.currentRunLoop).to.be.ok;
     });
 
-    it('runs the before.run hook inside the run loop', function() {
+    it('run inside the run loop', function() {
       window.chai.expect(this.beforeEachRunInEmberRunLoop).to.be.ok;
     });
   });
