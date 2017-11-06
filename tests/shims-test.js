@@ -1,4 +1,17 @@
-import { mocha, describe, context, it, before, after, beforeEach, afterEach } from 'mocha';
+import {
+  mocha,
+  describe,
+  context,
+  it,
+  before,
+  after,
+  beforeEach,
+  afterEach,
+  beforeRun,
+  afterRun,
+  beforeEachRun,
+  afterEachRun
+} from 'mocha';
 import Ember from 'ember';
 
 describe('mocha-shim', function() {
@@ -28,6 +41,34 @@ describe('mocha-shim', function() {
 
     it('do not use the runloop', function() {
       window.chai.expect(this.beforeRunLoop).to.be.null;
+    });
+  });
+
+  describe('beforeEachRun and afterEachRun', function() {
+    beforeEachRun(function() {
+      this.beforeEachRunInEmberRunLoop = Ember.run.currentRunLoop;
+    });
+
+    afterEachRun(function() {
+      window.chai.expect(Ember.run.currentRunLoop).to.be.ok;
+    });
+
+    it('runs the beforeEachRun hook inside the run loop', function() {
+      window.chai.expect(this.beforeEachRunInEmberRunLoop).to.be.ok;
+    });
+  });
+
+  describe('beforeRun and afterRun', function() {
+    beforeRun(function() {
+      this.beforeEachRunInEmberRunLoop = Ember.run.currentRunLoop;
+    });
+
+    afterRun(function() {
+      window.chai.expect(Ember.run.currentRunLoop).to.be.ok;
+    });
+
+    it('runs the beforeRun hook inside the run loop', function() {
+      window.chai.expect(this.beforeEachRunInEmberRunLoop).to.be.ok;
     });
   });
 
