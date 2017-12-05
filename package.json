@@ -11,6 +11,10 @@
     "Dan Gebhardt",
     "Robert Jackson"
   ],
+  "files": [
+    "build-support",
+    "lib"
+  ],
   "main": "lib/ember-mocha.js",
   "repository": {
     "type": "git",
@@ -21,10 +25,6 @@
     "start": "ember serve",
     "test": "ember test"
   },
-  "files": [
-    "build-support",
-    "lib"
-  ],
   "dependencies": {
     "ember-test-helpers": "^0.6.3"
   },
