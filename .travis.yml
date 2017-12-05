@@ -4,13 +4,20 @@ language: node_js
 node_js:
   - 6
 
+cache:
+  yarn: true
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+  - yarn global add bower
+
 install:
-  - npm install -g bower
-  - npm install
+  - yarn install --no-lockfile
   - bower install
 
 script:
-  - npm test
+  - yarn test
 
 deploy:
   - provider: npm
