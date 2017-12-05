@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import { describeModule, it } from 'ember-mocha';
-import { setResolverRegistry } from 'tests/test-support/resolver';
-import { grepFor } from './test-support/mocha-support';
 import { describe } from 'mocha';
+import { expect } from 'chai';
 
-const { expect } = window.chai;
+import { setResolverRegistry } from '../helpers/resolver';
+import { grepFor } from '../helpers/grep-for';
 
 function setupRegistry() {
   setResolverRegistry({

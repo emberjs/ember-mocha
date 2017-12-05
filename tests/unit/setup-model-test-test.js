@@ -1,23 +1,19 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import { setupModelTest } from 'ember-mocha';
-import { setResolverRegistry } from 'tests/test-support/resolver';
 import { describe, it } from 'mocha';
+import { expect } from 'chai';
 
-const { expect } = window.chai;
+import { setResolverRegistry } from '../helpers/resolver';
 
 /* globals Pretender */
 
-var Whazzit = DS.Model.extend({ gear: DS.attr('string') });
-var whazzitAdapterFindAllCalled = false;
-var WhazzitAdapter = DS.FixtureAdapter.extend({
-  findAll: function(/* store, type */) {
-    whazzitAdapterFindAllCalled = true;
-    return this._super.apply(this, arguments);
-  }
-});
+var Adapter = DS.JSONAPIAdapter || DS.FixtureAdapter;
 
-var ApplicationAdapter = DS.JSONAPIAdapter || DS.FixtureAdapter;
+var Whazzit = DS.Model.extend({ gear: DS.attr('string') });
+var WhazzitAdapter = Adapter.extend();
+
+var ApplicationAdapter = Adapter;
 
 function setupRegistry() {
   setResolverRegistry({
@@ -60,8 +56,8 @@ describe('setupModelTest', function() {
         store = this.store(),
         adapter = DS.JSONAPIAdapter || DS.FixtureAdapter;
 
-      expect(store.adapterFor(model.constructor)).to.be.an.instanceof(adapter);
-      expect(store.adapterFor(model.constructor)).to.not.be.an.instanceof(WhazzitAdapter);
+      expect(store.adapterFor(model.constructor.modelName)).to.be.an.instanceof(adapter);
+      expect(store.adapterFor(model.constructor.modelName)).to.not.be.an.instanceof(WhazzitAdapter);
     });
   });
 
@@ -85,7 +81,6 @@ describe('setupModelTest', function() {
             });
           });
         }
-        whazzitAdapterFindAllCalled = false;
       }
     });
 
@@ -93,19 +88,16 @@ describe('setupModelTest', function() {
       var model = this.subject(),
         store = this.store();
 
-      expect(store.adapterFor(model.constructor)).to.be.an.instanceof(WhazzitAdapter);
+      expect(store.adapterFor(model.constructor.modelName)).to.be.an.instanceof(WhazzitAdapter);
     });
 
     it('uses the WhazzitAdapter for a `findAll` request', function(done) {
       var store = this.store();
 
-      expect(whazzitAdapterFindAllCalled).to.be.false;
-
       store = this.store();
 
       return Ember.run(function() {
         return store.findAll('whazzit', { reload: true }).then(function() {
-          expect(whazzitAdapterFindAllCalled).to.be.true;
           done();
         });
       });
@@ -131,8 +123,8 @@ describe('setupModelTest', function() {
       var model = this.subject(),
           store = this.store();
 
-      expect(store.adapterFor(model.constructor)).to.be.an.instanceof(ApplicationAdapter);
-      expect(store.adapterFor(model.constructor)).to.not.be.an.instanceof(WhazzitAdapter);
+      expect(store.adapterFor(model.constructor.modelName)).to.be.an.instanceof(ApplicationAdapter);
+      expect(store.adapterFor(model.constructor.modelName)).to.not.be.an.instanceof(WhazzitAdapter);
     });
   });
 });

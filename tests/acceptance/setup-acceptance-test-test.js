@@ -1,29 +1,15 @@
-/* global visit, andThen */
-
-import Ember from 'ember';
 import { describe, it } from 'mocha';
 import { setupAcceptanceTest } from 'ember-mocha';
+import { expect } from 'chai';
 
-const { expect } = window.chai;
+import App from '../../app';
 
-var Router = Ember.Router.extend();
-
-Router.map(function() {
-  this.route('foo');
-});
-
-var App = Ember.Application.extend({
-  rootElement: '#ember-testing',
-  Router: Router
-});
-
-App.FooController = Ember.Controller.extend({
-});
+const Application = App.extend({ rootElement: '#ember-testing' });
 
 describe('setupAcceptanceTest()', function() {
   this.timeout(5000);
 
-  setupAcceptanceTest({ Application: App });
+  setupAcceptanceTest({ Application });
 
   it('can visit subroutes', function() {
     visit('/');
