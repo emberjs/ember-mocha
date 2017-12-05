@@ -2,6 +2,9 @@
   "name": "ember-mocha",
   "version": "0.12.0",
   "description": "Mocha helpers for testing Ember.js applications",
+  "keywords": [
+    "ember-addon"
+  ],
   "homepage": "https://github.com/emberjs/ember-mocha",
   "bugs": {
     "url": "https://github.com/emberjs/ember-mocha/issues"
@@ -15,7 +18,6 @@
     "build-support",
     "lib"
   ],
-  "main": "lib/ember-mocha.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emberjs/ember-mocha.git"
