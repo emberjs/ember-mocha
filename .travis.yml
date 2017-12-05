@@ -31,9 +31,3 @@ deploy:
     on:
       tags: true
       repo: emberjs/ember-mocha
-
-  - provider: script
-    script: .travis/deploy.sh
-    on:
-      tags: true
-      repo: emberjs/ember-mocha
