@@ -32,7 +32,7 @@
     "broccoli-babel-transpiler": "^5.5.0",
     "broccoli-concat": "^2.3.4",
     "broccoli-funnel": "^1.0.6",
-    "broccoli-lint-eslint": "^2.6.0",
+    "broccoli-lint-eslint": "^3.3.2",
     "broccoli-merge-trees": "^1.1.4",
     "broccoli-rollup": "^1.0.3",
     "broccoli-string-replace": "^0.1.1",

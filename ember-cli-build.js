@@ -3,7 +3,7 @@ var resolve = require('resolve');
 var concat     = require('broccoli-concat');
 var Funnel     = require('broccoli-funnel');
 var mergeTrees = require('broccoli-merge-trees');
-var eslint = require('broccoli-lint-eslint');
+var ESLint = require('broccoli-lint-eslint');
 var replace    = require('broccoli-string-replace');
 var gitVersion = require('git-repo-version');
 var BabelTranspiler = require('broccoli-babel-transpiler');
@@ -106,8 +106,8 @@ module.exports = function(defaults) {
     outputFile: '/ember-mocha.js'
   });
 
-  var eslintLib = eslint(lib, { testGenerator: 'mocha' });
-  var eslintTests = eslint(tests, { testGenerator: 'mocha' });
+  var eslintLib = ESLint.create(lib, { group: 'lib', testGenerator: 'mocha' });
+  var eslintTests = ESLint.create(tests, { group: 'tests', testGenerator: 'mocha' });
 
   var testsAndESLint = mergeTrees([tests, eslintLib, eslintTests]);
   testsAndESLint = concat(compileES6(testsAndESLint), {
