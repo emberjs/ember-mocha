@@ -89,26 +89,10 @@ module.exports = function(defaults) {
     outputFile: '/ember-mocha.amd.js'
   });
 
-  var generatedBowerConfig = new Funnel('build-support', {
-    srcDir: '/',
-    destDir: '/',
-    files: ['bower.json']
-  });
-  generatedBowerConfig = replace(generatedBowerConfig, {
-    files: ['bower.json'],
-    pattern: {
-      match: /VERSION_PLACEHOLDER/,
-      replacement: function() {
-        // remove leading `v` (since by default our tags use a `v` prefix)
-        return gitVersion().replace(/^v/, '');
-      }
-    }
-  });
-
   var buildExtras = new Funnel('build-support', {
     srcDir: '/',
     destDir: '/',
-    files: ['README.md', 'LICENSE', 'mocha-setup.js', 'ember-mocha-adapter.js']
+    files: ['mocha-setup.js', 'ember-mocha-adapter.js']
   });
 
   var globalizedBuildSupport = new Funnel('build-support', {
@@ -177,5 +161,5 @@ module.exports = function(defaults) {
     destDir: '/tests'
   });
 
-  return mergeTrees([loader, main, testsAndESLint, globalizedMain, vendor, mocha, chai, testSupport, testIndex, generatedBowerConfig, buildExtras]);
+  return mergeTrees([loader, main, testsAndESLint, globalizedMain, vendor, mocha, chai, testSupport, testIndex, buildExtras]);
 };
