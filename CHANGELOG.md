@@ -1,395 +1,316 @@
-# Change Log
 
-## [v0.12.0](https://github.com/emberjs/ember-mocha/tree/v0.12.0)
+## Unreleased (2017-12-06)
 
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.11.1...v0.12.0)
+#### :boom: Breaking Change
+* [#164](https://github.com/emberjs/ember-mocha/pull/164) don't wrap hooks in a runloop. ([@akatov](https://github.com/akatov))
 
-**Fixed bugs:**
+#### :house: Internal
+* [#174](https://github.com/emberjs/ember-mocha/pull/174) CI: Add Ember 2.0, 2.4 and 2.8 as test targets. ([@Turbo87](https://github.com/Turbo87))
+* [#173](https://github.com/emberjs/ember-mocha/pull/173) Convert to Ember CLI addon. ([@Turbo87](https://github.com/Turbo87))
+* [#172](https://github.com/emberjs/ember-mocha/pull/172) Update `broccoli-lint-eslint` and use `group` option. ([@Turbo87](https://github.com/Turbo87))
+* [#171](https://github.com/emberjs/ember-mocha/pull/171) Remove `bower` publishing code. ([@Turbo87](https://github.com/Turbo87))
+* [#170](https://github.com/emberjs/ember-mocha/pull/170) Use headless Chrome instead of PhantomJS. ([@Turbo87](https://github.com/Turbo87))
+* [#169](https://github.com/emberjs/ember-mocha/pull/169) Add yarn lockfile and use yarn for CI. ([@Turbo87](https://github.com/Turbo87))
+* [#164](https://github.com/emberjs/ember-mocha/pull/164) don't wrap hooks in a runloop. ([@akatov](https://github.com/akatov))
 
-- Unable to build a fresh checkout of master [\#143](https://github.com/emberjs/ember-mocha/issues/143)
-- Fix "rollup-plugin-alias" options [\#156](https://github.com/emberjs/ember-mocha/pull/156) ([Turbo87](https://github.com/Turbo87))
+#### Committers: 2
+- Dmitri Akatov ([akatov](https://github.com/akatov))
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
-**Closed issues:**
 
-- Unable to run all tests in a fresh checkout of master [\#148](https://github.com/emberjs/ember-mocha/issues/148)
-- setupAcceptanceTest not invoking destroy-app [\#133](https://github.com/emberjs/ember-mocha/issues/133)
+## v0.12.0 (2017-05-26)
 
-**Merged pull requests:**
+#### :rocket: Enhancement
+* [#123](https://github.com/emberjs/ember-mocha/pull/123) Improved async behavior deprecation message. ([@Turbo87](https://github.com/Turbo87))
+* [#124](https://github.com/emberjs/ember-mocha/pull/124) README: Add instructions for a world with async/await. ([@Turbo87](https://github.com/Turbo87))
 
-- Undeprecate the implicit async behavior of acceptance tests [\#157](https://github.com/emberjs/ember-mocha/pull/157) ([Turbo87](https://github.com/Turbo87))
+#### :bug: Bug Fix
+* [#156](https://github.com/emberjs/ember-mocha/pull/156) Fix "rollup-plugin-alias" options. ([@Turbo87](https://github.com/Turbo87))
 
-## [v0.11.1](https://github.com/emberjs/ember-mocha/tree/v0.11.1) (2017-05-07)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.11.0...v0.11.1)
+#### :house: Internal
+* [#128](https://github.com/emberjs/ember-mocha/pull/128) Ensure ember-test-helpers ^0.6.0. ([@blimmer](https://github.com/blimmer))
+* [#125](https://github.com/emberjs/ember-mocha/pull/125) CI: Switch NPM deploy user to "ember-cli". ([@Turbo87](https://github.com/Turbo87))
+* [#117](https://github.com/emberjs/ember-mocha/pull/117) Use Rollup to bundle files. ([@Turbo87](https://github.com/Turbo87))
 
-**Implemented enhancements:**
+#### Committers: 2
+- Ben Limmer ([blimmer](https://github.com/blimmer))
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
-- README: Add instructions for a world with async/await [\#124](https://github.com/emberjs/ember-mocha/pull/124) ([Turbo87](https://github.com/Turbo87))
-- Improved async behavior deprecation message [\#123](https://github.com/emberjs/ember-mocha/pull/123) ([Turbo87](https://github.com/Turbo87))
-- Fix and promote setupAcceptanceTest\(\) and deprecate implicit async behavior [\#121](https://github.com/emberjs/ember-mocha/pull/121) ([Turbo87](https://github.com/Turbo87))
 
-**Fixed bugs:**
+## v0.11.1 (2017-05-07)
 
-- Update "ember-test-helpers" to v0.6.3 [\#150](https://github.com/emberjs/ember-mocha/pull/150) ([Turbo87](https://github.com/Turbo87))
-- Reset "module" to null to prevent memory leaks [\#144](https://github.com/emberjs/ember-mocha/pull/144) ([Turbo87](https://github.com/Turbo87))
+#### :bug: Bug Fix
+* [#150](https://github.com/emberjs/ember-mocha/pull/150) Update "ember-test-helpers" to v0.6.3. ([@Turbo87](https://github.com/Turbo87))
+* [#144](https://github.com/emberjs/ember-mocha/pull/144) Reset "module" to null to prevent memory leaks. ([@Turbo87](https://github.com/Turbo87))
+* [#146](https://github.com/emberjs/ember-mocha/pull/146) Update and pin "loader.js" to v4.1.0. ([@Turbo87](https://github.com/Turbo87))
 
-**Closed issues:**
+#### :house: Internal
+* [#147](https://github.com/emberjs/ember-mocha/pull/147) Convert "loader.js" from bower to npm dependency. ([@Turbo87](https://github.com/Turbo87))
 
-- Is it possible to use this package without bower? [\#142](https://github.com/emberjs/ember-mocha/issues/142)
-- Asserting error thrown no longer works as of 2.11.3 [\#141](https://github.com/emberjs/ember-mocha/issues/141)
-- `TypeError: factory.create is not a function` when trying to create a unit test for a helper [\#140](https://github.com/emberjs/ember-mocha/issues/140)
-- `TypeError: Cannot read property 'create' of undefined` [\#138](https://github.com/emberjs/ember-mocha/issues/138)
-- component unit test with needs: \[\] still throws ember-test-helper deprecation [\#129](https://github.com/emberjs/ember-mocha/issues/129)
-- auto-resolved promises fire after the test ends [\#126](https://github.com/emberjs/ember-mocha/issues/126)
+#### Committers: 1
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
-**Merged pull requests:**
 
-- Convert "loader.js" from bower to npm dependency [\#147](https://github.com/emberjs/ember-mocha/pull/147) ([Turbo87](https://github.com/Turbo87))
-- Update and pin "loader.js" to v4.1.0 [\#146](https://github.com/emberjs/ember-mocha/pull/146) ([Turbo87](https://github.com/Turbo87))
-- Add ".editorconfig" file [\#137](https://github.com/emberjs/ember-mocha/pull/137) ([Turbo87](https://github.com/Turbo87))
-- Ensure ember-test-helpers ^0.6.0 [\#128](https://github.com/emberjs/ember-mocha/pull/128) ([blimmer](https://github.com/blimmer))
-- CI: Switch NPM deploy user to "ember-cli" [\#125](https://github.com/emberjs/ember-mocha/pull/125) ([Turbo87](https://github.com/Turbo87))
-- Use Rollup to bundle files [\#117](https://github.com/emberjs/ember-mocha/pull/117) ([Turbo87](https://github.com/Turbo87))
+## v0.11.0 (2016-12-09)
 
-## [v0.11.0](https://github.com/emberjs/ember-mocha/tree/v0.11.0) (2016-12-09)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.10.0...v0.11.0)
+#### :rocket: Enhancement
+* [#122](https://github.com/emberjs/ember-mocha/pull/122) Update "mocha" and "chai" bower dependencies. ([@Turbo87](https://github.com/Turbo87))
+* [#120](https://github.com/emberjs/ember-mocha/pull/120) Import "ember-mocha-adapter". ([@Turbo87](https://github.com/Turbo87))
+* [#119](https://github.com/emberjs/ember-mocha/pull/119) Adjust testem config and add acceptance test. ([@Turbo87](https://github.com/Turbo87))
+* [#118](https://github.com/emberjs/ember-mocha/pull/118) TravisCI: Update Node.js to 6.x. ([@Turbo87](https://github.com/Turbo87))
 
-**Implemented enhancements:**
+#### Committers: 1
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
-- Update "Mocha" for Bower builds [\#78](https://github.com/emberjs/ember-mocha/issues/78)
-- Adjust testem config and add acceptance test [\#119](https://github.com/emberjs/ember-mocha/pull/119) ([Turbo87](https://github.com/Turbo87))
-- TravisCI: Update Node.js to 6.x [\#118](https://github.com/emberjs/ember-mocha/pull/118) ([Turbo87](https://github.com/Turbo87))
-- Update "mocha" and "chai" bower dependencies [\#122](https://github.com/emberjs/ember-mocha/pull/122) ([Turbo87](https://github.com/Turbo87))
-- Import "ember-mocha-adapter" [\#120](https://github.com/emberjs/ember-mocha/pull/120) ([Turbo87](https://github.com/Turbo87))
 
-## [v0.10.0](https://github.com/emberjs/ember-mocha/tree/v0.10.0) (2016-11-29)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.4...v0.10.0)
+## v0.10.0 (2016-11-29)
 
-**Closed issues:**
+#### :house: Internal
+* [#114](https://github.com/emberjs/ember-mocha/pull/114) Update "ember-test-helpers" to v0.6.0-beta.1. ([@Turbo87](https://github.com/Turbo87))
 
-- Release v0.10.0 [\#113](https://github.com/emberjs/ember-mocha/issues/113)
+#### Committers: 1
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
-**Merged pull requests:**
 
-- Update "ember-test-helpers" to v0.6.0-beta.1 [\#114](https://github.com/emberjs/ember-mocha/pull/114) ([Turbo87](https://github.com/Turbo87))
-- Remove "chai" vendor shim [\#109](https://github.com/emberjs/ember-mocha/pull/109) ([Turbo87](https://github.com/Turbo87))
+## v0.9.4 (2016-11-27)
 
-## [v0.9.4](https://github.com/emberjs/ember-mocha/tree/v0.9.4) (2016-11-27)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.3...v0.9.4)
+#### :rocket: Enhancement
+* [#105](https://github.com/emberjs/ember-mocha/pull/105) CI: Publish tags to NPM. ([@Turbo87](https://github.com/Turbo87))
 
-**Implemented enhancements:**
+#### :bug: Bug Fix
+* [#111](https://github.com/emberjs/ember-mocha/pull/111) Fix broken context cleanup. ([@Turbo87](https://github.com/Turbo87))
+* [#102](https://github.com/emberjs/ember-mocha/pull/102) Export new test setup functions as globals. ([@Turbo87](https://github.com/Turbo87))
 
-- CI: Publish tags for NPM and Bower automatically [\#99](https://github.com/emberjs/ember-mocha/issues/99)
-- CI: Publish tags to NPM [\#105](https://github.com/emberjs/ember-mocha/pull/105) ([Turbo87](https://github.com/Turbo87))
+#### :house: Internal
+* [#109](https://github.com/emberjs/ember-mocha/pull/109) Remove "chai" vendor shim. ([@Turbo87](https://github.com/Turbo87))
 
-**Fixed bugs:**
+#### Committers: 1
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
-- Context is not being reset between test runs [\#110](https://github.com/emberjs/ember-mocha/issues/110)
-- Export new test setup functions as globals [\#102](https://github.com/emberjs/ember-mocha/pull/102) ([Turbo87](https://github.com/Turbo87))
-- Fix broken context cleanup [\#111](https://github.com/emberjs/ember-mocha/pull/111) ([Turbo87](https://github.com/Turbo87))
 
-## [v0.9.3](https://github.com/emberjs/ember-mocha/tree/v0.9.3) (2016-11-23)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.2...v0.9.3)
+## v0.9.3 (2016-11-23)
 
-**Implemented enhancements:**
+#### :rocket: Enhancement
+* [#108](https://github.com/emberjs/ember-mocha/pull/108) mocha-module: Add upgrade guide URL to the deprecation message. ([@Turbo87](https://github.com/Turbo87))
+* [#107](https://github.com/emberjs/ember-mocha/pull/107) package.json: Add "files" section. ([@Turbo87](https://github.com/Turbo87))
 
-- mocha-module: Add upgrade guide URL to the deprecation message [\#108](https://github.com/emberjs/ember-mocha/pull/108) ([Turbo87](https://github.com/Turbo87))
-- package.json: Add "files" section [\#107](https://github.com/emberjs/ember-mocha/pull/107) ([Turbo87](https://github.com/Turbo87))
+#### Committers: 1
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
-## [v0.9.2](https://github.com/emberjs/ember-mocha/tree/v0.9.2) (2016-11-23)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.1...v0.9.2)
 
-**Implemented enhancements:**
+## v0.9.2 (2016-11-23)
 
-- Add "Upgrade Guide" to the README [\#106](https://github.com/emberjs/ember-mocha/pull/106) ([Turbo87](https://github.com/Turbo87))
-- CI: Publish releases to "ember-mocha-builds" repo [\#100](https://github.com/emberjs/ember-mocha/pull/100) ([Turbo87](https://github.com/Turbo87))
+#### :rocket: Enhancement
+* [#106](https://github.com/emberjs/ember-mocha/pull/106) Add "Upgrade Guide" to the README. ([@Turbo87](https://github.com/Turbo87))
+* [#100](https://github.com/emberjs/ember-mocha/pull/100) CI: Publish releases to "ember-mocha-builds" repo. ([@Turbo87](https://github.com/Turbo87))
 
-**Fixed bugs:**
+#### :bug: Bug Fix
+* [#101](https://github.com/emberjs/ember-mocha/pull/101) Fix tests by using the ESLint nodes correctly. ([@Turbo87](https://github.com/Turbo87))
 
-- Write upgrade guide for old test helpers [\#104](https://github.com/emberjs/ember-mocha/issues/104)
-- Release instructions aka. "ember-mocha-builds" repository needs an update [\#95](https://github.com/emberjs/ember-mocha/issues/95)
-- Trouble with visit + andThen in acceptance [\#77](https://github.com/emberjs/ember-mocha/issues/77)
-- Using ember-mocha without Ember Data [\#49](https://github.com/emberjs/ember-mocha/issues/49)
-- Fix tests by using the ESLint nodes correctly [\#101](https://github.com/emberjs/ember-mocha/pull/101) ([Turbo87](https://github.com/Turbo87))
+#### :memo: Documentation
+* [#96](https://github.com/emberjs/ember-mocha/pull/96) Update CHANGELOG. ([@Turbo87](https://github.com/Turbo87))
+* [#97](https://github.com/emberjs/ember-mocha/pull/97) Update README. ([@Turbo87](https://github.com/Turbo87))
 
-**Closed issues:**
+#### :house: Internal
+* [#94](https://github.com/emberjs/ember-mocha/pull/94) Cleanup package.json. ([@Turbo87](https://github.com/Turbo87))
 
-- Enable TravisCI [\#98](https://github.com/emberjs/ember-mocha/issues/98)
-- Add repository information to package.json [\#93](https://github.com/emberjs/ember-mocha/issues/93)
-- "set" method undefined when using needs [\#61](https://github.com/emberjs/ember-mocha/issues/61)
-- Setting test reporter [\#37](https://github.com/emberjs/ember-mocha/issues/37)
-- Set 'timeout' globally? [\#28](https://github.com/emberjs/ember-mocha/issues/28)
-- consider deprecating callbacks [\#14](https://github.com/emberjs/ember-mocha/issues/14)
+#### Committers: 1
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
-**Merged pull requests:**
 
-- Update README [\#97](https://github.com/emberjs/ember-mocha/pull/97) ([Turbo87](https://github.com/Turbo87))
-- Update CHANGELOG [\#96](https://github.com/emberjs/ember-mocha/pull/96) ([Turbo87](https://github.com/Turbo87))
-- Cleanup package.json [\#94](https://github.com/emberjs/ember-mocha/pull/94) ([Turbo87](https://github.com/Turbo87))
+## v0.9.1 (2016-09-12)
 
-## [v0.9.1](https://github.com/emberjs/ember-mocha/tree/v0.9.1) (2016-09-12)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.9.0...v0.9.1)
+#### :house: Internal
+* [#91](https://github.com/emberjs/ember-mocha/pull/91) Share Mocha's test context in setup-test-factory.. ([@dgeb](https://github.com/dgeb))
 
-**Merged pull requests:**
+#### Committers: 1
+- Dan Gebhardt ([dgeb](https://github.com/dgeb))
 
-- Share Mocha's test context in setup-test-factory. [\#91](https://github.com/emberjs/ember-mocha/pull/91) ([dgeb](https://github.com/dgeb))
 
-## [v0.9.0](https://github.com/emberjs/ember-mocha/tree/v0.9.0) (2016-09-12)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.8.11...v0.9.0)
+## v0.9.0 (2016-09-12)
 
-**Closed issues:**
+#### :rocket: Enhancement
+* [#84](https://github.com/emberjs/ember-mocha/pull/84) New testing API. ([@Turbo87](https://github.com/Turbo87))
+* [#76](https://github.com/emberjs/ember-mocha/pull/76) Adjust "mocha" dependency to allow 2.3, 2.4, ... releases. ([@Turbo87](https://github.com/Turbo87))
 
-- Component Integration \(non-block component\) Test Fails in Ember-Engine [\#82](https://github.com/emberjs/ember-mocha/issues/82)
-- Accidentally checking in .only [\#80](https://github.com/emberjs/ember-mocha/issues/80)
-- Setup Questions [\#74](https://github.com/emberjs/ember-mocha/issues/74)
-- You can then choose to include the global \(ember-mocha.js\)  [\#73](https://github.com/emberjs/ember-mocha/issues/73)
-- Tests fail with v0.8.9 [\#71](https://github.com/emberjs/ember-mocha/issues/71)
-- Unlock Mocha dependency [\#68](https://github.com/emberjs/ember-mocha/issues/68)
+#### :memo: Documentation
+* [#86](https://github.com/emberjs/ember-mocha/pull/86) Add changelog file. ([@Turbo87](https://github.com/Turbo87))
 
-**Merged pull requests:**
+#### :house: Internal
+* [#90](https://github.com/emberjs/ember-mocha/pull/90) Preserve suite context in outer test function. ([@dgeb](https://github.com/dgeb))
+* [#89](https://github.com/emberjs/ember-mocha/pull/89) Share Mocha's test context.. ([@dgeb](https://github.com/dgeb))
+* [#88](https://github.com/emberjs/ember-mocha/pull/88) Use predefined ESLint test generator. ([@Turbo87](https://github.com/Turbo87))
+* [#85](https://github.com/emberjs/ember-mocha/pull/85) Replace JSHint with ESLint. ([@Turbo87](https://github.com/Turbo87))
+* [#83](https://github.com/emberjs/ember-mocha/pull/83) Update NPM dependencies. ([@Turbo87](https://github.com/Turbo87))
 
-- Preserve suite context in outer test function [\#90](https://github.com/emberjs/ember-mocha/pull/90) ([dgeb](https://github.com/dgeb))
-- Share Mocha's test context. [\#89](https://github.com/emberjs/ember-mocha/pull/89) ([dgeb](https://github.com/dgeb))
-- Use predefined ESLint test generator [\#88](https://github.com/emberjs/ember-mocha/pull/88) ([Turbo87](https://github.com/Turbo87))
-- Add changelog file [\#86](https://github.com/emberjs/ember-mocha/pull/86) ([Turbo87](https://github.com/Turbo87))
-- Replace JSHint with ESLint [\#85](https://github.com/emberjs/ember-mocha/pull/85) ([Turbo87](https://github.com/Turbo87))
-- New testing API [\#84](https://github.com/emberjs/ember-mocha/pull/84) ([Turbo87](https://github.com/Turbo87))
-- Update NPM dependencies [\#83](https://github.com/emberjs/ember-mocha/pull/83) ([Turbo87](https://github.com/Turbo87))
-- Adjust "mocha" dependency to allow 2.3, 2.4, ... releases [\#76](https://github.com/emberjs/ember-mocha/pull/76) ([Turbo87](https://github.com/Turbo87))
+#### Committers: 2
+- Dan Gebhardt ([dgeb](https://github.com/dgeb))
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
-## [v0.8.11](https://github.com/emberjs/ember-mocha/tree/v0.8.11) (2016-02-01)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.8.10...v0.8.11)
 
-## [v0.8.10](https://github.com/emberjs/ember-mocha/tree/v0.8.10) (2016-02-01)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.8.9...v0.8.10)
+## v0.8.1 (2016-02-01)
 
-**Merged pull requests:**
+#### :rocket: Enhancement
+* [#47](https://github.com/emberjs/ember-mocha/pull/47) Update ember test helpers for Ember 2.0.0-beta.3.. ([@Robdel12](https://github.com/Robdel12))
+* [#43](https://github.com/emberjs/ember-mocha/pull/43) Update ember-test-helpers. ([@sly7-7](https://github.com/sly7-7))
 
-- Ensure builds of ember-test-helpers are properly transpiled. [\#72](https://github.com/emberjs/ember-mocha/pull/72) ([rwjblue](https://github.com/rwjblue))
+#### :bug: Bug Fix
+* [#72](https://github.com/emberjs/ember-mocha/pull/72) Ensure builds of ember-test-helpers are properly transpiled.. ([@rwjblue](https://github.com/rwjblue))
+* [#48](https://github.com/emberjs/ember-mocha/pull/48) remove resetViews from 'it'. ([@jeffreybiles](https://github.com/jeffreybiles))
 
-## [v0.8.9](https://github.com/emberjs/ember-mocha/tree/v0.8.9) (2016-01-31)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.8.8...v0.8.9)
+#### :house: Internal
+* [#45](https://github.com/emberjs/ember-mocha/pull/45) Remove usage of deprecated `Ember.keys`. ([@tstirrat](https://github.com/tstirrat))
 
-**Closed issues:**
+#### Committers: 5
+- Jeffrey Biles ([jeffreybiles](https://github.com/jeffreybiles))
+- Robert DeLuca ([Robdel12](https://github.com/Robdel12))
+- Robert Jackson ([rwjblue](https://github.com/rwjblue))
+- Sylvain MINA ([sly7-7](https://github.com/sly7-7))
+- Tim Stirrat ([tstirrat](https://github.com/tstirrat))
 
-- afterEach block in describeComponent [\#67](https://github.com/emberjs/ember-mocha/issues/67)
 
-## [v0.8.8](https://github.com/emberjs/ember-mocha/tree/v0.8.8) (2015-12-07)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.8.7...v0.8.8)
+## v0.8.10 (2016-02-01)
 
-**Closed issues:**
+#### :bug: Bug Fix
+* [#72](https://github.com/emberjs/ember-mocha/pull/72) Ensure builds of ember-test-helpers are properly transpiled.. ([@rwjblue](https://github.com/rwjblue))
 
-- v0.8.7 release is actually v0.8.6 [\#66](https://github.com/emberjs/ember-mocha/issues/66)
+#### Committers: 1
+- Robert Jackson ([rwjblue](https://github.com/rwjblue))
 
-## [v0.8.7](https://github.com/emberjs/ember-mocha/tree/v0.8.7) (2015-11-10)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.8.6...v0.8.7)
 
-## [v0.8.6](https://github.com/emberjs/ember-mocha/tree/v0.8.6) (2015-10-27)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.8.5...v0.8.6)
+## v0.8.6 (2015-10-27)
 
-**Merged pull requests:**
+#### :rocket: Enhancement
+* [#65](https://github.com/emberjs/ember-mocha/pull/65) Expose chai configuration object. ([@mupkoo](https://github.com/mupkoo))
 
-- Expose chai configuration object [\#65](https://github.com/emberjs/ember-mocha/pull/65) ([mupkoo](https://github.com/mupkoo))
+#### Committers: 1
+- Mirko Akov ([mupkoo](https://github.com/mupkoo))
 
-## [v0.8.5](https://github.com/emberjs/ember-mocha/tree/v0.8.5) (2015-10-21)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.8.4...v0.8.5)
 
-**Closed issues:**
+## v0.8.4 (2015-10-02)
 
-- Use new ember-test-helpers release featuring this.register and this.inject.service [\#63](https://github.com/emberjs/ember-mocha/issues/63)
+#### :rocket: Enhancement
+* [#62](https://github.com/emberjs/ember-mocha/pull/62) Update ember-test-helpers to 0.5.11. ([@mattmcmanus](https://github.com/mattmcmanus))
+* [#59](https://github.com/emberjs/ember-mocha/pull/59) Add shim for context. ([@SaladFork](https://github.com/SaladFork))
 
-## [v0.8.4](https://github.com/emberjs/ember-mocha/tree/v0.8.4) (2015-10-02)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.8.3...v0.8.4)
+#### Committers: 2
+- Elad Shahar ([SaladFork](https://github.com/SaladFork))
+- Matt McManus ([mattmcmanus](https://github.com/mattmcmanus))
 
-**Merged pull requests:**
 
-- Update ember-test-helers to 0.5.11 [\#62](https://github.com/emberjs/ember-mocha/pull/62) ([mattmcmanus](https://github.com/mattmcmanus))
-- Add shim for context [\#59](https://github.com/emberjs/ember-mocha/pull/59) ([SaladFork](https://github.com/SaladFork))
+## v0.8.3 (2015-09-13)
 
-## [v0.8.3](https://github.com/emberjs/ember-mocha/tree/v0.8.3) (2015-09-13)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.8.2...v0.8.3)
+#### :rocket: Enhancement
+* [#58](https://github.com/emberjs/ember-mocha/pull/58) Update minimum version of ember-test-helpers.. ([@rwjblue](https://github.com/rwjblue))
+* [#57](https://github.com/emberjs/ember-mocha/pull/57) Make `beforeEach` and `afterEach` use Ember.run. ([@cowboyd](https://github.com/cowboyd))
 
-**Closed issues:**
+#### Committers: 2
+- Charles Lowell ([cowboyd](https://github.com/cowboyd))
+- Robert Jackson ([rwjblue](https://github.com/rwjblue))
 
-- ember-test-helpers 0.5.9 [\#56](https://github.com/emberjs/ember-mocha/issues/56)
 
-**Merged pull requests:**
+## v0.8.2 (2015-08-27)
 
-- Update minimum version of ember-test-helpers. [\#58](https://github.com/emberjs/ember-mocha/pull/58) ([rwjblue](https://github.com/rwjblue))
-- Make `beforeEach` and `afterEach` use Ember.run [\#57](https://github.com/emberjs/ember-mocha/pull/57) ([cowboyd](https://github.com/cowboyd))
+#### :rocket: Enhancement
+* [#55](https://github.com/emberjs/ember-mocha/pull/55) Update ember-test-helpers minimum version.. ([@rwjblue](https://github.com/rwjblue))
 
-## [v0.8.2](https://github.com/emberjs/ember-mocha/tree/v0.8.2) (2015-08-28)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.8.1...v0.8.2)
+#### Committers: 1
+- Robert Jackson ([rwjblue](https://github.com/rwjblue))
 
-**Merged pull requests:**
 
-- Update ember-test-helpers minimum version. [\#55](https://github.com/emberjs/ember-mocha/pull/55) ([rwjblue](https://github.com/rwjblue))
+## v0.8.0 (2015-06-19)
 
-## [v0.8.1](https://github.com/emberjs/ember-mocha/tree/v0.8.1) (2015-08-13)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.8.0...v0.8.1)
+#### :rocket: Enhancement
+* [#39](https://github.com/emberjs/ember-mocha/pull/39) Update ember-test-helpers to 0.5.0.. ([@eriktrom](https://github.com/eriktrom))
 
-**Closed issues:**
+#### Committers: 1
+- Erik Trom ([eriktrom](https://github.com/eriktrom))
 
-- Issues with async code [\#53](https://github.com/emberjs/ember-mocha/issues/53)
-- \[Question\] Does a test module provide access to the container? [\#50](https://github.com/emberjs/ember-mocha/issues/50)
-- Update to ember-test-helpers 0.5.2. [\#46](https://github.com/emberjs/ember-mocha/issues/46)
-- Consider sync with ember-test-helpers [\#42](https://github.com/emberjs/ember-mocha/issues/42)
-- Context [\#40](https://github.com/emberjs/ember-mocha/issues/40)
-- Test failures report `\[object Object\]` rather than error message [\#24](https://github.com/emberjs/ember-mocha/issues/24)
 
-**Merged pull requests:**
+## v0.6.3 (2015-05-13)
 
-- remove resetViews from 'it' [\#48](https://github.com/emberjs/ember-mocha/pull/48) ([jeffreybiles](https://github.com/jeffreybiles))
-- Update ember test helpers for Ember 2.0.0-beta.3. [\#47](https://github.com/emberjs/ember-mocha/pull/47) ([Robdel12](https://github.com/Robdel12))
-- Remove usage of deprecated `Ember.keys` [\#45](https://github.com/emberjs/ember-mocha/pull/45) ([tstirrat](https://github.com/tstirrat))
-- Update ember-test-helpers [\#43](https://github.com/emberjs/ember-mocha/pull/43) ([sly7-7](https://github.com/sly7-7))
+#### :rocket: Enhancement
+* [#35](https://github.com/emberjs/ember-mocha/pull/35) Bump ember-test-helpers, mocha, and chai. ([@dgeb](https://github.com/dgeb))
 
-## [v0.8.0](https://github.com/emberjs/ember-mocha/tree/v0.8.0) (2015-06-19)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.7.0...v0.8.0)
+#### Committers: 1
+- Dan Gebhardt ([dgeb](https://github.com/dgeb))
 
-**Closed issues:**
 
-- Minor version bump, please. [\#36](https://github.com/emberjs/ember-mocha/issues/36)
-- acceptance testing window like qunit [\#33](https://github.com/emberjs/ember-mocha/issues/33)
-- Add integration test module [\#26](https://github.com/emberjs/ember-mocha/issues/26)
+## v0.6.1 (2015-04-04)
 
-**Merged pull requests:**
+#### :rocket: Enhancement
+* [#32](https://github.com/emberjs/ember-mocha/pull/32) Update to use newer ember-mocha-adapter. ([@ef4](https://github.com/ef4))
 
-- Update ember-test-helpers to 0.5.0. [\#39](https://github.com/emberjs/ember-mocha/pull/39) ([eriktrom](https://github.com/eriktrom))
+#### Committers: 1
+- Edward Faulkner ([ef4](https://github.com/ef4))
 
-## [v0.7.0](https://github.com/emberjs/ember-mocha/tree/v0.7.0) (2015-05-14)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.6.3...v0.7.0)
 
-## [v0.6.3](https://github.com/emberjs/ember-mocha/tree/v0.6.3) (2015-05-13)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.6.2...v0.6.3)
+## v0.6.0 (2015-03-24)
 
-**Merged pull requests:**
+#### :rocket: Enhancement
+* [#27](https://github.com/emberjs/ember-mocha/pull/27) Expose Chai helpers for custom assertions. ([@dfreeman](https://github.com/dfreeman))
+* [#29](https://github.com/emberjs/ember-mocha/pull/29) Update ember-test-helpers. ([@dfreeman](https://github.com/dfreeman))
 
-- Bump ember-test-helpers, mocha, and chai [\#35](https://github.com/emberjs/ember-mocha/pull/35) ([dgeb](https://github.com/dgeb))
+#### Committers: 1
+- Dan Freeman ([dfreeman](https://github.com/dfreeman))
 
-## [v0.6.2](https://github.com/emberjs/ember-mocha/tree/v0.6.2) (2015-04-04)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.6.1...v0.6.2)
 
-## [v0.6.1](https://github.com/emberjs/ember-mocha/tree/v0.6.1) (2015-04-04)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.6.0...v0.6.1)
+## v0.4.4 (2015-02-22)
 
-**Closed issues:**
+#### :rocket: Enhancement
+* [#23](https://github.com/emberjs/ember-mocha/pull/23) Add chai and mocha ES6 shims.. ([@rwjblue](https://github.com/rwjblue))
 
-- Publish 0.6.0 on NPM [\#30](https://github.com/emberjs/ember-mocha/issues/30)
+#### Committers: 1
+- Robert Jackson ([rwjblue](https://github.com/rwjblue))
 
-**Merged pull requests:**
 
-- Update to use newer ember-mocha-adapter [\#32](https://github.com/emberjs/ember-mocha/pull/32) ([ef4](https://github.com/ef4))
+## v0.4.1 (2015-02-08)
 
-## [v0.6.0](https://github.com/emberjs/ember-mocha/tree/v0.6.0) (2015-03-25)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.5.2...v0.6.0)
+#### :house: Internal
+* [#20](https://github.com/emberjs/ember-mocha/pull/20) Switch from broccoli-cli to ember-cli.. ([@dgeb](https://github.com/dgeb))
+* [#18](https://github.com/emberjs/ember-mocha/pull/18) Use git-repo-version instead of git-repo-info directly.. ([@dgeb](https://github.com/dgeb))
+* [#19](https://github.com/emberjs/ember-mocha/pull/19) Upgrade ember to 1.10.0 and remove handlebars.. ([@dgeb](https://github.com/dgeb))
 
-**Merged pull requests:**
+#### Committers: 1
+- Dan Gebhardt ([dgeb](https://github.com/dgeb))
 
-- Update ember-test-helpers [\#29](https://github.com/emberjs/ember-mocha/pull/29) ([dfreeman](https://github.com/dfreeman))
-- Expose Chai helpers for custom assertions [\#27](https://github.com/emberjs/ember-mocha/pull/27) ([dfreeman](https://github.com/dfreeman))
 
-## [v0.5.2](https://github.com/emberjs/ember-mocha/tree/v0.5.2) (2015-03-11)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.5.1...v0.5.2)
+## v0.2.2 (2015-01-25)
 
-**Closed issues:**
+#### :house: Internal
+* [#12](https://github.com/emberjs/ember-mocha/pull/12) Add broccoli-cli for running tests. ([@backspace](https://github.com/backspace))
 
-- Ember testing helpers not found [\#25](https://github.com/emberjs/ember-mocha/issues/25)
+#### Committers: 1
+- Buck Doyle ([backspace](https://github.com/backspace))
 
-## [v0.5.1](https://github.com/emberjs/ember-mocha/tree/v0.5.1) (2015-02-22)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.5.0...v0.5.1)
 
-## [v0.5.0](https://github.com/emberjs/ember-mocha/tree/v0.5.0) (2015-02-22)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.4.4...v0.5.0)
+## v0.2.1 (2014-12-11)
 
-## [v0.4.4](https://github.com/emberjs/ember-mocha/tree/v0.4.4) (2015-02-22)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.4.3...v0.4.4)
+#### :rocket: Enhancement
+* [#9](https://github.com/emberjs/ember-mocha/pull/9) toString method of wrapper of it should forward to callback.toString ins.... ([@lyonlai](https://github.com/lyonlai))
 
-**Closed issues:**
+#### Committers: 1
+- Yun Lai ([lyonlai](https://github.com/lyonlai))
 
-- Provide a `mocha` module shim. [\#22](https://github.com/emberjs/ember-mocha/issues/22)
 
-**Merged pull requests:**
+## v0.1.3 (2014-11-26)
 
-- Add chai and mocha ES6 shims. [\#23](https://github.com/emberjs/ember-mocha/pull/23) ([rwjblue](https://github.com/rwjblue))
+#### :rocket: Enhancement
+* [#7](https://github.com/emberjs/ember-mocha/pull/7) Add mocha to generated bower.json.. ([@rwjblue](https://github.com/rwjblue))
 
-## [v0.4.3](https://github.com/emberjs/ember-mocha/tree/v0.4.3) (2015-02-19)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.4.2...v0.4.3)
+#### Committers: 1
+- Robert Jackson ([rwjblue](https://github.com/rwjblue))
 
-**Closed issues:**
 
-- Overwriting application to use DS.FixtureAdapter in start-app.js [\#21](https://github.com/emberjs/ember-mocha/issues/21)
+## v0.1.2 (2014-11-26)
 
-## [v0.4.2](https://github.com/emberjs/ember-mocha/tree/v0.4.2) (2015-02-10)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.4.1...v0.4.2)
+#### :rocket: Enhancement
+* [#6](https://github.com/emberjs/ember-mocha/pull/6) preserve mocha test context in both setup and assertion blocks. ([@cowboyd](https://github.com/cowboyd))
+* [#4](https://github.com/emberjs/ember-mocha/pull/4) allow `it`, `xit`, `it.skip` and `it.only` forms.. ([@cowboyd](https://github.com/cowboyd))
 
-## [v0.4.1](https://github.com/emberjs/ember-mocha/tree/v0.4.1) (2015-02-08)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.4.0...v0.4.1)
+#### :bug: Bug Fix
+* [#5](https://github.com/emberjs/ember-mocha/pull/5) Globalized fixes. ([@cowboyd](https://github.com/cowboyd))
+* [#2](https://github.com/emberjs/ember-mocha/pull/2) call to it caused infinite loop in global build. ([@cowboyd](https://github.com/cowboyd))
 
-**Merged pull requests:**
-
-- Switch from broccoli-cli to ember-cli. [\#20](https://github.com/emberjs/ember-mocha/pull/20) ([dgeb](https://github.com/dgeb))
-- Upgrade ember to 1.10.0 and remove handlebars. [\#19](https://github.com/emberjs/ember-mocha/pull/19) ([dgeb](https://github.com/dgeb))
-- Use git-repo-version instead of git-repo-info directly. [\#18](https://github.com/emberjs/ember-mocha/pull/18) ([dgeb](https://github.com/dgeb))
-- Fixed broken test [\#17](https://github.com/emberjs/ember-mocha/pull/17) ([johanneswuerbach](https://github.com/johanneswuerbach))
-- ensure that context is preserved in setup/teardown [\#16](https://github.com/emberjs/ember-mocha/pull/16) ([cowboyd](https://github.com/cowboyd))
-- allow .skip and .only on top level modules. [\#15](https://github.com/emberjs/ember-mocha/pull/15) ([cowboyd](https://github.com/cowboyd))
-
-## [v0.4.0](https://github.com/emberjs/ember-mocha/tree/v0.4.0) (2015-02-01)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.3.0...v0.4.0)
-
-## [v0.3.0](https://github.com/emberjs/ember-mocha/tree/v0.3.0) (2015-01-25)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.2.2...v0.3.0)
-
-## [v0.2.2](https://github.com/emberjs/ember-mocha/tree/v0.2.2) (2015-01-25)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.2.1...v0.2.2)
-
-**Closed issues:**
-
-- testing non-container objects [\#10](https://github.com/emberjs/ember-mocha/issues/10)
-
-**Merged pull requests:**
-
-- Add broccoli-cli for running tests [\#12](https://github.com/emberjs/ember-mocha/pull/12) ([backspace](https://github.com/backspace))
-
-## [v0.2.1](https://github.com/emberjs/ember-mocha/tree/v0.2.1) (2014-12-12)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.1.4...v0.2.1)
-
-**Closed issues:**
-
-- Model test `needs` block is too needy? [\#8](https://github.com/emberjs/ember-mocha/issues/8)
-
-**Merged pull requests:**
-
-- toString method of wrapper of it should forward to callback.toString ins... [\#9](https://github.com/emberjs/ember-mocha/pull/9) ([lyonlai](https://github.com/lyonlai))
-
-## [v0.1.4](https://github.com/emberjs/ember-mocha/tree/v0.1.4) (2014-11-26)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.1.3...v0.1.4)
-
-## [v0.1.3](https://github.com/emberjs/ember-mocha/tree/v0.1.3) (2014-11-26)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.1.2...v0.1.3)
-
-**Merged pull requests:**
-
-- Add mocha to generated bower.json. [\#7](https://github.com/emberjs/ember-mocha/pull/7) ([rwjblue](https://github.com/rwjblue))
-
-## [v0.1.2](https://github.com/emberjs/ember-mocha/tree/v0.1.2) (2014-11-26)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.1.1...v0.1.2)
-
-**Merged pull requests:**
-
-- preserve mocha test context in both setup and assertion blocks [\#6](https://github.com/emberjs/ember-mocha/pull/6) ([cowboyd](https://github.com/cowboyd))
-- Globalized fixes [\#5](https://github.com/emberjs/ember-mocha/pull/5) ([cowboyd](https://github.com/cowboyd))
-- allow `it`, `xit`, `it.skip` and `it.only` forms. [\#4](https://github.com/emberjs/ember-mocha/pull/4) ([cowboyd](https://github.com/cowboyd))
-- call to it caused infinite loop in global build [\#2](https://github.com/emberjs/ember-mocha/pull/2) ([cowboyd](https://github.com/cowboyd))
-
-## [v0.1.1](https://github.com/emberjs/ember-mocha/tree/v0.1.1) (2014-11-20)
-[Full Changelog](https://github.com/emberjs/ember-mocha/compare/v0.1.0...v0.1.1)
-
-**Closed issues:**
-
-- Getting started guide [\#1](https://github.com/emberjs/ember-mocha/issues/1)
-
-## [v0.1.0](https://github.com/emberjs/ember-mocha/tree/v0.1.0) (2014-11-11)
-
-
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+#### Committers: 1
+- Charles Lowell ([cowboyd](https://github.com/cowboyd))
