@@ -1,9 +1,9 @@
 import Ember from 'ember';
+import AppResolver from '../../resolver';
+import config from '../../config/environment';
 import { setResolver } from 'ember-test-helpers';
 
-var Resolver = Ember.DefaultResolver.extend({
-  registry: null,
-
+const Resolver = AppResolver.extend({
   resolve: function(fullName) {
     return this.registry[fullName] || this._super.apply(this, arguments);
   },
@@ -13,7 +13,15 @@ var Resolver = Ember.DefaultResolver.extend({
   }
 });
 
-var resolver = Resolver.create({registry: {}, namespace: {}});
+const resolver = Resolver.create();
+
+resolver.namespace = {
+  modulePrefix: config.modulePrefix,
+  podModulePrefix: config.podModulePrefix
+};
+
+export default resolver;
+
 setResolver(resolver);
 
 export function setResolverRegistry(registry) {

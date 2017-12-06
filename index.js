@@ -1,0 +1,125 @@
+
+/* eslint-env node */
+'use strict';
+
+const path = require('path');
+const stripIndent = require('common-tags').stripIndent;
+
+module.exports = {
+  name: 'ember-mocha',
+
+  init() {
+    this._super.init && this._super.init.apply(this, arguments);
+
+    this.setTestGenerator();
+  },
+
+  postBuild() {
+    this.checkPackages();
+  },
+
+  checkPackages() {
+    var packages = Object.keys(this.project.addonPackages);
+    if (packages.indexOf('ember-cli-qunit') !== -1) {
+      console.warn('\nIt looks like you are using "ember-cli-qunit" which can cause issues with "ember-cli-mocha", please remove this package.\n');
+      process.exit(1);
+    }
+    if (packages.indexOf('ember-cli-htmlbars-inline-precompile') === -1) {
+      console.warn('\nIt looks like you\'re not on ember-cli 1.13, which includes ember-cli-htmlbars-inline-precompile by default. Please run: ember install ember-cli-htmlbars-inline-precompile.\n');
+      process.exit(1);
+    }
+  },
+
+  included() {
+    this._super.included.apply(this, arguments);
+
+    this.import('vendor/mocha/mocha.js', { type: 'test' });
+    this.import('vendor/mocha/mocha.css', { type: 'test' });
+    this.import('vendor/ember-mocha/mocha-configuration.js', { type: 'test' });
+    this.import('vendor/ember-mocha/ember-mocha-adapter.js', { type: 'test' });
+    this.import('vendor/ember-mocha/test-loader.js', { type: 'test' });
+
+    let addonOptions = this.targetOptions();
+    let explicitlyDisabledStyles = addonOptions.disableContainerStyles === true;
+    if (!explicitlyDisabledStyles) {
+      this.import('vendor/ember-mocha/test-container-styles.css', { type: 'test' });
+    }
+  },
+
+  targetOptions() {
+    if (!this._targetOptions) {
+      // 1. check this.parent.options['ember-mocha']
+      let targetOptions = this.parent.options && this.parent.options['ember-mocha'];
+      // 2. check this.app.options['ember-mocha']
+      targetOptions = targetOptions || (this.app && this.app.options && this.app.options['ember-mocha']);
+      // 3. check this.parent.options['ember-cli-mocha']
+      targetOptions = targetOptions || (this.parent.options && this.parent.options['ember-cli-mocha']);
+      // 4. check this.app.options['ember-cli-mocha']
+      targetOptions = targetOptions || (this.app && this.app.options && this.app.options['ember-cli-mocha']);
+      this._targetOptions = targetOptions || {};
+    }
+
+    return this._targetOptions;
+  },
+
+  contentFor(type) {
+    // Skip if insertContentForTestBody === false.
+    if (type === 'test-body' && !(this.targetOptions().insertContentForTestBody === false)) {
+      return stripIndent`
+        <div id="mocha"></div>
+        <div id="mocha-fixture"></div>
+        <div id="ember-testing-container">
+          <div id="ember-testing"></div>
+        </div>
+      `;
+    }
+  },
+
+  treeForVendor(tree) {
+    const MergeTrees = require('broccoli-merge-trees');
+    const Funnel = require('broccoli-funnel');
+    let mochaPath = path.dirname(require.resolve('mocha'));
+
+    let mochaTree = new Funnel(this.treeGenerator(mochaPath), {
+      destDir: 'mocha',
+      annotation: 'ember-mocha#treeForVendor',
+    });
+
+    return new MergeTrees([mochaTree, tree]);
+  },
+
+  treeForAddonTestSupport(tree) {
+    // intentionally not calling _super here
+    // so that can have our `import`'s be
+    // import { ... } from 'ember-mocha';
+
+    return this.preprocessJs(tree, '/', this.name, {
+      registry: this.registry,
+    });
+  },
+
+  setTestGenerator() {
+    this.project.generateTestFile = function(moduleName, tests) {
+      var output = `describe('${moduleName}', function() {\n`;
+
+      tests.forEach(function(test) {
+        output += `  it('${test.name}', function() {\n`;
+        if (test.passed) {
+          output +=
+            "    // precompiled test passed\n";
+        } else {
+          output +=
+            "    // precompiled test failed\n" +
+            `    var error = new chai.AssertionError('${test.errorMessage}');\n` +
+            "    error.stack = undefined;\n" +
+            "    throw error;\n";
+        }
+        output +=   "  });\n";
+      });
+
+      output += "});\n";
+
+      return output;
+    };
+  },
+};

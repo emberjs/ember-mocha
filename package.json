@@ -2,6 +2,9 @@
   "name": "ember-mocha",
   "version": "0.12.0",
   "description": "Mocha helpers for testing Ember.js applications",
+  "keywords": [
+    "ember-addon"
+  ],
   "homepage": "https://github.com/emberjs/ember-mocha",
   "bugs": {
     "url": "https://github.com/emberjs/ember-mocha/issues"
@@ -11,7 +14,10 @@
     "Dan Gebhardt",
     "Robert Jackson"
   ],
-  "main": "lib/ember-mocha.js",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emberjs/ember-mocha.git"
@@ -19,30 +25,44 @@
   "scripts": {
     "build": "ember build",
     "start": "ember serve",
-    "test": "ember test"
+    "test": "ember test",
+    "test:all": "ember try:each"
   },
-  "files": [
-    "build-support",
-    "lib"
-  ],
   "dependencies": {
-    "ember-test-helpers": "^0.6.3"
+    "@ember/test-helpers": "^0.7.2",
+    "broccoli-funnel": "^2.0.1",
+    "broccoli-merge-trees": "^2.0.0",
+    "common-tags": "^1.5.1",
+    "ember-cli-babel": "^6.6.0",
+    "ember-cli-test-loader": "^2.2.0",
+    "mocha": "^2.5.3"
   },
   "devDependencies": {
-    "broccoli-babel-transpiler": "^5.5.0",
-    "broccoli-concat": "^2.3.4",
-    "broccoli-funnel": "^1.0.6",
-    "broccoli-lint-eslint": "^3.3.2",
-    "broccoli-merge-trees": "^1.1.4",
-    "broccoli-rollup": "^1.0.3",
-    "broccoli-string-replace": "^0.1.1",
-    "ember-cli": "^2.7.0",
-    "ember-cli-release": "^0.2.7",
-    "exists-sync": "0.0.3",
-    "git-repo-version": "^0.4.0",
-    "loader.js": "^4.2.3",
-    "resolve": "^1.1.7",
-    "rollup-plugin-alias": "^1.3.1",
-    "rollup-plugin-node-resolve": "^2.0.0"
+    "broccoli-asset-rev": "^2.4.5",
+    "ember-ajax": "^3.0.0",
+    "ember-cli": "~2.17.0",
+    "ember-cli-chai": "^0.4.3",
+    "ember-cli-dependency-checker": "^2.0.0",
+    "ember-cli-eslint": "^4.2.1",
+    "ember-cli-htmlbars": "^2.0.1",
+    "ember-cli-htmlbars-inline-precompile": "^1.0.0",
+    "ember-cli-inject-live-reload": "^1.4.1",
+    "ember-cli-pretender": "^1.0.1",
+    "ember-cli-shims": "^1.2.0",
+    "ember-cli-sri": "^2.1.0",
+    "ember-cli-uglify": "^2.0.0",
+    "ember-data": "^2.17.0",
+    "ember-disable-prototype-extensions": "^1.1.2",
+    "ember-export-application-global": "^2.0.0",
+    "ember-load-initializers": "^1.0.0",
+    "ember-resolver": "^4.0.0",
+    "ember-source": "~2.17.0",
+    "loader.js": "^4.2.3"
+  },
+  "engines": {
+    "node": "^4.5 || 6.* || >= 7.*"
+  },
+  "ember-addon": {
+    "configPath": "tests/dummy/config"
   }
 }

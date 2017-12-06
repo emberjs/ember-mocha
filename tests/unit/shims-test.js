@@ -1,4 +1,6 @@
 import { mocha, describe, context, it, before, after, beforeEach, afterEach } from 'mocha';
+import { expect } from 'chai';
+
 import Ember from 'ember';
 
 describe('mocha-shim', function() {
@@ -9,11 +11,11 @@ describe('mocha-shim', function() {
     });
 
     afterEach(function() {
-      window.chai.expect(Ember.run.currentRunLoop).to.be.null;
+      expect(Ember.run.currentRunLoop).to.be.null;
     });
 
     it('do not use the runloop', function() {
-      window.chai.expect(this.beforeEachRunLoop).to.be.null;
+      expect(this.beforeEachRunLoop).to.be.null;
     });
   });
 
@@ -23,22 +25,22 @@ describe('mocha-shim', function() {
     });
 
     after(function() {
-      window.chai.expect(Ember.run.currentRunLoop).to.be.null;
+      expect(Ember.run.currentRunLoop).to.be.null;
     });
 
     it('do not use the runloop', function() {
-      window.chai.expect(this.beforeRunLoop).to.be.null;
+      expect(this.beforeRunLoop).to.be.null;
     });
   });
 
   it('should export global variables defined by mocha', function() {
-    window.chai.expect(mocha).to.equal(window.mocha);
-    window.chai.expect(describe).to.equal(window.describe);
-    window.chai.expect(context).to.equal(window.context);
-    window.chai.expect(it).to.equal(window.it);
-    window.chai.expect(before).to.equal(window.before);
-    window.chai.expect(after).to.equal(window.after);
-    window.chai.expect(beforeEach).to.equal(window.beforeEach);
-    window.chai.expect(afterEach).to.equal(window.afterEach);
+    expect(mocha).to.equal(window.mocha);
+    expect(describe).to.equal(window.describe);
+    expect(context).to.equal(window.context);
+    expect(it).to.equal(window.it);
+    expect(before).to.equal(window.before);
+    expect(after).to.equal(window.after);
+    expect(beforeEach).to.equal(window.beforeEach);
+    expect(afterEach).to.equal(window.afterEach);
   });
 });

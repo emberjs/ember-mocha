@@ -1,23 +1,24 @@
 import Ember from 'ember';
 import { setupComponentTest } from 'ember-mocha';
-import { setResolverRegistry } from 'tests/test-support/resolver';
 import { describe, it, beforeEach, afterEach } from 'mocha';
+import { expect } from 'chai';
+import hbs from 'htmlbars-inline-precompile';
 
-const { expect } = window.chai;
+import { setResolverRegistry } from '../helpers/resolver';
 
 var PrettyColor = Ember.Component.extend({
   classNames: ['pretty-color'],
   attributeBindings: ['style'],
-  style: function(){
+  style: Ember.computed('name', function(){
     return 'color: ' + this.get('name') + ';';
-  }.property('name')
+  })
 });
 
 function setupRegistry() {
   setResolverRegistry({
     'component:x-foo': Ember.Component.extend(),
     'component:pretty-color': PrettyColor,
-    'template:components/pretty-color': Ember.Handlebars.compile('Pretty Color: <span class="color-name">{{name}}</span>')
+    'template:components/pretty-color': hbs`Pretty Color: <span class="color-name">{{name}}</span>`
   });
 }
 
@@ -48,7 +49,7 @@ describe('setupComponentTest', function() {
 
     it('yields', function() {
       var component = this.subject({
-        layout: Ember.Handlebars.compile("yield me")
+        layout: hbs`yield me`
       });
       expect(component._state).to.equal('preRender');
       this.render();
@@ -57,7 +58,7 @@ describe('setupComponentTest', function() {
 
     it('can lookup components in its layout', function() {
       var component = this.subject({
-        layout: Ember.Handlebars.compile("{{x-foo id='yodawg-i-heard-you-liked-x-foo-in-ur-x-foo'}}")
+        layout: hbs`{{x-foo id='yodawg-i-heard-you-liked-x-foo-in-ur-x-foo'}}`
       });
       this.render();
       expect(component._state).to.equal('inDOM');
@@ -65,7 +66,7 @@ describe('setupComponentTest', function() {
 
     it('clears out views from test to test', function() {
       this.subject({
-        layout: Ember.Handlebars.compile("{{x-foo id='yodawg-i-heard-you-liked-x-foo-in-ur-x-foo'}}")
+        layout: hbs`{{x-foo id='yodawg-i-heard-you-liked-x-foo-in-ur-x-foo'}}`
       });
       this.render();
       expect(true).to.equal(true); // rendered without id already being used from another test
@@ -117,12 +118,12 @@ describe('setupComponentTest', function() {
 
     it('renders with color', function() {
       this.set('name', 'green');
-      this.render(Ember.Handlebars.compile(`{{pretty-color name=name}}`));
+      this.render(hbs`{{pretty-color name=name}}`);
       expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: green');
     });
 
     it('renders a second time without', function() {
-      this.render(Ember.Handlebars.compile(`{{pretty-color name=name}}`));
+      this.render(hbs`{{pretty-color name=name}}`);
       expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color:');
     });
   });
@@ -145,7 +146,7 @@ describe('setupComponentTest', function() {
     });
 
     it('renders with color', function() {
-      this.render(Ember.Handlebars.compile(`{{pretty-color name=name}}`));
+      this.render(hbs`{{pretty-color name=name}}`);
       expect(Ember.$.trim(this.$().text())).to.equal('Pretty Color: red');
     });
   });
