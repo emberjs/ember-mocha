@@ -11,11 +11,11 @@ describe('mocha-shim', function() {
     });
 
     afterEach(function() {
-      expect(Ember.run.currentRunLoop).to.be.null;
+      expect(Ember.run.currentRunLoop).to.be.ok;
     });
 
-    it('do not use the runloop', function() {
-      expect(this.beforeEachRunLoop).to.be.null;
+    it('does use the runloop', function() {
+      expect(this.beforeEachRunLoop).to.be.ok;
     });
   });
 
@@ -40,7 +40,7 @@ describe('mocha-shim', function() {
     expect(it).to.equal(window.it);
     expect(before).to.equal(window.before);
     expect(after).to.equal(window.after);
-    expect(beforeEach).to.equal(window.beforeEach);
-    expect(afterEach).to.equal(window.afterEach);
+    expect(beforeEach.withoutEmberRun).to.equal(window.beforeEach);
+    expect(afterEach.withoutEmberRun).to.equal(window.afterEach);
   });
 });
