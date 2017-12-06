@@ -1,8 +1,6 @@
+# Changelog
 
-## Unreleased (2017-12-06)
-
-#### :boom: Breaking Change
-* [#164](https://github.com/emberjs/ember-mocha/pull/164) don't wrap hooks in a runloop. ([@akatov](https://github.com/akatov))
+## v0.13.0 (2017-12-06)
 
 #### :house: Internal
 * [#174](https://github.com/emberjs/ember-mocha/pull/174) CI: Add Ember 2.0, 2.4 and 2.8 as test targets. ([@Turbo87](https://github.com/Turbo87))
@@ -11,10 +9,8 @@
 * [#171](https://github.com/emberjs/ember-mocha/pull/171) Remove `bower` publishing code. ([@Turbo87](https://github.com/Turbo87))
 * [#170](https://github.com/emberjs/ember-mocha/pull/170) Use headless Chrome instead of PhantomJS. ([@Turbo87](https://github.com/Turbo87))
 * [#169](https://github.com/emberjs/ember-mocha/pull/169) Add yarn lockfile and use yarn for CI. ([@Turbo87](https://github.com/Turbo87))
-* [#164](https://github.com/emberjs/ember-mocha/pull/164) don't wrap hooks in a runloop. ([@akatov](https://github.com/akatov))
 
 #### Committers: 2
-- Dmitri Akatov ([akatov](https://github.com/akatov))
 - Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
 
