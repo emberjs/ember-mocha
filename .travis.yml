@@ -47,3 +47,12 @@ script:
   # Usually, it's ok to finish the test scenario without reverting
   #  to the addon's original dependency state, skipping "cleanup".
   - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
+
+deploy:
+  - provider: npm
+    email: stefan.penner+ember-cli@gmail.com
+    api_key:
+      secure: PQRsq4JcFYPXOqov1jwPw63WnwYYpyKby/2akUjq8PHwwgCDEt34Z8yqQdJogqKmKRjijsiWu+b54fbIpZ6TMvqPL18F8FbCl6e2zoAY55VUmmVkx9wkvuPydTDs2fuPqk6LFvmIMiq+pjEPlSeWg3GpFSkFjfs0WZlO33xMyWw=
+    on:
+      tags: true
+      repo: emberjs/ember-mocha
