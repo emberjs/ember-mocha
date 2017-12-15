@@ -1,6 +1,18 @@
 # Changelog
 
-## v0.13.0 (2017-12-06)
+## v0.13.0-beta.2 (2017-12-15)
+
+#### :bug: Bug Fix
+* [#179](https://github.com/emberjs/ember-mocha/pull/179) Update `@ember/test-helpers` to v0.7.5. ([@Turbo87](https://github.com/Turbo87))
+* [#178](https://github.com/emberjs/ember-mocha/pull/178) Update `@ember/test-helpers` to v0.7.4. ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
+
+## v0.13.0-beta.1 (2017-12-06)
+
+#### :memo: Documentation
+* [#175](https://github.com/emberjs/ember-mocha/pull/175) Use `lerna-changelog` to generate friendly changelog. ([@Turbo87](https://github.com/Turbo87))
 
 #### :house: Internal
 * [#174](https://github.com/emberjs/ember-mocha/pull/174) CI: Add Ember 2.0, 2.4 and 2.8 as test targets. ([@Turbo87](https://github.com/Turbo87))
