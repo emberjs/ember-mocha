@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@ember/test-helpers@^0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@ember/test-helpers/-/test-helpers-0.7.4.tgz#02e2ef6633d177b1f5136f1f62e7e7b5ed8e2bea"
+"@ember/test-helpers@^0.7.5":
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@ember/test-helpers/-/test-helpers-0.7.5.tgz#dd384d8e3c60c02249ae6e37da369aeb2ec06527"
   dependencies:
     broccoli-funnel "^2.0.1"
-    ember-cli-babel "^6.8.1"
+    ember-cli-babel "^6.10.0"
 
 "@glimmer/di@^0.2.0":
   version "0.2.0"
@@ -1799,7 +1799,7 @@ ember-ajax@^3.0.0:
   dependencies:
     ember-cli-babel "^6.0.0"
 
-ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6.1.0, ember-cli-babel@^6.6.0, ember-cli-babel@^6.8.1, ember-cli-babel@^6.8.2, ember-cli-babel@^6.9.0:
+ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6.1.0, ember-cli-babel@^6.10.0, ember-cli-babel@^6.6.0, ember-cli-babel@^6.8.1, ember-cli-babel@^6.8.2, ember-cli-babel@^6.9.0:
   version "6.10.0"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-6.10.0.tgz#81424acd1d97fb13658168121eeb2007d6edee84"
   dependencies:
