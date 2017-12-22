@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.13.0-beta.3 (2017-12-22)
+
+#### :rocket: Enhancement
+* [#180](https://github.com/emberjs/ember-mocha/pull/180) Update `@ember/test-helpers` to v0.7.10. ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#181](https://github.com/emberjs/ember-mocha/pull/181) CI: Run `auto-dist-tag` in DEBUG mode. ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
+
+
 ## v0.13.0-beta.2 (2017-12-15)
 
 #### :bug: Bug Fix
@@ -8,6 +20,7 @@
 
 #### Committers: 1
 - Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
+
 
 ## v0.13.0-beta.1 (2017-12-06)
 
