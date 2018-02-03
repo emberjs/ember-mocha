@@ -1,5 +1,36 @@
 # Changelog
 
+## v0.13.0 (2018-02-03)
+
+#### :boom: Breaking Change
+* [#173](https://github.com/emberjs/ember-mocha/pull/173) Convert to Ember CLI addon. ([@Turbo87](https://github.com/Turbo87))
+
+#### :rocket: Enhancement
+* [#186](https://github.com/emberjs/ember-mocha/pull/186) Update `@ember/test-helpers` to v0.7.16. ([@Turbo87](https://github.com/Turbo87))
+* [#180](https://github.com/emberjs/ember-mocha/pull/180) Update `@ember/test-helpers` to v0.7.10. ([@Turbo87](https://github.com/Turbo87))
+
+#### :bug: Bug Fix
+* [#183](https://github.com/emberjs/ember-mocha/pull/183) Add missing `overrideTestCommandFilter()` method. ([@Turbo87](https://github.com/Turbo87))
+* [#179](https://github.com/emberjs/ember-mocha/pull/179) Update `@ember/test-helpers` to v0.7.5. ([@Turbo87](https://github.com/Turbo87))
+* [#178](https://github.com/emberjs/ember-mocha/pull/178) Update `@ember/test-helpers` to v0.7.4. ([@Turbo87](https://github.com/Turbo87))
+
+#### :memo: Documentation
+* [#175](https://github.com/emberjs/ember-mocha/pull/175) Use `lerna-changelog` to generate friendly changelog. ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#185](https://github.com/emberjs/ember-mocha/pull/185) CI: Use `skip_cleanup` to fix `auto-dist-tag` behavior. ([@Turbo87](https://github.com/Turbo87))
+* [#184](https://github.com/emberjs/ember-mocha/pull/184) testem: Use `--no-sandbox` on TravisCI. ([@Turbo87](https://github.com/Turbo87))
+* [#181](https://github.com/emberjs/ember-mocha/pull/181) CI: Run `auto-dist-tag` in DEBUG mode. ([@Turbo87](https://github.com/Turbo87))
+* [#174](https://github.com/emberjs/ember-mocha/pull/174) CI: Add Ember 2.0, 2.4 and 2.8 as test targets. ([@Turbo87](https://github.com/Turbo87))
+* [#172](https://github.com/emberjs/ember-mocha/pull/172) Update `broccoli-lint-eslint` and use `group` option. ([@Turbo87](https://github.com/Turbo87))
+* [#171](https://github.com/emberjs/ember-mocha/pull/171) Remove `bower` publishing code. ([@Turbo87](https://github.com/Turbo87))
+* [#170](https://github.com/emberjs/ember-mocha/pull/170) Use headless Chrome instead of PhantomJS. ([@Turbo87](https://github.com/Turbo87))
+* [#169](https://github.com/emberjs/ember-mocha/pull/169) Add yarn lockfile and use yarn for CI. ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
+
+
 ## v0.13.0-beta.4 (2018-02-03)
 
 #### :bug: Bug Fix
@@ -36,12 +67,14 @@
 
 ## v0.13.0-beta.1 (2017-12-06)
 
+#### :boom: Breaking Change
+* [#173](https://github.com/emberjs/ember-mocha/pull/173) Convert to Ember CLI addon. ([@Turbo87](https://github.com/Turbo87))
+
 #### :memo: Documentation
 * [#175](https://github.com/emberjs/ember-mocha/pull/175) Use `lerna-changelog` to generate friendly changelog. ([@Turbo87](https://github.com/Turbo87))
 
 #### :house: Internal
 * [#174](https://github.com/emberjs/ember-mocha/pull/174) CI: Add Ember 2.0, 2.4 and 2.8 as test targets. ([@Turbo87](https://github.com/Turbo87))
-* [#173](https://github.com/emberjs/ember-mocha/pull/173) Convert to Ember CLI addon. ([@Turbo87](https://github.com/Turbo87))
 * [#172](https://github.com/emberjs/ember-mocha/pull/172) Update `broccoli-lint-eslint` and use `group` option. ([@Turbo87](https://github.com/Turbo87))
 * [#171](https://github.com/emberjs/ember-mocha/pull/171) Remove `bower` publishing code. ([@Turbo87](https://github.com/Turbo87))
 * [#170](https://github.com/emberjs/ember-mocha/pull/170) Use headless Chrome instead of PhantomJS. ([@Turbo87](https://github.com/Turbo87))
