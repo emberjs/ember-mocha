@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.13.0-beta.4 (2018-02-03)
+
+#### :bug: Bug Fix
+* [#183](https://github.com/emberjs/ember-mocha/pull/183) Add missing `overrideTestCommandFilter()` method. ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#184](https://github.com/emberjs/ember-mocha/pull/184) testem: Use `--no-sandbox` on TravisCI. ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
+
+
 ## v0.13.0-beta.3 (2017-12-22)
 
 #### :rocket: Enhancement
