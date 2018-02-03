@@ -58,6 +58,7 @@ deploy:
     email: stefan.penner+ember-cli@gmail.com
     api_key:
       secure: PQRsq4JcFYPXOqov1jwPw63WnwYYpyKby/2akUjq8PHwwgCDEt34Z8yqQdJogqKmKRjijsiWu+b54fbIpZ6TMvqPL18F8FbCl6e2zoAY55VUmmVkx9wkvuPydTDs2fuPqk6LFvmIMiq+pjEPlSeWg3GpFSkFjfs0WZlO33xMyWw=
+    skip_cleanup: true
     on:
       tags: true
       repo: emberjs/ember-mocha
