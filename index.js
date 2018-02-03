@@ -11,6 +11,7 @@ module.exports = {
   init() {
     this._super.init && this._super.init.apply(this, arguments);
 
+    this.overrideTestCommandFilter();
     this.setTestGenerator();
   },
 
@@ -95,6 +96,36 @@ module.exports = {
 
     return this.preprocessJs(tree, '/', this.name, {
       registry: this.registry,
+    });
+  },
+
+  overrideTestCommandFilter() {
+    let TestCommand = this.project.require('ember-cli/lib/commands/test');
+
+    TestCommand.prototype.buildTestPageQueryString = function(options) {
+      let params = [];
+
+      if (options.filter) {
+        params.push(`grep=${options.filter}`);
+
+        if (options.invert) {
+          params.push('invert=1');
+        }
+      }
+
+      if (options.query) {
+        params.push(options.query);
+      }
+
+      return params.join('&');
+    };
+
+    TestCommand.prototype.availableOptions.push({
+      name: 'invert',
+      type: Boolean,
+      default: false,
+      description: 'Invert the filter specified by the --filter argument',
+      aliases: ['i']
     });
   },
 
