@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.13.1 (2018-02-05)
+
+#### :bug: Bug Fix
+* [#188](https://github.com/emberjs/ember-mocha/pull/188) Adjust import paths for `getContext()` and `setResolver()`. ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#187](https://github.com/emberjs/ember-mocha/pull/187) CI: Remove `--skip-cleanup` from `try:one` command. ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
+
+
 ## v0.13.0 (2018-02-03)
 
 #### :boom: Breaking Change
