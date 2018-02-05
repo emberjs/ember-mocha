@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { beforeEach, afterEach, after, describe } from 'mocha';
-import { getContext } from 'ember-test-helpers';
+import { getContext } from '@ember/test-helpers';
 
 export function createModule(Constructor, name, description, callbacks, tests, method) {
   Ember.deprecate(

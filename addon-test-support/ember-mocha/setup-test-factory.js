@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { before, beforeEach, afterEach, after } from 'mocha';
-import { getContext } from 'ember-test-helpers';
+import { getContext } from '@ember/test-helpers';
 
 export default function(Constructor) {
   return function setupTest(moduleName, options = {}) {
