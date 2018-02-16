@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@ember/test-helpers@^0.7.17":
+"@ember/test-helpers@^0.7.18":
   version "0.7.18"
   resolved "http://ynpm-registry.corp.yahoo.com/@ember/test-helpers/-/test-helpers-0.7.18.tgz#a0c474c3029588ec46d2e406252fc072b7f9aa3c"
   dependencies:
