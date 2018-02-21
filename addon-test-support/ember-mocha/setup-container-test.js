@@ -15,6 +15,15 @@ function chainHooks(hooks, context) {
   return hooks.reduce((promise, fn) => promise.then(fn.bind(context)), resolve());
 }
 
+function setupPauseTest(context) {
+  let originalPauseTest = context.pauseTest;
+  context.pauseTest = function Mocha_pauseTest() {
+    context.timeout(0); // prevent the test from timing out
+
+    return originalPauseTest.call(context);
+  };
+}
+
 export default function setupUnitTest(options) {
   let originalContext;
   let beforeEachHooks = [];
@@ -23,15 +32,9 @@ export default function setupUnitTest(options) {
   beforeEach(function() {
     originalContext = _assign({}, this);
 
-    return setupContext(this, options).then(() => {
-
-      let originalPauseTest = this.pauseTest;
-      this.pauseTest = function Mocha_pauseTest() {
-        this.timeout(0); // prevent the test from timing out
-
-        return originalPauseTest.call(this);
-      };
-    }).then(() => chainHooks(beforeEachHooks, this));
+    return setupContext(this, options)
+      .then(() => setupPauseTest(this))
+      .then(() => chainHooks(beforeEachHooks, this));
   });
 
   afterEach(function() {
