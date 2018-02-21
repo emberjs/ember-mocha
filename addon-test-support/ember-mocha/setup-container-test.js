@@ -11,8 +11,8 @@ import { resolve } from 'rsvp';
 
 const _assign = assign || merge;
 
-function chainHooks(hooks, context, promise = resolve()) {
-  return hooks.reduce((promise, fn) => promise.then(fn.bind(context)), promise);
+function chainHooks(hooks, context) {
+  return hooks.reduce((promise, fn) => promise.then(fn.bind(context)), resolve());
 }
 
 export default function setupUnitTest(options) {
@@ -23,7 +23,7 @@ export default function setupUnitTest(options) {
   beforeEach(function() {
     originalContext = _assign({}, this);
 
-    let promise = setupContext(this, options).then(() => {
+    return setupContext(this, options).then(() => {
 
       let originalPauseTest = this.pauseTest;
       this.pauseTest = function Mocha_pauseTest() {
@@ -31,15 +31,11 @@ export default function setupUnitTest(options) {
 
         return originalPauseTest.call(this);
       };
-    });
-
-    return chainHooks(beforeEachHooks, this, promise);
+    }).then(() => chainHooks(beforeEachHooks, this));
   });
 
   afterEach(function() {
-    let promise = chainHooks(afterEachHooks, this);
-
-    return promise
+    return chainHooks(afterEachHooks, this)
       .then(() => teardownContext(this))
       .then(() => {
         // delete any extraneous properties
