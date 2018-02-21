@@ -15,13 +15,27 @@ describe('setupApplicationTest', function() {
 
   this.timeout(5000);
 
-  setupApplicationTest();
+  describe('acceptance test', function() {
 
-  it('can visit subroutes', async function() {
-    await visit('/');
-    expect(this.element.querySelector('h2').textContent.trim()).to.be.empty;
+    setupApplicationTest();
 
-    await visit('/foo');
-    expect(this.element.querySelector('h2').textContent.trim()).to.be.equal('this is an acceptance test');
+    it('can visit subroutes', async function() {
+      await visit('/');
+      expect(this.element.querySelector('h2').textContent.trim()).to.be.empty;
+
+      await visit('/foo');
+      expect(this.element.querySelector('h2').textContent.trim()).to.be.equal('this is an acceptance test');
+    });
+  });
+
+  describe('hooks API', function() {
+
+    let hooks = setupApplicationTest();
+
+    it('returns hooks API', function() {
+      expect(hooks)
+        .to.respondTo('beforeEach')
+        .and.to.respondTo('afterEach');
+    })
   });
 });
