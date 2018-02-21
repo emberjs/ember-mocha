@@ -45,4 +45,14 @@ describe('setupRenderingTest', function() {
     });
   });
 
+  describe('hooks API', function() {
+
+    let hooks = setupRenderingTest();
+
+    it('returns hooks API', function() {
+      expect(hooks)
+        .to.respondTo('beforeEach')
+        .and.to.respondTo('afterEach');
+    });
+  });
 });

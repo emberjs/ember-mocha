@@ -1,9 +1,10 @@
 import { setupContainerTest } from 'ember-mocha';
-import { describe, it, beforeEach, afterEach } from 'mocha';
+import { describe, it, beforeEach, afterEach, after } from 'mocha';
 import { expect } from 'chai';
 import { pauseTest, resumeTest } from '@ember/test-helpers';
 import Service from '@ember/service';
 import hasEmberVersion from 'ember-test-helpers/has-ember-version';
+import { Promise } from 'rsvp';
 
 describe('setupContainerTest', function() {
   if (!hasEmberVersion(2, 4)) {
@@ -78,4 +79,85 @@ describe('setupContainerTest', function() {
       this.set('name', 'blue');
     });
   });
+
+  describe('hooks API', function() {
+
+    describe('calls hooks in order', function() {
+      let calledSteps = [];
+
+      function setupFoo(hooks) {
+        hooks.beforeEach(function() {
+          expect(this.owner, 'Context is set up already').to.exist;
+          expect(calledSteps).to.deep.equal([]);
+          calledSteps.push('bE1');
+        });
+        hooks.afterEach(function() {
+          expect(calledSteps, 'afterEach is called in LIFO order').to.deep.equal(['bE1', 'bE2', 'it', 'aE2']);
+          calledSteps.push('aE1');
+        });
+      }
+
+      after(function() {
+        expect(calledSteps, 'hooks are called in correct order').to.deep.equal(['bE1', 'bE2', 'it', 'aE2', 'aE1']);
+      });
+
+      let hooks = setupContainerTest();
+      setupFoo(hooks);
+
+      hooks.beforeEach(function() {
+        expect(calledSteps, 'beforeEach is called in FIFO order').to.deep.equal(['bE1']);
+        calledSteps.push('bE2');
+      });
+      hooks.afterEach(function() {
+        expect(calledSteps, 'afterEach is called in LIFO order').to.deep.equal(['bE1', 'bE2', 'it']);
+        calledSteps.push('aE2');
+      });
+
+      it('calls beforeEach/afterEach in FIFO/LIFO order', function() {
+        expect(calledSteps, 'it() is called after all beforeEach').to.deep.equal(['bE1', 'bE2']);
+        calledSteps.push('it');
+      });
+    });
+
+    describe('is Promise aware', function() {
+      let calledSteps = [];
+      function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      after(function() {
+        expect(calledSteps, 'hooks are called in correct order').to.deep.equal(['bE1', 'bE2', 'it', 'aE2', 'aE1']);
+      });
+
+      let hooks = setupContainerTest();
+
+      hooks.beforeEach(function() {
+        expect(calledSteps, 'beforeEach waits for promise').to.deep.equal([]);
+        return delay(10)
+          .then(() => calledSteps.push('bE1'));
+      });
+      hooks.beforeEach(function() {
+        expect(calledSteps, 'beforeEach waits for promise').to.deep.equal(['bE1']);
+        return delay(10)
+          .then(() => calledSteps.push('bE2'));
+      });
+      hooks.afterEach(function() {
+        expect(calledSteps, 'afterEach waits for promise').to.deep.equal(['bE1', 'bE2', 'it', 'aE2']);
+        return delay(10)
+          .then(() => calledSteps.push('aE1'));
+      });
+      hooks.afterEach(function() {
+        expect(calledSteps, 'afterEach waits for promise').to.deep.equal(['bE1', 'bE2', 'it']);
+        return delay(10)
+          .then(() => calledSteps.push('aE2'));
+      });
+
+      it('beforeEach/afterEach chain up promises', function() {
+        expect(calledSteps, 'it() is called after all beforeEach').to.deep.equal(['bE1', 'bE2']);
+        calledSteps.push('it');
+      });
+    });
+
+  });
+
 });
