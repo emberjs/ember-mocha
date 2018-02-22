@@ -35,7 +35,7 @@
     setTimeout(function() {
       TestLoader.load();
 
-      window.mochaRunner = mocha.run();
+      mocha.run();
     }, 250);
   });
 })();
