@@ -24,12 +24,14 @@ function setupPauseTest(context) {
   };
 }
 
-export default function setupUnitTest(options) {
+export default function setupUnitTest(options = {}) {
   let originalContext;
   let beforeEachHooks = [];
   let afterEachHooks = [];
+  let beforeHook = options.beforeHook || beforeEach;
+  let afterHook = options.afterHook || afterEach;
 
-  beforeEach(function() {
+  beforeHook(function() {
     originalContext = _assign({}, this);
 
     return setupContext(this, options)
@@ -37,7 +39,7 @@ export default function setupUnitTest(options) {
       .then(() => chainHooks(beforeEachHooks, this));
   });
 
-  afterEach(function() {
+  afterHook(function() {
     return chainHooks(afterEachHooks, this)
       .then(() => teardownContext(this))
       .then(() => {
