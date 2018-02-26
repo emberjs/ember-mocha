@@ -158,6 +158,33 @@ describe('setupContainerTest', function() {
       });
     });
 
+    describe('hook customization', function() {
+      let beforeHookCalled = false;
+      let afterHookCalled = false;
+
+      function customBeforeHook(fn) {
+        expect(fn).to.be.a.function;
+        beforeHookCalled = true;
+      }
+      function customAfterHook(fn) {
+        expect(fn).to.be.a.function;
+        afterHookCalled = true;
+      }
+
+      setupContainerTest({
+        beforeHook: customBeforeHook,
+        afterHook: customAfterHook,
+      });
+
+      it('allow to use custom hooks', function() {
+        expect(beforeHookCalled).to.be.true;
+      });
+
+      after(function() {
+        expect(afterHookCalled).to.be.true;
+      });
+    });
+
   });
 
 });
