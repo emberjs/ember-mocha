@@ -4,7 +4,8 @@ import { expect } from 'chai';
 import { pauseTest, resumeTest } from '@ember/test-helpers';
 import Service from '@ember/service';
 import hasEmberVersion from 'ember-test-helpers/has-ember-version';
-import { Promise } from 'rsvp';
+import { reject, Promise } from 'rsvp';
+import { run } from '@ember/runloop';
 
 describe('setupTest', function() {
   if (!hasEmberVersion(2, 4)) {
@@ -36,6 +37,23 @@ describe('setupTest', function() {
 
       this.set('foo', 'bar');
       expect(this.get('foo')).to.equal('bar');
+    });
+
+    describe('async', function() {
+      let endReached = false;
+
+      after(function() {
+        expect(endReached, 'Test aborted prematurely').to.be.true;
+      });
+
+      it('works with rejected promise', async function() {
+        this.timeout(0);
+        reject(); // eslint-disable-line no-unused-vars
+        run(() => {});
+
+        await new Promise((resolve) => setTimeout(resolve, 100));
+        endReached = true;
+      });
     });
   });
 
