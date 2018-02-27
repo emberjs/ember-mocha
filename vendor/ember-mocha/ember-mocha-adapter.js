@@ -65,14 +65,16 @@
 
   function invoke(context, fn, d) {
     done = d;
-    isPromise = false;
+    isPromise = true;
     var result = fn.call(context);
     // If a promise is returned,
     // complete test when promise fulfills / rejects
     if (result && typeof result.then === 'function') {
-      isPromise = true;
-      result.then(function() { complete(); }, complete);
+      result.then(function() {
+        complete();
+        }, complete);
     } else {
+      isPromise = false;
       if (isAsync === 0) { complete(); }
     }
   }
