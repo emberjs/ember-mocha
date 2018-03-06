@@ -1,4 +1,4 @@
-import { setupContainerTest } from 'ember-mocha';
+import { setupTest } from 'ember-mocha';
 import { describe, it, beforeEach, afterEach, after } from 'mocha';
 import { expect } from 'chai';
 import { pauseTest, resumeTest } from '@ember/test-helpers';
@@ -6,14 +6,14 @@ import Service from '@ember/service';
 import hasEmberVersion from 'ember-test-helpers/has-ember-version';
 import { Promise } from 'rsvp';
 
-describe('setupContainerTest', function() {
+describe('setupTest', function() {
   if (!hasEmberVersion(2, 4)) {
     return;
   }
 
   describe('context setup', function() {
 
-    setupContainerTest();
+    setupTest();
 
     afterEach(function() {
       expect(this.owner, 'Context does not leak between tests').to.be.undefined;
@@ -41,7 +41,7 @@ describe('setupContainerTest', function() {
 
   describe('pauseTest/resumeTest', function() {
 
-    setupContainerTest();
+    setupTest();
 
     it('can pause tests without timeouts', async function() {
       this.timeout(100);
@@ -64,7 +64,7 @@ describe('setupContainerTest', function() {
       expect(this.get('name')).to.equal('blue');
     });
 
-    setupContainerTest();
+    setupTest();
 
     beforeEach(function() {
       this.set('name', 'red');
@@ -101,7 +101,7 @@ describe('setupContainerTest', function() {
         expect(calledSteps, 'hooks are called in correct order').to.deep.equal(['bE1', 'bE2', 'it', 'aE2', 'aE1']);
       });
 
-      let hooks = setupContainerTest();
+      let hooks = setupTest();
       setupFoo(hooks);
 
       hooks.beforeEach(function() {
@@ -129,7 +129,7 @@ describe('setupContainerTest', function() {
         expect(calledSteps, 'hooks are called in correct order').to.deep.equal(['bE1', 'bE2', 'it', 'aE2', 'aE1']);
       });
 
-      let hooks = setupContainerTest();
+      let hooks = setupTest();
 
       hooks.beforeEach(function() {
         expect(calledSteps, 'beforeEach waits for promise').to.deep.equal([]);

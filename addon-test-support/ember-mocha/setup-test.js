@@ -24,7 +24,7 @@ function setupPauseTest(context) {
   };
 }
 
-export default function setupUnitTest(options) {
+export default function setupTest(options) {
   let originalContext;
   let beforeEachHooks = [];
   let afterEachHooks = [];
