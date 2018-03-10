@@ -10,249 +10,148 @@ ember-mocha
 [travis-badge]: https://img.shields.io/travis/emberjs/ember-mocha/master.svg
 [travis-badge-url]: https://travis-ci.org/emberjs/ember-mocha
 
-ember-mocha simplifies unit testing of Ember applications with
+ember-mocha simplifies testing of Ember applications with
 [Mocha](https://mochajs.org/) by providing Mocha-specific wrappers around the
 helpers contained in
-[ember-test-helpers](https://github.com/switchfly/ember-test-helpers).
+[@ember/test-helpers](https://github.com/emberjs/ember-test-helpers).
 
 *Upgrading from an earlier version? Have a look at our
-[Upgrade Guide](#upgrading) below.*
+[Migration Guide](docs/migration.md).*
 
 
 Installation
 ------------------------------------------------------------------------------
 
-### Installation with Ember CLI
-
-In order to use Ember Mocha with [Ember CLI](http://www.ember-cli.com/),
-please follow the instructions for
-[ember-cli-mocha](https://github.com/switchfly/ember-cli-mocha).
-
-### Standalone Installation
-
-Ember Mocha can also be installed with bower and used directly in any Ember
-project:
+Ember Mocha is an [Ember CLI](http://www.ember-cli.com/) addon, so install it 
+as you would any other addon:
 
 ```sh
-$ bower install ember-mocha
+$ ember install ember-mocha
 ```
-
-You can then choose to include the global (`ember-mocha.js`) or AMD
-(`ember-mocha.amd.js`) build when running your tests.
-
 
 Usage
 ------------------------------------------------------------------------------
 
-### Setting the Resolver
+The following section describes the use of Ember Mocha with the latest modern
+Ember testing APIs, as laid out in the RFCs 
+[232](https://github.com/emberjs/rfcs/blob/master/text/0232-simplify-qunit-testing-api.md) 
+and 
+[268](https://github.com/emberjs/rfcs/blob/master/text/0268-acceptance-testing-refactor.md).
 
-You'll typically want to set a single resolver for your test suite:
+For the older APIs have a look at our [Legacy Guide](docs/legacy.md).
+
+### Setting the Application
+
+Your `tests/test-helper.js` file should look similar to the following, to 
+correctly setup the application required by `@ember/test-helpers`:
 
 ```javascript
-import resolver from './helpers/resolver';
-import { setResolver } from 'ember-mocha';
+import Application from '../app';
+import config from '../config/environment';
+import { setApplication } from '@ember/test-helpers';
 
-setResolver(resolver);
+setApplication(Application.create(config.APP));
 ```
 
-If you want to use multiple resolvers in your test suite, you can also
-call `setResolver` in the `beforeSetup` callback of your test modules.
+Also make sure that you have set `ENV.APP.autoboot = false;` for the `test` 
+environment in your `config/environment.js`.
 
 ### Setup Tests
 
 The `setupTest` function can be used to setup a unit test for any kind
 of "module/unit" of your application that can be looked up in a container.
 
+It will setup your test context with:
+
+* `this.owner` to interact with Ember's [Dependency Injection](https://guides.emberjs.com/v3.0.0/applications/dependency-injection/)
+  system
+* `this.set`, `this.setProperties`, `this.get`, and `this.getProperties`
+* `this.pauseTest` and `this.resumeTest` methods to allow easy pausing/resuming
+  of tests
+
 For example, the following is a unit test for the `SidebarController`:
 
 ```javascript
+import { expect } from 'chai';
 import { describe, it } from 'mocha';
 import { setupTest } from 'ember-mocha';
 
 describe('SidebarController', function() {
-  setupTest('controller:sidebar', {
-    // Specify the other units that are required for this test.
-    // needs: ['controller:foo']
-  });
+  setupTest();
   
   // Replace this with your real tests.
   it('exists', function() {
-    var controller = this.subject();
+    let controller = this.owner.lookup('controller:sidebar');
     expect(controller).to.be.ok;
   });
 });
-
 ```
 
-The subject is specified as `controller:sidebar`, which is the key that will
-be used to look up this controller in the isolated container that will be
-created for this test.
+#### Setup Rendering Tests
 
-#### Setup Component Tests
+The `setupRenderingTest` function is specifically designed for tests that 
+render arbitrary templates, mostly component integration tests.
 
-The `setupComponentTest` function is specifically designed to test components
-and provides additional `render` and `$` helpers within a test's context.
+It will setup your test context the same way as `setupTest`, and additionally:
+
+* initializes Ember's renderer to be used with the 
+  [Rendering helpers](https://github.com/emberjs/ember-test-helpers/blob/master/API.md#rendering-helpers),
+  specifically `render`
+* adds `this.element` to your test context which returns the DOM element 
+  representing the element that was rendered via `render`
+* sets up the [DOM Interaction Helpers](https://github.com/emberjs/ember-test-helpers/blob/master/API.md#dom-interaction-helpers)
+  from `@ember/test-helpers`
 
 ```javascript
+import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { setupComponentTest } from 'ember-mocha';
+import { setupRenderingTest } from 'ember-mocha';
+import { render } from '@ember/test-helpers';
+import hbs from 'htmlbars-inline-precompile';
 
 describe('GravatarImageComponent', function() {
-  setupComponentTest('gravatar-image', {
-    // specify the other units that are required for this test
-    // needs: ['component:foo', 'helper:bar']
-  });
+  setupRenderingTest();
 
-  it('renders', function() {
-    // creates the component instance
-    var component = this.subject();
-    expect(component._state).to.equal('preRender');
-
-    // renders the component on the page
-    this.render();
-    expect(component._state).to.equal('inDOM');
+  it('renders', async function() {
+    await render(hbs`{{gravatar-image}}`);
+    expect(this.element.querySelector('img')).to.exist;
   });
 });
 ```
 
-#### Setup Model Tests
+### Setup Application Tests
 
-The `setupModelTest` function can be used to test Ember Data models and
-provides an additional `store` helper within a test's context.
+The `setupApplicationTest` function can be used to run tests that interact with
+the whole application, so in most cases acceptance tests.
 
-```javascript
-import { describe, it } from 'mocha';
-import { setupModelTest } from 'ember-mocha';
+On top of `setupTest` it will:
 
-describe('Contact', function() {
-  setupModelTest('contact', {
-    // Specify the other units that are required for this test.
-    needs: []
-  });
-  
-  // Replace this with your real tests.
-  it('exists', function() {
-    var model = this.subject();
-    // var store = this.store();
-    expect(model).to.be.ok;
-  });
-});
-```
-
-
-### Acceptance Tests
-
-The `setupAcceptanceTest` function can be used to run acceptance
-tests as the name suggests. It will automatically setup an
-application instance for you, which is provided at `this.application`.
+* boot your application instance
+* set up all the [DOM Interaction Helpers](https://github.com/emberjs/ember-test-helpers/blob/master/API.md#dom-interaction-helpers)
+  as well as the [Routing Helpers](https://github.com/emberjs/ember-test-helpers/blob/master/API.md#routing-helpers)
+  from `@ember/test-helpers` 
 
 ```javascript
-import Ember from 'ember';
+import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { setupAcceptanceTest } from 'ember-mocha';
-
-var Application = Ember.Application.extend({
-  rootElement: '#ember-testing',
-});
+import { setupApplicationTest } from 'ember-mocha';
+import { visit, currentURL } from '@ember/test-helpers';
 
 describe('basic acceptance test', function() {
-  setupAcceptanceTest({ Application });
+  setupApplicationTest();
 
-  it('can visit /', function() {
-    visit('/');
-
-    andThen(() => {
-      expect(currentURL()).to.equal('/');
-    });
+  it('can visit /', async function() {
+    await visit('/');
+    expect(currentURL()).to.equal('/');
   });
 });
 ```
-
-#### Using `async/await`
-
-In case your project supports the `async/await` feature of ES2016 you can
-simplify the test function to this:
-
-```js
-it('can visit /', async function() {
-  await visit('/');
-  expect(currentURL()).to.equal('/');
-});
-```
-
-- add the `async` keyword in front of the test `function`
-- add `await` in front of all async test helper calls
-- remove the `andThen()` wrappers
-
 
 Upgrading
 ------------------------------------------------------------------------------
 
-Previous releases promoted the use of `describeModule()`,
-`describeComponent()` and `describeModel()` instead of the `describe()`
-function of Mocha itself. These functions have been deprecated and replaced
-by the `setupTest()` functions mentioned [above](#setup-tests). The following
-example will explain how to update your code.
-
-Before:
-
-```js
-import {expect} from 'chai';
-import {it} from 'mocha';
-import {describeModule} from 'ember-mocha';
-
-describeModule(
-  'route:subscribers',
-  'Unit: Route: subscribers',
-  {
-    needs: ['service:notifications']
-  },
-  function() {
-    it('exists', function() {
-      let route = this.subject();
-      expect(route).to.be.ok;
-    });
-  }
-);
-```
-
-After:
-
-```js
-import {expect} from 'chai';
-import {it, describe} from 'mocha';
-import {setupTest} from 'ember-mocha';
-
-describe('Unit: Route: subscribers', function() {
-  setupTest('route:subscribers', {
-    needs: ['service:notifications']
-  });
-
-  it('exists', function() {
-    let route = this.subject();
-    expect(route).to.be.ok;
-  });
-});
-```
-
-- import `it` from `mocha` instead of `ember-mocha`
-- replace the `describeModule` import with a `setupTest` import
-- add a `setupTest()` call to the test `function` with the second and third
-  argument of the `describeModule()` call (module name and options)
-- replace the `describeModule()` call with a `describe()` call with the first
-  and fourth argument of the `describeModule()` call (description and test
-  function)
-
-Instead of refactoring all your files by hand we recommend to use the
-[ember-mocha-codemods](https://github.com/Turbo87/ember-mocha-codemods)
-to automatically convert your tests:
-
-```
-npm install -g jscodeshift
-jscodeshift -t https://raw.githubusercontent.com/Turbo87/ember-mocha-codemods/master/import-it-from-mocha.js tests
-jscodeshift -t https://raw.githubusercontent.com/Turbo87/ember-mocha-codemods/master/new-testing-api.js tests
-```
-
+For instructions how to upgrade your test suite please read our 
+[Migration Guide](docs/migration.md).
 
 Contributing
 ------------------------------------------------------------------------------
