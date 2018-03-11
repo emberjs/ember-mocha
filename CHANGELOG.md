@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.14.0-beta.1 (2018-03-11)
+
+#### :rocket: Enhancement
+* [#190](https://github.com/emberjs/ember-mocha/pull/190) Add support for new RFC268 based testing API. ([@simonihmig](https://github.com/simonihmig))
+* [#191](https://github.com/emberjs/ember-mocha/pull/191) Remove jQuery dependency. ([@simonihmig](https://github.com/simonihmig))
+* [#192](https://github.com/emberjs/ember-mocha/pull/192) Add hooks API for setupContainerTest() to improve beforeEach/afterEach ordering. ([@simonihmig](https://github.com/simonihmig))
+* [#194](https://github.com/emberjs/ember-mocha/pull/194) Remove mochaRunner global assignment to prevent memory leaks. ([@simonihmig](https://github.com/simonihmig))
+
+#### :memo: Documentation
+* [#200](https://github.com/emberjs/ember-mocha/pull/200) Update documentation for new APIs. ([@simonihmig](https://github.com/simonihmig))
+* [#201](https://github.com/emberjs/ember-mocha/pull/201) Adjust documentation. ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#195](https://github.com/emberjs/ember-mocha/pull/195) Extract `setupPauseTest()` function. ([@Turbo87](https://github.com/Turbo87))
+* [#193](https://github.com/emberjs/ember-mocha/pull/193) Simplify `chainHooks()` function. ([@Turbo87](https://github.com/Turbo87))
+* [#189](https://github.com/emberjs/ember-mocha/pull/189) Updating the @ember/test-helpers. ([@josh803316](https://github.com/josh803316))
+
+#### Committers: 3
+- Josh Nisenson ([josh803316](https://github.com/josh803316))
+- Simon Ihmig ([simonihmig](https://github.com/simonihmig))
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
+
+
 ## v0.13.1 (2018-02-05)
 
 #### :bug: Bug Fix
