@@ -106,7 +106,7 @@ Mocha itself runs `afterEach` hooks in a different order than QUnit, which is
 why this "workaround" is sometimes needed.
 
 
-#### Setup Rendering Tests
+### Setup Rendering Tests
 
 The `setupRenderingTest()` function is specifically designed for tests that
 render arbitrary templates, including components and helpers.
