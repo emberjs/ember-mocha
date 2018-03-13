@@ -133,7 +133,7 @@ import { expect } from 'chai';
 import startApp from 'app/tests/helpers/start-app';
 import destroyApp from 'app/tests/helpers/destroy-app';
 
-describe('<%= friendlyTestName %>', function() {
+describe('basic acceptance test', function() {
   let application;
 
   beforeEach(function() {
