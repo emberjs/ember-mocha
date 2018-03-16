@@ -115,6 +115,7 @@ describe('GravatarImageComponent', function() {
 * `render()` is now always an async call, so use `async`/`await` to wait for it
   to complete
 * Use `this.element` to get access to the rendered DOM
+* Replace `this.on` when testing action invocation with `this.set` and convert `string` references to the action name with the name of the variable that contains the function
 * Do not use jQuery for DOM interaction, instead use the
   [DOM Interaction Helpers](https://github.com/emberjs/ember-test-helpers/blob/master/API.md#dom-interaction-helpers)
   from `@ember/test-helpers`
