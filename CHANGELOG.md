@@ -11,13 +11,16 @@
 #### :memo: Documentation
 * [#200](https://github.com/emberjs/ember-mocha/pull/200) Update documentation for new APIs. ([@simonihmig](https://github.com/simonihmig))
 * [#201](https://github.com/emberjs/ember-mocha/pull/201) Adjust documentation. ([@Turbo87](https://github.com/Turbo87))
+* [#202](https://github.com/emberjs/ember-mocha/pull/202) Fix migration guide. ([@simonihmig](https://github.com/simonihmig))
+* [#204](https://github.com/emberjs/ember-mocha/pull/204) Add mention of `this.on` to migration guide. ([@alexlafroscia](https://github.com/alexlafroscia))
 
 #### :house: Internal
 * [#195](https://github.com/emberjs/ember-mocha/pull/195) Extract `setupPauseTest()` function. ([@Turbo87](https://github.com/Turbo87))
 * [#193](https://github.com/emberjs/ember-mocha/pull/193) Simplify `chainHooks()` function. ([@Turbo87](https://github.com/Turbo87))
 * [#189](https://github.com/emberjs/ember-mocha/pull/189) Updating the @ember/test-helpers. ([@josh803316](https://github.com/josh803316))
 
-#### Committers: 3
+#### Committers: 4
+- Alex LaFroscia ([alexlafroscia](https://github.com/alexlafroscia))
 - Josh Nisenson ([josh803316](https://github.com/josh803316))
 - Simon Ihmig ([simonihmig](https://github.com/simonihmig))
 - Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
