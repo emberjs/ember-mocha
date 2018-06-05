@@ -48,7 +48,7 @@ script:
   - yarn ember try:one $EMBER_TRY_SCENARIO
 
 before_deploy:
-  - yarn global add auto-dist-tag
+  - yarn global add auto-dist-tag@0.1
   - auto-dist-tag --write
 
 deploy:
