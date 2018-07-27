@@ -12,7 +12,12 @@ import { resolve } from 'rsvp';
 const _assign = assign || merge;
 
 function chainHooks(hooks, context) {
-  return hooks.reduce((promise, fn) => promise.then(fn.bind(context)), resolve());
+  return hooks.reduce((promise, fn) => {
+    return promise
+      .then(fn.bind(context))
+      // eslint-disable-next-line no-console
+      .catch((error) => console.error('Hook throws an error: ', error));
+  }, resolve());
 }
 
 function setupPauseTest(context) {

@@ -158,6 +158,31 @@ describe('setupTest', function() {
       });
     });
 
+    describe('is able to handle exceptions in hooks', function() {
+      let calledSteps = [];
+
+      after(function() {
+        expect(calledSteps, 'hooks are called in correct order').to.deep.equal(['bE1', 'bE2', 'it', 'aE2', 'aE1']);
+      });
+
+      let hooks = setupTest();
+
+      hooks.beforeEach(function() {
+        calledSteps.push('bE1');
+        throw new Error('Dummy Error');
+      });
+      hooks.beforeEach(() => calledSteps.push('bE2'));
+      hooks.afterEach(() => calledSteps.push('aE1'));
+      hooks.afterEach(function() {
+        calledSteps.push('aE2');
+        throw new Error('Dummy Error');
+      });
+
+      it('handles exceptions', function() {
+        calledSteps.push('it');
+      });
+    });
+
   });
 
 });
