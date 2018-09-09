@@ -3,8 +3,6 @@ import { it } from 'ember-mocha';
 import { describe } from 'mocha';
 import { expect } from 'chai';
 
-import { grepFor } from '../helpers/grep-for';
-
 function tryMochaSpecifier(fn) {
   try {
     fn();
@@ -17,7 +15,6 @@ function tryMochaSpecifier(fn) {
 var Mocha = window.mocha;
 
 ///////////////////////////////////////////////////////////////////////////////
-
 describe('it', function() {
   it('works with synchronous tests', function() {
     expect(true).to.equal(true);
@@ -53,13 +50,18 @@ describe('it', function() {
     expect(pendingSpec).to.be.ok;
   });
 
+  it('correctly sets mocha options for running a subset of tests with .only', function () {
+    var originalHasOnly = window.mocha.options.hasOnly;
+    window.mocha.options.hasOnly = false;
 
-  it('correctly sets mocha grep options for runing a single test case with.only', function() {
-    expect(mochaGrep).to.match(/it runs this test/);
-  });
+    var test = it.only("includes this test");
+    it.only("also includes this test");
+    it("does not include this test");
 
-  var mochaGrep = grepFor(function() {
-    it.only('runs this test');
+    expect(window.mocha.options.hasOnly).to.be.true;
+    expect(test.parent._onlyTests).to.have.lengthOf(2);
+
+    window.mocha.options.hasOnly = originalHasOnly;
   });
 
   var skippedError = tryMochaSpecifier(function() {

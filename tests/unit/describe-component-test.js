@@ -5,7 +5,6 @@ import { expect } from 'chai';
 import hbs from 'htmlbars-inline-precompile';
 
 import { setResolverRegistry } from '../helpers/resolver';
-import { grepFor } from '../helpers/grep-for';
 
 var PrettyColor = Ember.Component.extend({
   classNames: ['pretty-color'],
@@ -113,20 +112,28 @@ describe('describeComponent', function() {
   describeComponent.skip('skipped component', function() {
     it("is skipped", function() {});
   });
-  var grep = grepFor(function() {
-    describeComponent.only('only component', function() {
-      it("is the only spec");
-    });
-  });
 
-  describe("skipping and grepping", function() {
+  describe("skipping and running subsets", function() {
     it("skips the skipped context", function() {
       window.mocha.suite.suites.find(function(suite) {
         return suite.title === "skipped component" && suite.pending;
       });
     });
-    it("greps for describeComponent.only", function() {
-      expect('describeComponent component:only component').to.match(grep);
+
+    it("runs only marked tests", function() {
+      var originalHasOnly = window.mocha.options.hasOnly;
+      var originalOnlySuitesLength = window.mocha.suite._onlySuites.length;
+      window.mocha.options.hasOnly = false;
+
+      describeComponent.only("included-component", function () {});
+      describeComponent.only("included-component-too", function () {});
+      describeComponent("ignored-component", function () {});
+
+      expect(window.mocha.options.hasOnly).to.be.true;
+      expect(window.mocha.suite._onlySuites).to.have.lengthOf(2);
+
+      window.mocha.options.hasOnly = originalHasOnly;
+      window.mocha.suite._onlySuites.length = originalOnlySuitesLength;
     });
   });
 

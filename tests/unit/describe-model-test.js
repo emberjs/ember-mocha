@@ -5,7 +5,6 @@ import { describe } from 'mocha';
 import { expect } from 'chai';
 
 import { setResolverRegistry } from '../helpers/resolver';
-import { grepFor } from '../helpers/grep-for';
 
 /* globals Pretender */
 
@@ -137,20 +136,27 @@ describe('describeModel', function() {
     it("is skipped", function() {});
   });
 
-  var grep = grepFor(function() {
-    describeModel.only("whazzit", "only model", function() {
-      it("is the only model", function() {});
-    });
-  });
-
-  describe("skipping and grepping", function() {
+  describe("skipping and running subsets", function() {
     it("skips the skipped context", function() {
       window.mocha.suite.suites.find(function(suite) {
         return suite.title === "skipped model" && suite.pending;
       });
     });
-    it("greps for describeModel.only", function() {
-      expect('describeModel only model').to.match(grep);
+
+    it("runs only marked tests", function() {
+      var originalHasOnly = window.mocha.options.hasOnly;
+      var originalOnlySuitesLength = window.mocha.suite._onlySuites.length;
+      window.mocha.options.hasOnly = false;
+
+      describeModel.only("included-model", function () {});
+      describeModel.only("included-model-too", function () {});
+      describeModel("ignored-component", function () {});
+
+      expect(window.mocha.options.hasOnly).to.be.true;
+      expect(window.mocha.suite._onlySuites).to.have.lengthOf(2);
+
+      window.mocha.options.hasOnly = originalHasOnly;
+      window.mocha.suite._onlySuites.length = originalOnlySuitesLength;
     });
   });
 });
