@@ -66,7 +66,8 @@
   function invoke(context, fn, d) {
     done = d;
     isPromise = false;
-    var result = fn.call(context);
+    // In case fn expects a done hook, stub it
+    var result = fn.call(context, function () {});
     // If a promise is returned,
     // complete test when promise fulfills / rejects
     if (result && typeof result.then === 'function') {
@@ -127,7 +128,7 @@
         if (suite.pending) {
           fn = null;
         }
-        if (!fn || fn.length === 1) {
+        if (!fn) {
           test = new Mocha.Test(title, fn);
         } else {
           var method = function(d) {
