@@ -8,6 +8,10 @@ node_js:
 sudo: false
 dist: trusty
 
+branches:
+  except:
+  - /^dependabot\/.*$/
+
 addons:
   chrome: stable
 
