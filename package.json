@@ -59,7 +59,7 @@
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.17.0",
     "lerna-changelog": "^0.7.0",
-    "loader.js": "^4.2.3"
+    "loader.js": "^4.7.0"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
