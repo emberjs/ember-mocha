@@ -33,7 +33,7 @@
     "@ember/test-helpers": "^0.7.26",
     "broccoli-funnel": "^2.0.1",
     "broccoli-merge-trees": "^2.0.0",
-    "common-tags": "^1.5.1",
+    "common-tags": "^1.8.0",
     "ember-cli-babel": "^6.6.0",
     "ember-cli-test-loader": "^2.2.0",
     "mocha": "^2.5.3"
