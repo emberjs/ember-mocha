@@ -58,7 +58,7 @@
     "ember-load-initializers": "^1.1.0",
     "ember-resolver": "^5.0.1",
     "ember-source": "~3.4.5",
-    "lerna-changelog": "^0.7.0",
+    "lerna-changelog": "^0.8.0",
     "loader.js": "^4.7.0"
   },
   "engines": {
