@@ -3004,10 +3004,10 @@ ember-compatibility-helpers@^1.1.1:
     ember-cli-version-checker "^2.1.1"
     semver "^5.4.1"
 
-ember-data@~3.4.2:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/ember-data/-/ember-data-3.4.2.tgz#675cc4f1be8df1f5c0bfe4191afa6986377721c0"
-  integrity sha512-YYvNDNJ0ySiLED7xUxsR3TdRycCKQ7Avy5QIFc7PajDUODppZBqye1XCfJFDSZQ0sjs5w19mKntOVwsVdQGXIw==
+ember-data@~3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/ember-data/-/ember-data-3.5.0.tgz#1cd22312112fd3a961248090eac850d513f844cf"
+  integrity sha512-BVfObUyajwP93/dTeSiCSUQSU28EVLsq2G8OithwnAgxg2Neupln2cnRBW2+Gv4JzWwUFk075GcuL7qsD+xNmQ==
   dependencies:
     "@ember/ordered-set" "^2.0.0"
     babel-plugin-feature-flags "^0.3.1"
