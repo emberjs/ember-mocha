@@ -11,6 +11,7 @@ module.exports = {
       },
       npm: {
         devDependencies: {
+          'ember-data': '~2.18.0',
           'ember-source': null,
         },
       },
@@ -27,6 +28,7 @@ module.exports = {
       },
       npm: {
         devDependencies: {
+          'ember-data': '~2.18.0',
           'ember-source': null,
         },
       },
@@ -38,6 +40,7 @@ module.exports = {
           ember: 'components/ember#lts-2-8',
         },
         resolutions: {
+          'ember-data': '~2.18.0',
           ember: 'lts-2-8',
         },
       },
@@ -51,6 +54,7 @@ module.exports = {
       name: 'ember-lts-2.12',
       npm: {
         devDependencies: {
+          'ember-data': '~2.18.0',
           'ember-source': '~2.12.0'
         }
       }
@@ -59,6 +63,7 @@ module.exports = {
       name: 'ember-lts-2.16',
       npm: {
         devDependencies: {
+          'ember-data': '~2.18.0',
           'ember-source': '~2.16.0'
         }
       }
