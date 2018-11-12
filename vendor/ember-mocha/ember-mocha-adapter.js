@@ -66,7 +66,8 @@
   function invoke(context, fn, d) {
     done = d;
     isPromise = false;
-    var result = fn.call(context);
+    // In case fn expects a done hook, stub it
+    var result = fn.call(context, function () {});
     // If a promise is returned,
     // complete test when promise fulfills / rejects
     if (result && typeof result.then === 'function') {
@@ -127,7 +128,7 @@
         if (suite.pending) {
           fn = null;
         }
-        if (!fn || fn.length === 1) {
+        if (!fn) {
           test = new Mocha.Test(title, fn);
         } else {
           var method = function(d) {
@@ -138,12 +139,14 @@
           }
           test = new Mocha.Test(title, method);
         }
+        test.file = file;
         suite.addTest(test);
         return test;
       };
 
       context.describe = context.context = function(title, fn){
         var suite = Mocha.Suite.create(suites[0], title);
+        suite.file = file;
         suites.unshift(suite);
         fn.call(suite);
         suites.shift();
@@ -154,6 +157,7 @@
         context.xcontext =
           context.describe.skip = function(title, fn){
             var suite = Mocha.Suite.create(suites[0], title);
+            suite.file = file;
             suite.pending = true;
             suites.unshift(suite);
             fn.call(suite);
@@ -162,13 +166,17 @@
 
       context.describe.only = function(title, fn){
         var suite = context.describe(title, fn);
-        mocha.grep(suite.fullTitle());
+        suite.parent._onlySuites = suite.parent._onlySuites.concat(suite);
+        mocha.options.hasOnly = true;
+        return suite;
       };
 
 
       context.it.only = function(title, fn){
         var test = context.it(title, fn);
-        mocha.grep(test.fullTitle());
+        test.parent._onlyTests = test.parent._onlyTests.concat(test);
+        mocha.options.hasOnly = true;
+        return test;
       };
 
 
