@@ -1,3 +1,5 @@
+export { loadTests } from './test-loader';
+
 import describeModule       from 'ember-mocha/describe-module';
 import describeComponent    from 'ember-mocha/describe-component';
 import describeModel        from 'ember-mocha/describe-model';
