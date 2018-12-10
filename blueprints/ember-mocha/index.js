@@ -21,6 +21,7 @@ module.exports = {
   addChai() {
     return this.addPackagesToProject([
       { name: 'ember-cli-chai', target: '^0.5.0' },
+      { name: 'chai-dom', target: '^1.0.0' },
     ]);
   },
 };
