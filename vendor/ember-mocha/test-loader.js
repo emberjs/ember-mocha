@@ -10,16 +10,13 @@
   }
 
   ready(function() {
-    var emberMocha = require('ember-mocha');
-    var loadTests = emberMocha['loadTests'];
-    var startTests = emberMocha['startTests'];
+    var start = require('ember-mocha')['start'];
 
     // Attempt to mitigate sourcemap issues in Chrome
     // See: https://github.com/ember-cli/ember-cli/issues/3098
     //      https://github.com/ember-cli/ember-cli-qunit/pull/39
     setTimeout(function() {
-      loadTests();
-      startTests();
+      start();
     }, 250);
   });
 })();
