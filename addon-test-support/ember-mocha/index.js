@@ -1,3 +1,5 @@
+/* globals mocha */
+
 export { loadTests } from './test-loader';
 
 import describeModule       from 'ember-mocha/describe-module';
@@ -28,6 +30,13 @@ function setupTest(moduleName) {
     return setupTestLegacy(...arguments);
   }
   return setupTestNew(...arguments);
+}
+
+/**
+ * Instruct Mocha to start the tests.
+ */
+export function startTests() {
+  mocha.run();
 }
 
 export {
