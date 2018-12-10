@@ -1,3 +1,8 @@
+/* globals mocha */
+
+export { loadTests } from './test-loader';
+
+import { loadTests } from './test-loader';
 import describeModule       from 'ember-mocha/describe-module';
 import describeComponent    from 'ember-mocha/describe-component';
 import describeModel        from 'ember-mocha/describe-model';
@@ -26,6 +31,31 @@ function setupTest(moduleName) {
     return setupTestLegacy(...arguments);
   }
   return setupTestNew(...arguments);
+}
+
+/**
+ * Instruct Mocha to start the tests.
+ */
+export function startTests() {
+  mocha.run();
+}
+
+
+/**
+ * @method start
+ * @param {Object} [options] Options to be used for enabling/disabling behaviors
+ * @param {Boolean} [options.loadTests] If `false` tests will not be loaded automatically.
+ * @param {Boolean} [options.startTests] If `false` tests will not be automatically started
+ * (you must run `startTests()` to kick them off).
+ */
+export function start(options = {}) {
+  if (options.loadTests !== false) {
+    loadTests();
+  }
+
+  if (options.startTests !== false) {
+    startTests();
+  }
 }
 
 export {
