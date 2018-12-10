@@ -9,11 +9,18 @@ module.exports = {
 
   afterInstall() {
     return Promise.resolve()
-      .then(() => this.removeQUnit());
+      .then(() => this.removeQUnit())
+      .then(() => this.addChai());
   },
 
   removeQUnit() {
     var packages = ['ember-cli-qunit', 'ember-qunit', 'qunit-dom'];
     return this.removePackagesFromProject(packages.map(name => ({ name })));
+  },
+
+  addChai() {
+    return this.addPackagesToProject([
+      { name: 'ember-cli-chai', target: '^0.5.0' },
+    ]);
   },
 };
