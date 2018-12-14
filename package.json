@@ -31,7 +31,7 @@
     "test:all": "ember try:each"
   },
   "dependencies": {
-    "@ember/test-helpers": "^1.0.1",
+    "@ember/test-helpers": "^1.1.0",
     "broccoli-funnel": "^2.0.1",
     "broccoli-merge-trees": "^3.0.2",
     "common-tags": "^1.8.0",
