@@ -3,20 +3,20 @@
 export { loadTests } from './test-loader';
 
 import { loadTests } from './test-loader';
-import describeModule       from 'ember-mocha/describe-module';
-import describeComponent    from 'ember-mocha/describe-component';
-import describeModel        from 'ember-mocha/describe-model';
-import setupTestFactory     from 'ember-mocha/setup-test-factory';
-import setupTestNew         from 'ember-mocha/setup-test';
-import setupRenderingTest   from 'ember-mocha/setup-rendering-test';
+import describeModule from 'ember-mocha/describe-module';
+import describeComponent from 'ember-mocha/describe-component';
+import describeModel from 'ember-mocha/describe-model';
+import setupTestFactory from 'ember-mocha/setup-test-factory';
+import setupTestNew from 'ember-mocha/setup-test';
+import setupRenderingTest from 'ember-mocha/setup-rendering-test';
 import setupApplicationTest from 'ember-mocha/setup-application-test';
-import { it }               from 'mocha';
-import { setResolver }      from '@ember/test-helpers';
+import { it, afterEach } from 'mocha';
+import { setResolver, resetOnerror } from '@ember/test-helpers';
 import {
   TestModule,
   TestModuleForModel,
   TestModuleForComponent,
-  TestModuleForAcceptance
+  TestModuleForAcceptance,
 } from 'ember-test-helpers';
 
 const setupTestLegacy = setupTestFactory(TestModule);
@@ -40,6 +40,9 @@ export function startTests() {
   mocha.run();
 }
 
+function setupResetOnerror() {
+  afterEach(resetOnerror);
+}
 
 /**
  * @method start
@@ -49,6 +52,8 @@ export function startTests() {
  * (you must run `startTests()` to kick them off).
  */
 export function start(options = {}) {
+  setupResetOnerror();
+
   if (options.loadTests !== false) {
     loadTests();
   }
@@ -70,5 +75,5 @@ export {
   setupRenderingTest,
   setupApplicationTest,
   it,
-  setResolver
+  setResolver,
 };
