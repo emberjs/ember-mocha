@@ -41,7 +41,9 @@ export function startTests() {
 }
 
 function setupResetOnerror() {
-  afterEach(resetOnerror);
+  afterEach(function() {
+    resetOnerror();
+  });
 }
 
 /**
