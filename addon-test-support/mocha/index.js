@@ -1,8 +1,5 @@
 import Ember from 'ember';
 
-/*global mocha, describe, context, it, before, after */
-
-
 /**
  * Takes a function that defines a mocha hook, like `beforeEach` and
  * runs its callback inside an `Ember.run`.
@@ -64,9 +61,13 @@ function wrapMochaHookInEmberRun(original) {
   return wrapper;
 }
 
-
-
+var mocha = window.mocha;
+var describe = window.describe;
+var context = window.context;
+var it = window.it;
+var before = window.before;
 var beforeEach = wrapMochaHookInEmberRun(window.beforeEach);
+var after = window.after;
 var afterEach = wrapMochaHookInEmberRun(window.afterEach);
 
 export {
