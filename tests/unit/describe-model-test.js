@@ -92,15 +92,13 @@ describe('describeModel', function() {
       expect(store.adapterFor(model.constructor.modelName)).to.be.an.instanceof(WhazzitAdapter);
     });
 
-    it('uses the WhazzitAdapter for a `findAll` request', function(done) {
+    it('uses the WhazzitAdapter for a `findAll` request', async function() {
       var store = this.store();
 
       store = this.store();
 
       return Ember.run(function() {
-        return store.findAll('whazzit', { reload: true }).then(function() {
-          done();
-        });
+        return store.findAll('whazzit', { reload: true });
       });
     });
 
