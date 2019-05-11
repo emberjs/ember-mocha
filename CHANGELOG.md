@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.15.1 (2019-05-11)
+
+#### :rocket: Enhancement
+* [#366](https://github.com/emberjs/ember-mocha/pull/366) Deprecate `setupTest()`, `setupComponentTest()`, `setupModelTest()` and `setupAcceptanceTest()` functions ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#364](https://github.com/emberjs/ember-mocha/pull/364) Update `.npmignore` file ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
+
 ## v0.15.0 (2019-05-11)
 
 #### :boom: Breaking Change
