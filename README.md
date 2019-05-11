@@ -215,7 +215,3 @@ License Version 2.0. The licenses of some libraries might impose different
 redistribution or general licensing terms than those stated in the Apache
 License. Users and redistributors are hereby requested to verify these
 conditions and agree upon them.
-
-This repository also contains the `ember-mocha-adapter` originally developed
-by [Teddy Zeenny](https://github.com/teddyzeenny) at
-https://github.com/teddyzeenny/ember-mocha-adapter/ under the MIT license.

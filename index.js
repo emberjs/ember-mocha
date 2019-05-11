@@ -37,7 +37,6 @@ module.exports = {
     this.import('vendor/mocha/mocha.js', { type: 'test' });
     this.import('vendor/mocha/mocha.css', { type: 'test' });
     this.import('vendor/ember-mocha/mocha-configuration.js', { type: 'test' });
-    this.import('vendor/ember-mocha/ember-mocha-adapter.js', { type: 'test' });
 
     let addonOptions = this.targetOptions();
     let explicitlyDisabledStyles = addonOptions.disableContainerStyles === true;
