@@ -61,7 +61,7 @@
     "loader.js": "^4.7.0"
   },
   "engines": {
-    "node": "6.* || 8.* || >= 10.*"
+    "node": "8.* || >= 10.*"
   },
   "changelog": {
     "repo": "emberjs/ember-mocha",
