@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased
+
+#### :boom: Breaking Change
+* [#370](https://github.com/emberjs/ember-mocha/pull/370) Drop support for Ember.js v3.3 and below ([@Turbo87](https://github.com/Turbo87))
+* [#369](https://github.com/emberjs/ember-mocha/pull/369) Remove implicit async test helpers support ([@Turbo87](https://github.com/Turbo87))
+* [#368](https://github.com/emberjs/ember-mocha/pull/368) Remove deprecated `setup*Test()` APIs ([@Turbo87](https://github.com/Turbo87))
+* [#367](https://github.com/emberjs/ember-mocha/pull/367) Remove deprecated `describe*()` APIs ([@Turbo87](https://github.com/Turbo87))
+* [#365](https://github.com/emberjs/ember-mocha/pull/365) Drop support for Node.js 6 ([@Turbo87](https://github.com/Turbo87))
+* [#346](https://github.com/emberjs/ember-mocha/pull/346) Bump ember-cli-babel from 6.17.2 to 7.7.3
+
+#### Committers: 1
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
+
 ## v0.15.1 (2019-05-11)
 
 #### :rocket: Enhancement
