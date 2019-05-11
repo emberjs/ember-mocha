@@ -1,6 +1,24 @@
 # Changelog
 
-## v0.14.0-beta.1 (2018-03-11)
+## v0.15.0 (2019-05-11)
+
+#### :boom: Breaking Change
+* [#281](https://github.com/emberjs/ember-mocha/pull/281) Replace automatic test start via timeout with explicit `start()` call ([@Turbo87](https://github.com/Turbo87))
+* [#219](https://github.com/emberjs/ember-mocha/pull/219) Drop Node 4 support ([@Turbo87](https://github.com/Turbo87))
+
+#### :rocket: Enhancement
+* [#332](https://github.com/emberjs/ember-mocha/pull/332) Update `@ember/test-helpers` to v1.5.0
+* [#310](https://github.com/emberjs/ember-mocha/pull/310) Add `resetOnerror()` from `@ember/test-helpers` ([@scalvert](https://github.com/scalvert))
+* [#280](https://github.com/emberjs/ember-mocha/pull/280) Add `ember-mocha` Blueprint ([@Turbo87](https://github.com/Turbo87))
+* [#222](https://github.com/emberjs/ember-mocha/pull/222) Update minimum version of `@ember/test-helpers` to 0.7.26. ([@rwjblue](https://github.com/rwjblue))
+
+#### Committers: 3
+- Robert Jackson ([@rwjblue](https://github.com/rwjblue))
+- Steve Calvert ([@scalvert](https://github.com/scalvert))
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
+
+## v0.14.0 (2018-06-05)
 
 #### :rocket: Enhancement
 * [#190](https://github.com/emberjs/ember-mocha/pull/190) Add support for new RFC268 based testing API. ([@simonihmig](https://github.com/simonihmig))
