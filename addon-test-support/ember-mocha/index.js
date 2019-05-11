@@ -3,9 +3,6 @@
 export { loadTests } from './test-loader';
 
 import { loadTests } from './test-loader';
-import describeModule from 'ember-mocha/describe-module';
-import describeComponent from 'ember-mocha/describe-component';
-import describeModel from 'ember-mocha/describe-model';
 import setupTestFactory from 'ember-mocha/setup-test-factory';
 import setupTestNew from 'ember-mocha/setup-test';
 import setupRenderingTest from 'ember-mocha/setup-rendering-test';
@@ -66,9 +63,6 @@ export function start(options = {}) {
 }
 
 export {
-  describeModule,
-  describeComponent,
-  describeModel,
   setupTest,
   setupTestLegacy,
   setupAcceptanceTest,
