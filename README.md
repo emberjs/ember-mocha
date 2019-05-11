@@ -19,6 +19,14 @@ helpers contained in
 [Migration Guide](docs/migration.md).*
 
 
+Compatibility
+------------------------------------------------------------------------------
+
+- Ember.js v3.4 or above
+- Ember CLI v2.13 or above
+- Node.js 8 or above
+
+
 Installation
 ------------------------------------------------------------------------------
 
