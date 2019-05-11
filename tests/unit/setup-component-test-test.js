@@ -27,11 +27,11 @@ function setupRegistry() {
 describe('setupComponentTest', function() {
 
   describe('x-foo component', function() {
-    setupComponentTest('x-foo');
-
     beforeEach(function() {
       setupRegistry();
     });
+
+    setupComponentTest('x-foo');
 
     it('renders', function() {
       var component = this.subject();
@@ -77,11 +77,11 @@ describe('setupComponentTest', function() {
   ///////////////////////////////////////////////////////////////////////////////
 
   describe('pretty-color', function() {
-    setupComponentTest('pretty-color');
-
     beforeEach(function() {
       setupRegistry();
     });
+
+    setupComponentTest('pretty-color');
 
     it("has the correct className", function() {
       // first call to this.$() renders the component.
@@ -108,12 +108,12 @@ describe('setupComponentTest', function() {
   });
 
   describe('pretty-color integration test', function() {
-    setupComponentTest('pretty-color', {
-      integration: true
-    });
-
     beforeEach(function() {
       setupRegistry();
+    });
+
+    setupComponentTest('pretty-color', {
+      integration: true
     });
 
     it('renders with color', function() {
@@ -129,12 +129,12 @@ describe('setupComponentTest', function() {
   });
 
   describe('context in beforeEach/afterEach hooks', function() {
-    setupComponentTest('pretty-color', {
-      integration: true
-    });
-
     beforeEach(function() {
       setupRegistry();
+    });
+
+    setupComponentTest('pretty-color', {
+      integration: true
     });
 
     beforeEach(function() {
