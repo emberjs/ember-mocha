@@ -3,32 +3,11 @@
 export { loadTests } from './test-loader';
 
 import { loadTests } from './test-loader';
-import setupTestFactory from 'ember-mocha/setup-test-factory';
-import setupTestNew from 'ember-mocha/setup-test';
+import setupTest from 'ember-mocha/setup-test';
 import setupRenderingTest from 'ember-mocha/setup-rendering-test';
 import setupApplicationTest from 'ember-mocha/setup-application-test';
 import { it, afterEach } from 'mocha';
 import { setResolver, resetOnerror } from '@ember/test-helpers';
-import {
-  TestModule,
-  TestModuleForModel,
-  TestModuleForComponent,
-  TestModuleForAcceptance,
-} from 'ember-test-helpers';
-
-const setupTestLegacy = setupTestFactory(TestModule, 'setupTest');
-const setupAcceptanceTest = setupTestFactory(TestModuleForAcceptance, 'setupAcceptanceTest');
-const setupComponentTest = setupTestFactory(TestModuleForComponent, 'setupComponentTest');
-const setupModelTest = setupTestFactory(TestModuleForModel, 'setupModelTest');
-
-// wrapper function that supports the old and the new testing APIs, depending on its arguments
-function setupTest(moduleName) {
-  // when the first argument is a string, this is the old testing API
-  if (typeof moduleName === 'string') {
-    return setupTestLegacy(...arguments);
-  }
-  return setupTestNew(...arguments);
-}
 
 /**
  * Instruct Mocha to start the tests.
@@ -64,10 +43,6 @@ export function start(options = {}) {
 
 export {
   setupTest,
-  setupTestLegacy,
-  setupAcceptanceTest,
-  setupComponentTest,
-  setupModelTest,
   setupRenderingTest,
   setupApplicationTest,
   it,
