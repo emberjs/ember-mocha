@@ -19,10 +19,10 @@ import {
   TestModuleForAcceptance,
 } from 'ember-test-helpers';
 
-const setupTestLegacy = setupTestFactory(TestModule);
-const setupAcceptanceTest = setupTestFactory(TestModuleForAcceptance);
-const setupComponentTest = setupTestFactory(TestModuleForComponent);
-const setupModelTest = setupTestFactory(TestModuleForModel);
+const setupTestLegacy = setupTestFactory(TestModule, 'setupTest');
+const setupAcceptanceTest = setupTestFactory(TestModuleForAcceptance, 'setupAcceptanceTest');
+const setupComponentTest = setupTestFactory(TestModuleForComponent, 'setupComponentTest');
+const setupModelTest = setupTestFactory(TestModuleForModel, 'setupModelTest');
 
 // wrapper function that supports the old and the new testing APIs, depending on its arguments
 function setupTest(moduleName) {
