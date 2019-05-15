@@ -63,8 +63,10 @@ correctly setup the application required by `@ember/test-helpers`:
 import Application from '../app';
 import config from '../config/environment';
 import { setApplication } from '@ember/test-helpers';
+import { start } from 'ember-mocha';
 
 setApplication(Application.create(config.APP));
+start();
 ```
 
 Also make sure that you have set `ENV.APP.autoboot = false;` for the `test`
