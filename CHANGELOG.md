@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.16.0 (2019-06-16)
 
 #### :boom: Breaking Change
 * [#370](https://github.com/emberjs/ember-mocha/pull/370) Drop support for Ember.js v3.3 and below ([@Turbo87](https://github.com/Turbo87))
