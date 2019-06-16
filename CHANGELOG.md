@@ -10,7 +10,14 @@
 * [#365](https://github.com/emberjs/ember-mocha/pull/365) Drop support for Node.js 6 ([@Turbo87](https://github.com/Turbo87))
 * [#346](https://github.com/emberjs/ember-mocha/pull/346) Bump ember-cli-babel from 6.17.2 to 7.7.3
 
-#### Committers: 1
+#### :memo: Documentation
+* [#375](https://github.com/emberjs/ember-mocha/pull/375) Ensure start call is documented in README ([@maxfierke](https://github.com/maxfierke))
+
+#### :house: Internal
+* [#364](https://github.com/emberjs/ember-mocha/pull/364) Update `.npmignore` file ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 2
+- Max Fierke ([@maxfierke](https://github.com/maxfierke))
 - Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
 
 
