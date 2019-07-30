@@ -72,6 +72,15 @@ start();
 Also make sure that you have set `ENV.APP.autoboot = false;` for the `test`
 environment in your `config/environment.js`.
 
+#### Global Mocha Hooks
+You can also use [mocha hooks](https://mochajs.org/#hooks) in `tests/test-helper.js` to apply global logic for your test suite.
+For example, you may want to initialize a [sinon.js sandbox](http://sinonjs.org/). You could do so by adding the following:
+```javascript
+before(function() {
+   this.sandbox = sinon.createSandbox();
+});
+```
+
 ### Setup Tests
 
 The `setupTest()` function can be used to setup a unit test for any kind
