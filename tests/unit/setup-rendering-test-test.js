@@ -39,7 +39,13 @@ describe('setupRenderingTest', function() {
       expect(this.element.textContent.trim()).to.equal('Pretty Color: green');
     });
 
-    it('renders a second time without', async function() {
+    it('renders with new color with same property', async function() {
+      this.set('name', 'red');
+      await render(hbs`{{pretty-color name=name}}`);
+      expect(this.element.textContent.trim()).to.equal('Pretty Color: red');
+    });
+
+    it('renders a third time without', async function() {
       await render(hbs`{{pretty-color name=name}}`);
       expect(this.element.textContent.trim()).to.equal('Pretty Color:');
     });
