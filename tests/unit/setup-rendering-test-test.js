@@ -39,7 +39,7 @@ describe('setupRenderingTest', function() {
       expect(this.element.textContent.trim()).to.equal('Pretty Color: green');
     });
 
-    it('should pass when using this.set ', async function() {
+    it('fails when using this.set (but should pass)', async function() {
       this.set('name', 'red');
       await render(hbs`{{pretty-color name=name}}`);
       expect(this.element.textContent.trim()).to.equal('Pretty Color: red');
