@@ -6,10 +6,8 @@ import {
   setupContext,
   teardownContext
 } from '@ember/test-helpers';
-import { assign, merge } from '@ember/polyfills';
 import { resolve } from 'rsvp';
 
-const _assign = assign || merge;
 
 function chainHooks(hooks, context) {
   return hooks.reduce((promise, fn) => promise.then(fn.bind(context)), resolve());
@@ -25,12 +23,10 @@ function setupPauseTest(context) {
 }
 
 export default function setupTest(options) {
-  let originalContext;
   let beforeEachHooks = [];
   let afterEachHooks = [];
 
   beforeEach(function() {
-    originalContext = _assign({}, this);
 
     return setupContext(this, options)
       .then(() => setupPauseTest(this))
@@ -39,18 +35,7 @@ export default function setupTest(options) {
 
   afterEach(function() {
     return chainHooks(afterEachHooks, this)
-      .then(() => teardownContext(this))
-      .then(() => {
-        // delete any extraneous properties
-        for (let key in this) {
-          if (!(key in originalContext)) {
-            delete this[key];
-          }
-        }
-
-        // copy over the original values
-        _assign(this, originalContext);
-      });
+      .then(() => teardownContext(this));
   });
 
   /**

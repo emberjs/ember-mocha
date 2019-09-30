@@ -45,6 +45,7 @@ describe('setupRenderingTest', function() {
       expect(this.element.textContent.trim()).to.equal('Pretty Color: red');
     });
 
+    // TODO following test fails because of name being a tracked property. Assert this failure?
     it('passes when using standard setters', async function() {
       this.name = 'red';
       await render(hbs`{{pretty-color name=name}}`);
@@ -52,6 +53,7 @@ describe('setupRenderingTest', function() {
     });
 
     it('renders a second time without', async function() {
+      this.set('name', '');
       await render(hbs`{{pretty-color name=name}}`);
       expect(this.element.textContent.trim()).to.equal('Pretty Color:');
     });
