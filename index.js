@@ -25,10 +25,6 @@ module.exports = {
       console.warn('\nIt looks like you are using "ember-cli-qunit" which can cause issues with "ember-cli-mocha", please remove this package.\n');
       process.exit(1);
     }
-    if (packages.indexOf('ember-cli-htmlbars-inline-precompile') === -1) {
-      console.warn('\nIt looks like you\'re not on ember-cli 1.13, which includes ember-cli-htmlbars-inline-precompile by default. Please run: ember install ember-cli-htmlbars-inline-precompile.\n');
-      process.exit(1);
-    }
   },
 
   included() {
