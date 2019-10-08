@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.16.1 (2019-10-08)
+
+#### :rocket: Enhancement
+* [#456](https://github.com/emberjs/ember-mocha/pull/456) Remove check for ember-cli-htmlbars-inline-precompile ([@richard-viney](https://github.com/richard-viney))
+
+#### Committers: 1
+- Richard Viney ([@richard-viney](https://github.com/richard-viney))
+
+
 ## v0.16.0 (2019-06-16)
 
 #### :boom: Breaking Change
