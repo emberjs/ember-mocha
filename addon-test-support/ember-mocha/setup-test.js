@@ -6,10 +6,7 @@ import {
   setupContext,
   teardownContext
 } from '@ember/test-helpers';
-import { assign, merge } from '@ember/polyfills';
 import { resolve } from 'rsvp';
-
-const _assign = assign || merge;
 
 function chainHooks(hooks, context) {
   return hooks.reduce((promise, fn) => promise.then(fn.bind(context)), resolve());
@@ -25,32 +22,38 @@ function setupPauseTest(context) {
 }
 
 export default function setupTest(options) {
-  let originalContext;
   let beforeEachHooks = [];
   let afterEachHooks = [];
+  let isInternalKey = () => false;
 
   beforeEach(function() {
-    originalContext = _assign({}, this);
+
 
     return setupContext(this, options)
       .then(() => setupPauseTest(this))
-      .then(() => chainHooks(beforeEachHooks, this));
+      .then(() => chainHooks(beforeEachHooks, this))
+      .then(() => {
+        // use a closure to capture the state of `this`
+        // so we can reliably compare the difference later
+        let originalContext = Object.keys(this);
+        isInternalKey = key => originalContext.includes(key);
+      });
   });
 
   afterEach(function() {
+
+    let teardownUserKeysAndOwner = () => {
+      // compare what has been currently set
+      // on the test context with what was
+      // there from internal test setup
+      Object.keys(this).filter(key => !isInternalKey(key))
+        .forEach(key => delete this[key]);
+      // delete the owner instance
+      delete this.owner;
+    };
     return chainHooks(afterEachHooks, this)
       .then(() => teardownContext(this))
-      .then(() => {
-        // delete any extraneous properties
-        for (let key in this) {
-          if (!(key in originalContext)) {
-            delete this[key];
-          }
-        }
-
-        // copy over the original values
-        _assign(this, originalContext);
-      });
+      .then(() => teardownUserKeysAndOwner());
   });
 
   /**
