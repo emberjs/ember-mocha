@@ -47,8 +47,10 @@ export default function setupTest(options) {
       // on the test context with what was
       // there from internal test setup
       Object.keys(this).filter(key => !isInternalKey(key))
-        .forEach(key => delete this[key]);
-      // delete the owner instance
+        .forEach(key => this.set(key, null));
+
+      // we must forcibly remove owner
+      // and cannot clear it using `this.set`
       delete this.owner;
     };
     return chainHooks(afterEachHooks, this)

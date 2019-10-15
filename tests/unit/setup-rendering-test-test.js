@@ -45,10 +45,12 @@ describe('setupRenderingTest', function() {
     });
 
     it('renders a third time with', async function() {
-      this.set('name', 'red');
-      expect(this.name).to.equal('red');
+      let value = 'red';
+      this.set('name', value);
+      expect(this.get('name')).to.equal(value);
+      expect(this.name).to.equal(value);
       await render(hbs`{{pretty-color name=name}}`);
-      expect(this.element.textContent.trim()).to.equal('Pretty Color: red');
+      expect(this.element.textContent.trim()).to.equal(`Pretty Color: ${value}`);
     });
   });
 
