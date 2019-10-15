@@ -37,11 +37,6 @@ describe('setupTest', function() {
       this.set('foo', 'bar');
       expect(this.get('foo')).to.equal('bar');
     });
-
-    it('resets properties between tests', function() {
-      expect(this.foo).to.equal(undefined);
-    });
-
   });
 
   describe('pauseTest/resumeTest', function() {
