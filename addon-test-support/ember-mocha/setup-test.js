@@ -8,6 +8,7 @@ import {
 } from '@ember/test-helpers';
 import { assign, merge } from '@ember/polyfills';
 import { resolve } from 'rsvp';
+import EmberTestContext from './ember-test-context';
 
 const _assign = assign || merge;
 
@@ -15,41 +16,47 @@ function chainHooks(hooks, context) {
   return hooks.reduce((promise, fn) => promise.then(fn.bind(context)), resolve());
 }
 
-function setupPauseTest(context) {
-  let originalPauseTest = context.pauseTest;
-  context.pauseTest = function Mocha_pauseTest() {
-    context.timeout(0); // prevent the test from timing out
+function setupPauseTest(emberContext, mochaContext) {
+  let originalPauseTest = emberContext.pauseTest;
+  let mochaTimeout = mochaContext.timeout;
+  emberContext.pauseTest = function Mocha_pauseTest() {
+    mochaTimeout.call(mochaContext, 0); // prevent the test from timing out
 
-    return originalPauseTest.call(context);
+    return originalPauseTest.call(emberContext);
   };
 }
 
 export default function setupTest(options) {
+  let emberContext;
   let originalContext;
   let beforeEachHooks = [];
   let afterEachHooks = [];
 
   beforeEach(function() {
-    originalContext = _assign({}, this);
+    let mochaContext = this;
+    originalContext = _assign({}, mochaContext);
+    emberContext = new EmberTestContext(mochaContext);
 
-    return setupContext(this, options)
-      .then(() => setupPauseTest(this))
-      .then(() => chainHooks(beforeEachHooks, this));
+    return setupContext(emberContext, options)
+      .then(() => setupPauseTest(emberContext, mochaContext))
+      .then(() => chainHooks(beforeEachHooks, emberContext))
+      .then(() => emberContext.syncProperties());
   });
 
   afterEach(function() {
-    return chainHooks(afterEachHooks, this)
-      .then(() => teardownContext(this))
+    let mochaContext = this;
+    return chainHooks(afterEachHooks, emberContext)
+      .then(() => teardownContext(emberContext))
       .then(() => {
         // delete any extraneous properties
-        for (let key in this) {
+        for (let key in mochaContext) {
           if (!(key in originalContext)) {
-            delete this[key];
+            delete mochaContext[key];
           }
         }
 
         // copy over the original values
-        _assign(this, originalContext);
+        _assign(mochaContext, originalContext);
       });
   });
 

@@ -1,4 +1,5 @@
 import {
+  getContext,
   setupApplicationContext,
   teardownApplicationContext
 } from '@ember/test-helpers';
@@ -8,10 +9,10 @@ export default function setupApplicationTest(options) {
   let hooks = setupTest(options);
 
   hooks.beforeEach(function() {
-    return setupApplicationContext(this);
+    return setupApplicationContext(getContext());
   });
   hooks.afterEach(function() {
-    return teardownApplicationContext(this);
+    return teardownApplicationContext(getContext());
   });
 
   return hooks;

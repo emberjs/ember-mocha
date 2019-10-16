@@ -1,4 +1,5 @@
 import {
+  getContext,
   setupRenderingContext,
   teardownRenderingContext
 } from '@ember/test-helpers';
@@ -8,10 +9,10 @@ export default function setupRenderingTest(options) {
   let hooks = setupTest(options);
 
   hooks.beforeEach(function() {
-    return setupRenderingContext(this);
+    return setupRenderingContext(getContext());
   });
   hooks.afterEach(function() {
-    return teardownRenderingContext(this);
+    return teardownRenderingContext(getContext());
   });
 
   return hooks;
