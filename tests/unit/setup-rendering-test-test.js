@@ -52,6 +52,13 @@ describe('setupRenderingTest', function() {
       await render(hbs`{{pretty-color name=name}}`);
       expect(this.element.textContent.trim()).to.equal(`Pretty Color: ${value}`);
     });
+
+    it('can set properties using dot notation that have been tracked in prior tests', async function() {
+      this.name = 'indigo';
+      await render(hbs`{{pretty-color name=name}}`);
+      expect(this.element.textContent.trim()).to.equal('Pretty Color: indigo');
+    });
+
   });
 
   describe('hooks API', function() {
