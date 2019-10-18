@@ -8,6 +8,12 @@ import {
 } from '@ember/test-helpers';
 import { assign, merge } from '@ember/polyfills';
 import { resolve } from 'rsvp';
+import Ember from 'ember';
+
+let teardownMandatorySetter;
+if (Ember.__loader && Ember.__loader.registry && Ember.__loader.registry['@ember/-internals/utils/index']) {
+  teardownMandatorySetter = Ember.__loader.require('@ember/-internals/utils').teardownMandatorySetter;
+}
 
 const _assign = assign || merge;
 
@@ -44,6 +50,11 @@ export default function setupTest(options) {
         // delete any extraneous properties
         for (let key in this) {
           if (!(key in originalContext)) {
+            // starting from Ember 3.13 this seems to be necessary
+            if (teardownMandatorySetter) {
+              teardownMandatorySetter(this, key);
+            }
+
             delete this[key];
           }
         }
