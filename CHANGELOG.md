@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.16.2 (2019-11-23)
+
+#### :rocket: Enhancement
+* [#459](https://github.com/emberjs/ember-mocha/pull/459) Prevent leakage of position fixed elements from the testing container ([@nickschot](https://github.com/nickschot))
+
+#### :bug: Bug Fix
+* [#462](https://github.com/emberjs/ember-mocha/pull/462) Fix compatibility with Ember 3.13+ ([@kobsy](https://github.com/kobsy))
+
+#### :house: Internal
+* [#487](https://github.com/emberjs/ember-mocha/pull/487) Add dependabot configuration file ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 3
+- Matt Kobs ([@kobsy](https://github.com/kobsy))
+- Nick Schot ([@nickschot](https://github.com/nickschot))
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
+
 ## v0.16.1 (2019-10-08)
 
 #### :rocket: Enhancement
