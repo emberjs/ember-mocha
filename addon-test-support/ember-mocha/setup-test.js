@@ -30,10 +30,11 @@ function setupPauseTest(context) {
   };
 }
 
-export default function setupTest(options) {
+export default function setupTest(_options) {
   let originalContext;
   let beforeEachHooks = [];
   let afterEachHooks = [];
+  let options = _options === undefined ? { waitForSettled: true } : assign({ waitForSettled: true }, _options);
 
   beforeEach(function() {
     originalContext = _assign({}, this);
@@ -45,7 +46,7 @@ export default function setupTest(options) {
 
   afterEach(function() {
     return chainHooks(afterEachHooks, this)
-      .then(() => teardownContext(this))
+      .then(() => teardownContext(this, options))
       .then(() => {
         // delete any extraneous properties
         for (let key in this) {
