@@ -5,7 +5,7 @@ import { describe, it, beforeEach } from 'mocha';
 import { expect } from 'chai';
 import hbs from 'htmlbars-inline-precompile';
 import { click, render } from '@ember/test-helpers';
-import hasEmberVersion from 'ember-test-helpers/has-ember-version';
+import hasEmberVersion from '@ember/test-helpers/has-ember-version';
 
 const PrettyColor = Component.extend({
   classNames: ['pretty-color'],

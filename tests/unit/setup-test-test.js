@@ -3,7 +3,7 @@ import { describe, it, beforeEach, afterEach, after } from 'mocha';
 import { expect } from 'chai';
 import { pauseTest, resumeTest } from '@ember/test-helpers';
 import Service from '@ember/service';
-import hasEmberVersion from 'ember-test-helpers/has-ember-version';
+import hasEmberVersion from '@ember/test-helpers/has-ember-version';
 import { Promise } from 'rsvp';
 
 describe('setupTest', function() {
