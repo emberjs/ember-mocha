@@ -1,10 +1,15 @@
 import { setupTest } from 'ember-mocha';
+import { tracked } from '@glimmer/tracking';
 import { describe, it, beforeEach, afterEach, after } from 'mocha';
 import { expect } from 'chai';
 import { pauseTest, resumeTest } from '@ember/test-helpers';
 import Service from '@ember/service';
 import hasEmberVersion from '@ember/test-helpers/has-ember-version';
 import { Promise } from 'rsvp';
+
+class Foo extends Service {
+  @tracked foo = 'bar';
+}
 
 describe('setupTest', function() {
   if (!hasEmberVersion(2, 4)) {
@@ -21,10 +26,10 @@ describe('setupTest', function() {
 
     it('sets up owner', function() {
       expect(this.owner, 'Owner exists').to.exist;
-      this.owner.register('service:dummy', Service.extend({ foo: 'bar' }));
+      this.owner.register('service:dummy', Foo);
 
       let subject = this.owner.lookup('service:dummy');
-      expect(subject.get('foo')).to.equal('bar');
+      expect(subject.foo).to.equal('bar');
     });
 
     it('has setters and getters', function() {
@@ -35,7 +40,7 @@ describe('setupTest', function() {
         .and.to.respondTo('setProperties');
 
       this.set('foo', 'bar');
-      expect(this.get('foo')).to.equal('bar');
+      expect(this.foo).to.equal('bar');
     });
   });
 
@@ -52,6 +57,7 @@ describe('setupTest', function() {
         throw new Error('resumeTest() did not work')
       }, 300);
 
+      // eslint-disable-next-line ember/no-pause-test
       await pauseTest();
       clearTimeout(timer);
     });
@@ -61,7 +67,7 @@ describe('setupTest', function() {
 
     // @todo will throw `this.get is not a function` if called after `setupRenderingTest()`
     afterEach(function() {
-      expect(this.get('name')).to.equal('blue');
+      expect(this.name).to.equal('blue');
     });
 
     setupTest();
@@ -71,11 +77,11 @@ describe('setupTest', function() {
     });
 
     beforeEach(function() {
-      expect(this.get('name')).to.equal('red');
+      expect(this.name).to.equal('red');
     });
 
     it('has correct context', async function() {
-      expect(this.get('name')).to.equal('red');
+      expect(this.name).to.equal('red');
       this.set('name', 'blue');
     });
   });

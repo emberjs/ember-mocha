@@ -31,15 +31,18 @@
     "test:all": "ember try:each"
   },
   "dependencies": {
-    "@ember/test-helpers": "^2.1.4",
     "broccoli-funnel": "^3.0.3",
     "broccoli-merge-trees": "^4.2.0",
     "common-tags": "^1.8.0",
     "ember-cli-babel": "^7.18.0",
-    "ember-cli-test-loader": "^3.0.0",
-    "mocha": "^8.0.0"
+    "ember-cli-test-loader": "^3.0.0"
   },
   "devDependencies": {
+    "@ember/optional-features": "^0.7.0",
+    "@ember/test-helpers": "^2.1.4",
+    "@glimmer/component": "^1.0.0",
+    "@glimmer/tracking": "^1.0.0",
+    "babel-eslint": "^10.1.0",
     "ember-cli": "~3.24.0",
     "ember-cli-chai": "^0.5.0",
     "ember-cli-dependency-checker": "^3.2.0",
@@ -58,7 +61,12 @@
     "eslint-plugin-ember": "^10.2.0",
     "eslint-plugin-node": "^11.0.0",
     "lerna-changelog": "^0.8.3",
-    "loader.js": "^4.7.0"
+    "loader.js": "^4.7.0",
+    "mocha": "^8.0.0"
+  },
+  "peerDependencies": {
+    "@ember/test-helpers": "^2.1.4",
+    "mocha": "^8.0.0"
   },
   "engines": {
     "node": "10.* || >= 12"

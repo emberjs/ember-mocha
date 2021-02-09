@@ -3,7 +3,7 @@ import { it } from 'ember-mocha';
 import { describe } from 'mocha';
 import { expect } from 'chai';
 
-import { grepFor } from '../helpers/grep-for';
+// import { grepFor } from '../helpers/grep-for';
 
 function tryMochaSpecifier(fn) {
   try {
@@ -53,14 +53,13 @@ describe('it', function() {
     expect(pendingSpec).to.be.ok;
   });
 
+  // it('correctly sets mocha grep options for runing a single test case with.only', function() {
+  //   expect(mochaGrep).to.match(/it runs this test/);
+  // });
 
-  it('correctly sets mocha grep options for runing a single test case with.only', function() {
-    expect(mochaGrep).to.match(/it runs this test/);
-  });
-
-  var mochaGrep = grepFor(function() {
-    it.only('runs this test');
-  });
+  // var mochaGrep = grepFor(function() {
+  //   it.only('runs this test');
+  // });
 
   var skippedError = tryMochaSpecifier(function() {
     it.skip('is a skipped spec');

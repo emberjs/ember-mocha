@@ -6,7 +6,6 @@ import {
   setupContext,
   teardownContext
 } from '@ember/test-helpers';
-import { assign, merge } from '@ember/polyfills';
 import { resolve } from 'rsvp';
 import Ember from 'ember';
 
@@ -14,8 +13,6 @@ let teardownMandatorySetter;
 if (Ember.__loader && Ember.__loader.registry && Ember.__loader.registry['@ember/-internals/utils/index']) {
   teardownMandatorySetter = Ember.__loader.require('@ember/-internals/utils').teardownMandatorySetter;
 }
-
-const _assign = assign || merge;
 
 function chainHooks(hooks, context) {
   return hooks.reduce((promise, fn) => promise.then(fn.bind(context)), resolve());
@@ -34,19 +31,21 @@ export default function setupTest(_options) {
   let originalContext;
   let beforeEachHooks = [];
   let afterEachHooks = [];
-  let options = _options === undefined ? { waitForSettled: true } : assign({ waitForSettled: true }, _options);
+  let options = _options === undefined ? { waitForSettled: true } : Object.assign({ waitForSettled: true }, _options);
 
   beforeEach(function() {
-    originalContext = _assign({}, this);
+    originalContext = Object.assign({}, this);
+    let context = new Proxy(this, {});
+    this._emberContext = context;
 
-    return setupContext(this, options)
+    return setupContext(this._emberContext, options)
       .then(() => setupPauseTest(this))
       .then(() => chainHooks(beforeEachHooks, this));
   });
 
   afterEach(function() {
     return chainHooks(afterEachHooks, this)
-      .then(() => teardownContext(this, options))
+      .then(() => teardownContext(this._emberContext, options))
       .then(() => {
         // delete any extraneous properties
         for (let key in this) {
@@ -61,7 +60,7 @@ export default function setupTest(_options) {
         }
 
         // copy over the original values
-        _assign(this, originalContext);
+        Object.assign(this, originalContext);
       });
   });
 

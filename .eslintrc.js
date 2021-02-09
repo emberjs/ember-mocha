@@ -1,8 +1,12 @@
 module.exports = {
   root: true,
+  parser: 'babel-eslint',
   parserOptions: {
-    ecmaVersion: 2017,
-    sourceType: 'module'
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    ecmafeatures: {
+      legacyDecorators: true
+    }
   },
   plugins: [
     'ember'
@@ -17,6 +21,8 @@ module.exports = {
   rules: {
     'ember/new-module-imports': 'off',
     'ember/no-restricted-resolver-tests': 'off',
+    'ember/no-test-import-export': 'off',
+    'ember/no-ember-testing-in-module-scope': 'off'
   },
   overrides: [
     // node files
