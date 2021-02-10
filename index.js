@@ -47,10 +47,6 @@ module.exports = {
       let targetOptions = this.parent.options && this.parent.options['ember-mocha'];
       // 2. check this.app.options['ember-mocha']
       targetOptions = targetOptions || (this.app && this.app.options && this.app.options['ember-mocha']);
-      // 3. check this.parent.options['ember-cli-mocha']
-      targetOptions = targetOptions || (this.parent.options && this.parent.options['ember-cli-mocha']);
-      // 4. check this.app.options['ember-cli-mocha']
-      targetOptions = targetOptions || (this.app && this.app.options && this.app.options['ember-cli-mocha']);
       this._targetOptions = targetOptions || {};
     }
 
