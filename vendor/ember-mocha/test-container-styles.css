@@ -12,6 +12,29 @@
   /* Prevent leaking position fixed elements outside the testing container */
   transform: translateZ(0);
 }
+
+#ember-testing-container.hidden {
+  visibility: hidden;
+}
+
+#ember-testing-container.zoomed {
+  left: 0;
+  top: 100px;
+  width: auto;
+  height: auto;
+  zoom: 120%;
+}
+
 #ember-testing {
   zoom: 50%;
+}
+
+#ember-mocha {
+  font-size: 15px;
+  margin-left: 15px;
+}
+
+#ember-mocha label {
+  cursor: pointer;
+  margin-right: 10px;
 }
