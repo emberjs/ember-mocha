@@ -1,6 +1,5 @@
 import Ember from 'ember';
-import { it } from 'ember-mocha';
-import { describe } from 'mocha';
+import { it, describe } from 'mocha';
 import { expect } from 'chai';
 
 // import { grepFor } from '../helpers/grep-for';
