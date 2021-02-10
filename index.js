@@ -57,7 +57,16 @@ module.exports = {
     // Skip if insertContentForTestBody === false.
     if (type === 'test-body' && !(this.targetOptions().insertContentForTestBody === false)) {
       return stripIndent`
-        <div id="mocha"></div>
+        <div id="mocha">
+          <div id="ember-mocha">
+            <label for="hide-container">
+              <input type="checkbox" id="hide-container" /> <span>Hide testing container</span>
+            </label>
+            <label for="zoom-container">
+              <input type="checkbox" id="zoom-container" /> <span>Zoom testing container</span>
+            </label>
+          </div>
+        </div>
         <div id="mocha-fixture"></div>
         <div id="ember-testing-container">
           <div id="ember-testing"></div>
