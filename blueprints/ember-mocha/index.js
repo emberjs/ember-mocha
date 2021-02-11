@@ -10,7 +10,10 @@ module.exports = {
   afterInstall() {
     return Promise.resolve()
       .then(() => this.removeQUnit())
-      .then(() => this.addChai());
+      .then(() => this.addChai())
+      .then(() => {
+        console.log("Please add 'mocha' to the autoImport.exclude setting in your ember-cli-build.js file.");
+      });
   },
 
   removeQUnit() {
@@ -20,7 +23,8 @@ module.exports = {
 
   addChai() {
     return this.addPackagesToProject([
-      { name: 'ember-cli-chai', target: '^0.5.0' },
+      { name: 'mocha', target: '^8.0.0' },
+      { name: 'chai', target: '^4.3.0' },
       { name: 'chai-dom', target: '^1.0.0' },
     ]);
   },

@@ -22,11 +22,14 @@
   top: 100px;
   width: auto;
   height: auto;
-  zoom: 120%;
 }
 
 #ember-testing {
   zoom: 50%;
+}
+
+#ember-testing-container.zoomed #ember-testing {
+  zoom: 120%;
 }
 
 #ember-mocha {
