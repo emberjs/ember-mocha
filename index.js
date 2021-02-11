@@ -21,8 +21,8 @@ module.exports = {
 
   checkPackages() {
     var packages = Object.keys(this.project.addonPackages);
-    if (packages.indexOf('ember-cli-qunit') !== -1) {
-      console.warn('\nIt looks like you are using "ember-cli-qunit" which can cause issues with "ember-cli-mocha", please remove this package.\n');
+    if (packages.indexOf('ember-qunit') !== -1) {
+      console.warn('\nIt looks like you are using "ember-qunit" which can cause issues with "ember-mocha", please remove this package.\n');
       process.exit(1);
     }
   },
