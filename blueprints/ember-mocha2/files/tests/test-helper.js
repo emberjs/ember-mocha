@@ -1,7 +1,7 @@
 import Application from '../app';
 import config from '../config/environment';
 import { setApplication } from '@ember/test-helpers';
-import { start } from 'ember-mocha';
+import { start } from 'ember-mocha2';
 import chai from 'chai';
 import chaiDom from 'chai-dom';
 chai.use(chaiDom);

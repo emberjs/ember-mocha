@@ -6,7 +6,7 @@ const path = require('path');
 const stripIndent = require('common-tags').stripIndent;
 
 module.exports = {
-  name: 'ember-mocha',
+  name: 'ember-mocha2',
 
   init() {
     this._super.init && this._super.init.apply(this, arguments);
@@ -22,7 +22,7 @@ module.exports = {
   checkPackages() {
     var packages = Object.keys(this.project.addonPackages);
     if (packages.indexOf('ember-qunit') !== -1) {
-      console.warn('\nIt looks like you are using "ember-qunit" which can cause issues with "ember-mocha", please remove this package.\n');
+      console.warn('\nIt looks like you are using "ember-qunit" which can cause issues with "ember-mocha2", please remove this package.\n');
       process.exit(1);
     }
   },
@@ -32,12 +32,12 @@ module.exports = {
 
     this.import('vendor/mocha/mocha.js', { type: 'test' });
     this.import('vendor/mocha/mocha.css', { type: 'test' });
-    this.import('vendor/ember-mocha/mocha-configuration.js', { type: 'test' });
+    this.import('vendor/ember-mocha2/mocha-configuration.js', { type: 'test' });
 
     let addonOptions = this.targetOptions();
     let explicitlyDisabledStyles = addonOptions.disableContainerStyles === true;
     if (!explicitlyDisabledStyles) {
-      this.import('vendor/ember-mocha/test-container-styles.css', { type: 'test' });
+      this.import('vendor/ember-mocha2/test-container-styles.css', { type: 'test' });
     }
   },
 
@@ -82,7 +82,7 @@ module.exports = {
 
     let mochaTree = new Funnel(this.treeGenerator(mochaPath), {
       destDir: 'mocha',
-      annotation: 'ember-mocha#treeForVendor',
+      annotation: 'ember-mocha2#treeForVendor',
     });
 
     return new MergeTrees([mochaTree, tree]);
@@ -91,7 +91,7 @@ module.exports = {
   treeForAddonTestSupport(tree) {
     // intentionally not calling _super here
     // so that can have our `import`'s be
-    // import { ... } from 'ember-mocha';
+    // import { ... } from 'ember-mocha2';
 
     return this.preprocessJs(tree, '/', this.name, {
       registry: this.registry,

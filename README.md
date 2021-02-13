@@ -1,5 +1,5 @@
 
-ember-mocha
+ember-mocha2
 ==============================================================================
 
 [![Latest NPM release][npm-badge]][npm-badge-url]
@@ -10,7 +10,7 @@ ember-mocha
 [travis-badge]: https://img.shields.io/travis/yads/ember-mocha/master.svg
 [travis-badge-url]: https://travis-ci.org/yads/ember-mocha
 
-ember-mocha simplifies testing of Ember applications with
+ember-mocha2 simplifies testing of Ember applications with
 [Mocha](https://mochajs.org/) by providing Mocha-specific wrappers around the
 helpers contained in
 [@ember/test-helpers](https://github.com/emberjs/ember-test-helpers).
@@ -30,7 +30,7 @@ Compatibility
 Installation
 ------------------------------------------------------------------------------
 
-`ember-mocha` is an [Ember CLI](http://www.ember-cli.com/) addon, so install it
+`ember-mocha2` is an [Ember CLI](http://www.ember-cli.com/) addon, so install it
 as you would any other addon:
 
 ```sh
@@ -57,7 +57,7 @@ correctly setup the application required by `@ember/test-helpers`:
 import Application from '../app';
 import config from '../config/environment';
 import { setApplication } from '@ember/test-helpers';
-import { start } from 'ember-mocha';
+import { start } from 'ember-mocha2';
 import chai from 'chai';
 import chaiDom from 'chai-dom';
 chai.use(chaiDom)
@@ -86,7 +86,7 @@ For example, the following is a unit test for the `SidebarController`:
 ```javascript
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { setupTest } from 'ember-mocha';
+import { setupTest } from 'ember-mocha2';
 
 describe('SidebarController', function() {
   setupTest();
@@ -141,7 +141,7 @@ It will setup your test context the same way as `setupTest()`, and additionally:
 ```javascript
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { setupRenderingTest } from 'ember-mocha';
+import { setupRenderingTest } from 'ember-mocha2';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
@@ -170,7 +170,7 @@ On top of `setupTest()` it will:
 ```javascript
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { setupApplicationTest } from 'ember-mocha';
+import { setupApplicationTest } from 'ember-mocha2';
 import { visit, currentURL } from '@ember/test-helpers';
 
 describe('basic acceptance test', function() {

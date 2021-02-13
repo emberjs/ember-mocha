@@ -1,16 +1,11 @@
 import { describe, it } from 'mocha';
-import { setupApplicationTest } from 'ember-mocha';
+import { setupApplicationTest } from 'ember-mocha2';
 import { expect } from 'chai';
 import { setApplication, visit } from '@ember/test-helpers';
 import Application from '../../app';
 import config from '../../config/environment';
-import hasEmberVersion from '@ember/test-helpers/has-ember-version';
 
 describe('setupApplicationTest', function() {
-  if (!hasEmberVersion(2, 4)) {
-    return;
-  }
-
   setApplication(Application.create(Object.assign({}, config.APP, { autoboot: false })));
 
   this.timeout(5000);
