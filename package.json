@@ -1,6 +1,6 @@
 {
-  "name": "ember-mocha",
-  "version": "0.16.2",
+  "name": "ember-mocha2",
+  "version": "1.0.0-rc1",
   "description": "Mocha helpers for testing Ember.js applications",
   "keywords": [
     "ember-addon"
@@ -11,6 +11,7 @@
   },
   "license": "Apache-2.0",
   "contributors": [
+    "Vadim Kazakov",
     "Dan Gebhardt",
     "Robert Jackson"
   ],
@@ -20,11 +21,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emberjs/ember-mocha.git"
+    "url": "git+https://github.com/yads/ember-mocha.git"
   },
   "scripts": {
     "build": "ember build",
-    "changelog": "lerna-changelog",
     "lint": "eslint . --cache",
     "start": "ember serve",
     "test": "ember test",
@@ -60,7 +60,7 @@
     "eslint": "^7.19.0",
     "eslint-plugin-ember": "^10.2.0",
     "eslint-plugin-node": "^11.0.0",
-    "lerna-changelog": "^0.8.3",
+    "lerna-changelog": "^1.0.0",
     "loader.js": "^4.7.0",
     "mocha": "^8.0.0"
   },
@@ -70,16 +70,6 @@
   },
   "engines": {
     "node": "10.* || >= 12"
-  },
-  "changelog": {
-    "repo": "emberjs/ember-mocha",
-    "labels": {
-      "breaking": ":boom: Breaking Change",
-      "enhancement": ":rocket: Enhancement",
-      "bug": ":bug: Bug Fix",
-      "documentation": ":memo: Documentation",
-      "internal": ":house: Internal"
-    }
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
