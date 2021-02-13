@@ -6,8 +6,8 @@ node_js:
   - "10"
 
 branches:
-  except:
-  - /^dependabot\/.*$/
+  only:
+    - master
 
 addons:
   chrome: stable
@@ -36,8 +36,7 @@ matrix:
     - env: EMBER_TRY_SCENARIO=ember-canary
 
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH=$HOME/.yarn/bin:$PATH
+  - npm i -g yarn
 
 install:
   - yarn install --no-lockfile --non-interactive

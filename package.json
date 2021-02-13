@@ -5,9 +5,9 @@
   "keywords": [
     "ember-addon"
   ],
-  "homepage": "https://github.com/emberjs/ember-mocha",
+  "homepage": "https://github.com/yads/ember-mocha",
   "bugs": {
-    "url": "https://github.com/emberjs/ember-mocha/issues"
+    "url": "https://github.com/yads/ember-mocha/issues"
   },
   "license": "Apache-2.0",
   "contributors": [
