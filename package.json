@@ -1,6 +1,6 @@
 {
   "name": "ember-mocha2",
-  "version": "1.0.0-rc1",
+  "version": "1.0.0-rc2",
   "description": "Mocha helpers for testing Ember.js applications",
   "keywords": [
     "ember-addon"
