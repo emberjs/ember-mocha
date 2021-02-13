@@ -15,9 +15,6 @@ ember-mocha2 simplifies testing of Ember applications with
 helpers contained in
 [@ember/test-helpers](https://github.com/emberjs/ember-test-helpers).
 
-*Upgrading from an earlier version? Have a look at our
-[Migration Guide](docs/migration.md).*
-
 
 Compatibility
 ------------------------------------------------------------------------------
@@ -45,8 +42,6 @@ Ember testing APIs, as laid out in the RFCs
 [232](https://github.com/emberjs/rfcs/blob/master/text/0232-simplify-qunit-testing-api.md)
 and
 [268](https://github.com/emberjs/rfcs/blob/master/text/0268-acceptance-testing-refactor.md).
-
-For the older APIs have a look at our [Legacy Guide](docs/legacy.md).
 
 ### Setting the Application
 
