@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import AppResolver from '../../resolver';
+import AppResolver from 'ember-resolver';
 import config from '../../config/environment';
-import { setResolver } from 'ember-test-helpers';
+import { setResolver } from '@ember/test-helpers';
 
 const Resolver = AppResolver.extend({
   resolve: function(fullName) {

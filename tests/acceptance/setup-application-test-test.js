@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { setApplication, visit } from '@ember/test-helpers';
 import Application from '../../app';
 import config from '../../config/environment';
-import hasEmberVersion from 'ember-test-helpers/has-ember-version';
+import hasEmberVersion from '@ember/test-helpers/has-ember-version';
 
 describe('setupApplicationTest', function() {
   if (!hasEmberVersion(2, 4)) {
