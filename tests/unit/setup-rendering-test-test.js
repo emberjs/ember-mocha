@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { setupRenderingTest } from 'ember-mocha2';
+import { setupRenderingTest } from 'ember-mocha';
 import { describe, it, beforeEach } from 'mocha';
 import { expect } from 'chai';
 import hbs from 'htmlbars-inline-precompile';

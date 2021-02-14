@@ -1,4 +1,4 @@
-import { setupTest } from 'ember-mocha2';
+import { setupTest } from 'ember-mocha';
 import { tracked } from '@glimmer/tracking';
 import { describe, it, beforeEach, afterEach, after } from 'mocha';
 import { expect } from 'chai';

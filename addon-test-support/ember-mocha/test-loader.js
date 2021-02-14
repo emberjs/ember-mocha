@@ -9,7 +9,7 @@ addModuleIncludeMatcher(function(moduleName) {
 
 export class TestLoader extends AbstractTestLoader {
   shouldLoadModule(moduleName) {
-    return !moduleName.match(/^ember-mocha2\//)
+    return !moduleName.match(/^ember-mocha\//)
       && (moduleName.match(/[-_]test$/) || moduleName.match(/\.jshint$/));
   }
 

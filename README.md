@@ -34,6 +34,20 @@ as you would any other addon:
 $ ember install ember-mocha2
 ```
 
+or
+
+```sh
+$ yarn add ember-mocha2 --dev
+```
+
+if you want to keep `ember-mocha` you can point it at the ember-mocha-compat branch in your package.json.
+
+```
+"devDependencies": {
+  "ember-mocha": "yads/ember-mocha#ember-mocha-compat"
+}
+```
+
 Usage
 ------------------------------------------------------------------------------
 
@@ -52,7 +66,7 @@ correctly setup the application required by `@ember/test-helpers`:
 import Application from '../app';
 import config from '../config/environment';
 import { setApplication } from '@ember/test-helpers';
-import { start } from 'ember-mocha2';
+import { start } from 'ember-mocha';
 import chai from 'chai';
 import chaiDom from 'chai-dom';
 chai.use(chaiDom)
@@ -81,7 +95,7 @@ For example, the following is a unit test for the `SidebarController`:
 ```javascript
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { setupTest } from 'ember-mocha2';
+import { setupTest } from 'ember-mocha';
 
 describe('SidebarController', function() {
   setupTest();
@@ -111,7 +125,7 @@ Sometimess you will need to specify that tests should not wait for settled state
 If you see timeout errors in an `afterEach` hook for your tests update your `setupTest`
 cal:
 
-```
+```javascript
 describe('SidebarController', function() {
   setupTest({ waitForSettled: false });
 ```
@@ -136,7 +150,7 @@ It will setup your test context the same way as `setupTest()`, and additionally:
 ```javascript
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { setupRenderingTest } from 'ember-mocha2';
+import { setupRenderingTest } from 'ember-mocha';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
@@ -165,7 +179,7 @@ On top of `setupTest()` it will:
 ```javascript
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { setupApplicationTest } from 'ember-mocha2';
+import { setupApplicationTest } from 'ember-mocha';
 import { visit, currentURL } from '@ember/test-helpers';
 
 describe('basic acceptance test', function() {

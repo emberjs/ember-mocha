@@ -82,7 +82,7 @@ module.exports = {
 
     let mochaTree = new Funnel(this.treeGenerator(mochaPath), {
       destDir: 'mocha',
-      annotation: 'ember-mocha2#treeForVendor',
+      annotation: 'ember-mocha#treeForVendor',
     });
 
     return new MergeTrees([mochaTree, tree]);
@@ -91,7 +91,7 @@ module.exports = {
   treeForAddonTestSupport(tree) {
     // intentionally not calling _super here
     // so that can have our `import`'s be
-    // import { ... } from 'ember-mocha2';
+    // import { ... } from 'ember-mocha';
 
     return this.preprocessJs(tree, '/', this.name, {
       registry: this.registry,

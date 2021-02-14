@@ -10,11 +10,6 @@
     "url": "https://github.com/yads/ember-mocha/issues"
   },
   "license": "Apache-2.0",
-  "contributors": [
-    "Vadim Kazakov",
-    "Dan Gebhardt",
-    "Robert Jackson"
-  ],
   "directories": {
     "doc": "doc",
     "test": "tests"
