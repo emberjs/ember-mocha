@@ -6,24 +6,8 @@ import { loadTests } from './test-loader';
 import setupTest from 'ember-mocha/setup-test';
 import setupRenderingTest from 'ember-mocha/setup-rendering-test';
 import setupApplicationTest from 'ember-mocha/setup-application-test';
-import { beforeEach, afterEach } from 'mocha';
+import { afterEach } from 'mocha';
 import { setResolver, resetOnerror } from '@ember/test-helpers';
-import Ember from 'ember';
-
-/**
-  Ensures that `Ember.testing` is set to `true` before each test begins
-  (including `before` / `beforeEach`), and reset to `false` after each test is
-  completed. This is done via `beforeEach` and `afterEach`.
- */
-export function setupEmberTesting() {
-  beforeEach(function() {
-    Ember.testing = true;
-  });
-
-  afterEach(function() {
-    Ember.testing = false;
-  });
-}
 
 function setupMocha(options) {
   mocha.setup(options || {});
