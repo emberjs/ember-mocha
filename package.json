@@ -25,43 +25,45 @@
   "scripts": {
     "build": "ember build",
     "changelog": "lerna-changelog",
-    "lint": "eslint . --cache",
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
     "start": "ember serve",
     "test": "ember test",
     "test:all": "ember try:each"
   },
   "dependencies": {
+    "@ember/test-helpers": "^2.7.0",
     "broccoli-funnel": "^3.0.3",
     "broccoli-merge-trees": "^4.2.0",
     "common-tags": "^1.8.0",
-    "ember-cli-babel": "^7.18.0",
+    "ember-cli-babel": "^7.26.10",
     "ember-cli-test-loader": "^3.0.0",
     "mocha": "^9.2.2",
-    "@ember/test-helpers": "^2.7.0",
     "stream": "0.0.2"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.7.0",
-    "@glimmer/component": "^1.0.0",
-    "@glimmer/tracking": "^1.0.0",
+    "@embroider/test-setup": "^0.48.1",
+    "@glimmer/component": "^1.0.4",
+    "@glimmer/tracking": "^1.0.4",
     "babel-eslint": "^10.1.0",
-    "ember-cli": "~3.24.0",
+    "ember-cli": "~3.28.5",
     "ember-cli-chai": "^0.5.0",
     "ember-cli-dependency-checker": "^3.2.0",
-    "ember-cli-htmlbars": "^5.3.1",
-    "ember-cli-inject-live-reload": "^2.0.2",
+    "ember-cli-htmlbars": "^5.7.2",
+    "ember-cli-inject-live-reload": "^2.1.0",
     "ember-cli-pretender": "^4.0.0",
     "ember-data": "~3.24.0",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.1",
     "ember-load-initializers": "^2.1.1",
-    "ember-resolver": "^8.0.2",
-    "ember-source": "~3.24.0",
+    "ember-resolver": "^8.0.3",
+    "ember-source": "~3.28.8",
     "ember-source-channel-url": "^3.0.0",
     "ember-try": "^1.4.0",
-    "eslint": "^7.19.0",
-    "eslint-plugin-ember": "^10.2.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-ember": "^10.5.8",
     "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-qunit": "^6.2.0",
     "lerna-changelog": "^0.8.3",
     "loader.js": "^4.7.0"
   },
@@ -70,7 +72,7 @@
     "mocha": "^9.2.2"
   },
   "engines": {
-    "node": "10.* || >= 12"
+    "node": "12.* || 14.* || >= 16"
   },
   "changelog": {
     "repo": "emberjs/ember-mocha",
