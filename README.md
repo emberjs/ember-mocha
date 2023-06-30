@@ -1,3 +1,9 @@
+DEPRECATION WARNING
+===================
+
+This package is not actively developed. [ember-qunit](https://github.com/emberjs/ember-qunit) is a good alternative. 
+
+If you use ember-mocha and want to maintain it, please ask in the #help channel on the ember discord.
 
 ember-mocha
 ==============================================================================
