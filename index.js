@@ -30,8 +30,8 @@ module.exports = {
   included() {
     this._super.included.apply(this, arguments);
 
-    this.import('vendor/mocha/mocha.js', { type: 'test' });
-    this.import('vendor/mocha/mocha.css', { type: 'test' });
+    this.import('node_modules/mocha/mocha.js', { type: 'test',  });
+    this.import('node_modules/mocha/mocha.css', { type: 'test' });
     this.import('vendor/ember-mocha/mocha-configuration.js', { type: 'test' });
 
     let addonOptions = this.targetOptions();
@@ -47,10 +47,6 @@ module.exports = {
       let targetOptions = this.parent.options && this.parent.options['ember-mocha'];
       // 2. check this.app.options['ember-mocha']
       targetOptions = targetOptions || (this.app && this.app.options && this.app.options['ember-mocha']);
-      // 3. check this.parent.options['ember-cli-mocha']
-      targetOptions = targetOptions || (this.parent.options && this.parent.options['ember-cli-mocha']);
-      // 4. check this.app.options['ember-cli-mocha']
-      targetOptions = targetOptions || (this.app && this.app.options && this.app.options['ember-cli-mocha']);
       this._targetOptions = targetOptions || {};
     }
 
