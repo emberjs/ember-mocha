@@ -36,7 +36,7 @@
     "broccoli-merge-trees": "^3.0.2",
     "common-tags": "^1.8.0",
     "ember-cli-babel": "^7.18.0",
-    "ember-cli-test-loader": "^2.2.0",
+    "ember-cli-test-loader": "^3.0.0",
     "mocha": "^2.5.3"
   },
   "devDependencies": {
